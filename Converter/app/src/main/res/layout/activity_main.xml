@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="40dp"
             android:orientation="horizontal">
 
             <Space
@@ -28,12 +28,12 @@
             <Button
                 style="@style/navigationButton"
                 android:text="@string/categoryWeight"
-                android:textColor="@color/colorOrangeSpecific"/>
+                android:textColor="@color/colorOrangeSpecific" />
 
             <Button
                 style="@style/navigationButton"
-                android:text="@string/categoryDistance"
-                android:layout_marginHorizontal="10dp"/>
+                android:layout_marginHorizontal="10dp"
+                android:text="@string/categoryDistance" />
 
             <Button
                 style="@style/navigationButton"
@@ -148,16 +148,19 @@
                 <Button
                     android:id="@+id/kbNum7"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num7" />
 
                 <Button
                     android:id="@+id/kbNum8"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num8" />
 
                 <Button
                     android:id="@+id/kbNum9"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num9" />
 
                 <Button
@@ -172,16 +175,19 @@
                 <Button
                     android:id="@+id/kbNum4"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num4" />
 
                 <Button
                     android:id="@+id/kbNum5"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num5" />
 
                 <Button
                     android:id="@+id/kbNum6"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num6" />
 
                 <Button
@@ -196,16 +202,19 @@
                 <Button
                     android:id="@+id/kbNum1"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num1" />
 
                 <Button
                     android:id="@+id/kbNum2"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num2" />
 
                 <Button
                     android:id="@+id/kbNum3"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num3" />
 
                 <Button
@@ -225,6 +234,7 @@
                 <Button
                     android:id="@+id/kbNum0"
                     style="@style/keyboardButton"
+                    android:onClick="kbNumButtonClick"
                     android:text="@string/num0" />
 
                 <Button

@@ -25,16 +25,18 @@
     <style name="unitFrameTextBlock">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:gravity">end</item>
+        <item name="android:gravity">center_vertical|end</item>
         <item name="android:textSize">14pt</item>
     </style>
 
     <style name="editTextCustom">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/colorBlackAlternativeSpecific</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical|end</item>
         <item name="android:inputType">none</item>
-        <item name="android:background">@drawable/input_bottom_line</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:hint">0</item>
     </style>
 
     <style name="keyboardRow">
