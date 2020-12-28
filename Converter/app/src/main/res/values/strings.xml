@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Converter</string>
+
+    <!--  Numerics  -->
+    <string name="num0">0</string>
+    <string name="num1">1</string>
+    <string name="num2">2</string>
+    <string name="num3">3</string>
+    <string name="num4">4</string>
+    <string name="num5">5</string>
+    <string name="num6">6</string>
+    <string name="num7">7</string>
+    <string name="num8">8</string>
+    <string name="num9">9</string>
+
+    <!--  Math operators  -->
+    <string name="opAdd">+</string>
+    <string name="opSub">-</string>
+    <string name="opMul">×</string>
+    <string name="opDiv">÷</string>
+    <string name="opEqu">=</string>
+    <string name="opPer">%</string>
+
+    <!--  Symbols  -->
+    <string name="dot">.</string>
+
+    <!--  Misc  -->
+    <string name="mode">\?</string>
+    <string name="eraseLast">←</string>
+    <string name="eraseAll">AC</string>
+    <string name="categoryWeight">WEIGHT</string>
+    <string name="categoryDistance">DISTANCE</string>
+    <string name="categoryCurrency">CURRENCY</string>
+
+    <!--  Measure units  -->
+    <string name="gram">g</string>
+    <string name="kilogram">kg</string>
+    <string name="ton">t</string>
+
+</resources>

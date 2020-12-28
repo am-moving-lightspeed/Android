@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorOrangeSpecific">#ff7433</color>
+    <color name="colorBlackSpecific">#000000</color>
+    <color name="colorBlackAlternativeSpecific">#0f0f0f</color>
+    <color name="colorDarkGreySpecific">#646464</color>
+    <color name="colorLightGreySpecific">#c0c0c0</color>
+
+</resources>

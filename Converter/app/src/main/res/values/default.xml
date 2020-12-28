@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="Default" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:background">@color/colorBlackSpecific</item>
+        <item name="android:textColor">@color/colorLightGreySpecific</item>
+    </style>
+
+</resources>
