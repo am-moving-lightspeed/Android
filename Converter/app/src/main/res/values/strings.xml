@@ -36,5 +36,11 @@
     <string name="gram">g</string>
     <string name="kilogram">kg</string>
     <string name="ton">t</string>
+    <string name="millimeter">mm</string>
+    <string name="meter">m</string>
+    <string name="mile">ml</string>
+    <string name="belorussianRuble">BYN</string>
+    <string name="russianRuble">RUB</string>
+    <string name="dollar">USD</string>
 
 </resources>

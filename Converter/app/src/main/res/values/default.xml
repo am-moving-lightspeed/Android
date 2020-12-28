@@ -1,8 +1,10 @@
 <resources>
 
-    <style name="Default" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="Default" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorBlackSpecific</item>
         <item name="android:background">@color/colorBlackSpecific</item>
         <item name="android:textColor">@color/colorLightGreySpecific</item>
+        <item name="android:buttonStyle">@color/colorBlackSpecific</item>
     </style>
 
 </resources>

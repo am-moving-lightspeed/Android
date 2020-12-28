@@ -26,9 +26,8 @@
                 android:layout_weight="1" />
 
             <Button
-                style="@style/navigationButton"
-                android:text="@string/categoryWeight"
-                android:textColor="@color/colorOrangeSpecific" />
+                style="@style/navigationButtonActive"
+                android:text="@string/categoryWeight" />
 
             <Button
                 style="@style/navigationButton"
@@ -48,81 +47,11 @@
         <!-- Navigation end-->
 
         <!-- Category units start -->
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/categoryPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <LinearLayout style="@style/unitRow">
-
-                    <FrameLayout style="@style/unitFrame">
-
-                        <TextView
-                            android:id="@+id/unit1"
-                            style="@style/unitFrameTextBlock"
-                            android:text="@string/gram" />
-
-                    </FrameLayout>
-
-                    <EditText
-                        android:id="@+id/inputField1"
-                        style="@style/editTextCustom"
-                        tools:ignore="LabelFor" />
-
-                </LinearLayout>
-
-                <LinearLayout style="@style/unitRow">
-
-                    <FrameLayout style="@style/unitFrame">
-
-                        <TextView
-                            android:id="@+id/unit2"
-                            style="@style/unitFrameTextBlock"
-                            android:text="@string/kilogram" />
-
-                    </FrameLayout>
-
-                    <EditText
-                        android:id="@+id/inputField2"
-                        style="@style/editTextCustom"
-                        tools:ignore="LabelFor" />
-
-                </LinearLayout>
-
-                <LinearLayout style="@style/unitRow">
-
-                    <FrameLayout style="@style/unitFrame">
-
-                        <TextView
-                            android:id="@+id/unit3"
-                            style="@style/unitFrameTextBlock"
-                            android:text="@string/ton" />
-
-                    </FrameLayout>
-
-                    <EditText
-                        android:id="@+id/inputField3"
-                        style="@style/editTextCustom"
-                        tools:ignore="LabelFor" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-        </LinearLayout>
+            android:layout_weight="1" />
         <!-- Category units end -->
 
         <!-- Keyboard start -->

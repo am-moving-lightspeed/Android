@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/unitRow">
+
+            <FrameLayout style="@style/unitFrame">
+
+                <TextView
+                    android:id="@+id/unit1"
+                    style="@style/unitFrameTextBlock"
+                    android:text="@string/belorussianRuble" />
+
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/inputField1"
+                style="@style/editTextCustom"
+                tools:ignore="LabelFor" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/unitRow">
+
+            <FrameLayout style="@style/unitFrame">
+
+                <TextView
+                    android:id="@+id/unit2"
+                    style="@style/unitFrameTextBlock"
+                    android:text="@string/russianRuble" />
+
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/inputField2"
+                style="@style/editTextCustom"
+                tools:ignore="LabelFor" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/unitRow">
+
+            <FrameLayout style="@style/unitFrame">
+
+                <TextView
+                    android:id="@+id/unit3"
+                    style="@style/unitFrameTextBlock"
+                    android:text="@string/dollar" />
+
+            </FrameLayout>
+
+            <EditText
+                android:id="@+id/inputField3"
+                style="@style/editTextCustom"
+                tools:ignore="LabelFor" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

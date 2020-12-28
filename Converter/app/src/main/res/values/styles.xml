@@ -4,8 +4,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="navigationButtonActive" parent="navigationButton">
+        <item name="android:textColor">@color/colorOrangeSpecific</item>
     </style>
 
     <style name="unitRow">
@@ -26,7 +30,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center_vertical|end</item>
-        <item name="android:textSize">14pt</item>
+        <item name="android:textSize">32sp</item>
     </style>
 
     <style name="editTextCustom">
@@ -35,8 +39,10 @@
         <item name="android:layout_height">60dp</item>
         <item name="android:gravity">center_vertical|end</item>
         <item name="android:inputType">none</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/colorLightGreySpecific</item>
         <item name="android:hint">0</item>
+        <item name="android:textColorHint">@color/colorDarkGreySpecific</item>
     </style>
 
     <style name="keyboardRow">
@@ -46,7 +52,7 @@
     </style>
 
     <style name="keyboardButton">
-        <item name="android:textSize">10pt</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
@@ -56,11 +62,6 @@
     <style name="keyboardButtonExtended" parent="keyboardButton">
         <item name="android:textColor">@color/colorOrangeSpecific</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="keyboardButtonRoundFrame" parent="keyboardButtonExtended">
-        <item name="android:layout_height">match_parent</item>
-        <item name="layout_constraintDimensionRatio">5:1</item>
     </style>
 
 </resources>
