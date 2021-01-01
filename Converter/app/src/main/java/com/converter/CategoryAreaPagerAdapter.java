@@ -15,7 +15,7 @@ public class CategoryAreaPagerAdapter extends PagerAdapter {
     private int[]           _layouts;
     private LayoutInflater  _inflater;
 
-    public CategoryAreaPagerAdapter(int[] layouts,
+    public CategoryAreaPagerAdapter(int[]   layouts,
                                     Context context) {
 
         this._layouts = layouts;
@@ -24,11 +24,13 @@ public class CategoryAreaPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
+
         return _layouts.length;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+
         return view.equals(object);
     }
 

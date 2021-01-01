@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.Field;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
     private EditText    _etGram;
     private EditText    _etKilo;
     private EditText    _etTon;
+    private EditText    _etMillimeter;
+    private EditText    _etMeter;
+    private EditText    _etMile;
+    private EditText    _etBelorussianRuble;
+    private EditText    _etRussianRuble;
+    private EditText    _etDollar;
 
     private Button      _bDot;
     private Button      _bEraseLast;
@@ -42,17 +51,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //region Find by id
-        _etGram = findViewById(R.id.inputField1);
-        _etKilo = findViewById(R.id.inputField2);
-        _etTon = findViewById(R.id.inputField3);
+        _viewPager      = findViewById(R.id.categoryPager);
+        _pagerAdapter   = new CategoryAreaPagerAdapter(_LAYOUTS, this);
+        _viewPager.setAdapter(_pagerAdapter);
+
+        _viewPager.findViewById(R.id.inputField1);
 
         _bDot       = findViewById(R.id.kbDot);
         _bEraseLast = findViewById(R.id.kbEraseLast);
         _bEraseAll  = findViewById(R.id.kbEraseAll);
-
-        _viewPager      = findViewById(R.id.categoryPager);
-        _pagerAdapter   = new CategoryAreaPagerAdapter(_LAYOUTS, this);
-        _viewPager.setAdapter(_pagerAdapter);
         //endregion
 
         _activeInput = _etGram;
@@ -89,10 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (_activeInput.getText().toString().isEmpty()) {
-                    return;
-                }
-                else {
+                if (!_activeInput.getText().toString().isEmpty()) {
                     _activeInput.append(".");
                 }
             }
