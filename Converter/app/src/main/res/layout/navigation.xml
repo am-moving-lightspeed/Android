@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="40dp"
+    android:orientation="horizontal">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <Button
+        style="@style/navigationButtonActive"
+        android:text="@string/categoryWeight" />
+
+    <Button
+        style="@style/navigationButton"
+        android:layout_marginHorizontal="10dp"
+        android:text="@string/categoryDistance" />
+
+    <Button
+        style="@style/navigationButton"
+        android:text="@string/categoryCurrency" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>

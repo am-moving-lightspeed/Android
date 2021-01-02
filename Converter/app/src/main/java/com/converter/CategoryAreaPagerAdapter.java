@@ -1,53 +1,67 @@
 package com.converter;
 
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import fragments.CurrencyFragment;
+import fragments.DistanceFragment;
+import fragments.WeightFragment;
 
 
-public class CategoryAreaPagerAdapter extends PagerAdapter {
+public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
 
-    private int[]           _layouts;
-    private LayoutInflater  _inflater;
+    private int                     _count;
+    private SparseArray<Fragment>   _fragments;
 
-    public CategoryAreaPagerAdapter(int[]   layouts,
-                                    Context context) {
 
-        this._layouts = layouts;
-        _inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
+    public CategoryAreaPagerAdapter(FragmentManager fragmentManager, int count) {
 
-    @Override
-    public int getCount() {
-
-        return _layouts.length;
-    }
-
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-
-        return view.equals(object);
+        super(fragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        _count     = count;
+        _fragments = new SparseArray<>();
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
-        View view = _inflater.inflate(_layouts[position], container, false);
-        container.addView(view);
-
-        return view;
+        Fragment fragment = (Fragment) super.instantiateItem(container, position);
+        _fragments.put(position, fragment);
+        return fragment;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
-        View view = (View) object;
-        container.removeView(view);
+        super.destroyItem(container, position, object);
+        _fragments.remove(position);
     }
+
+    @Override
+    public int getCount() {
+
+        return _count;
+    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+
+        switch (position) {
+            case 1:
+                return _fragments.get(1, new DistanceFragment());
+            case 2:
+                return _fragments.get(2, new CurrencyFragment());
+            case 0:
+            default:
+                return _fragments.get(0, new WeightFragment());
+        }
+    }
+
 }

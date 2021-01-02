@@ -13,185 +13,26 @@
         android:layout_marginVertical="30dp"
         android:orientation="vertical">
 
-        <!-- Navigation start-->
-        <LinearLayout
+        <!-- Navigation-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navigationFragmentContainer"
+            android:name="fragments.NavigationFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                style="@style/navigationButtonActive"
-                android:text="@string/categoryWeight" />
-
-            <Button
-                style="@style/navigationButton"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/categoryDistance" />
-
-            <Button
-                style="@style/navigationButton"
-                android:text="@string/categoryCurrency" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-        <!-- Navigation end-->
-
-        <!-- Category units start -->
+        <!-- Category units-->
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/categoryPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
-        <!-- Category units end -->
 
-        <!-- Keyboard start -->
-        <TableLayout
+        <!-- Keyboard -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/keyboardFragmentContainer"
+            android:name="fragments.KeyboardFragment"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="bottom">
-
-            <TableRow style="@style/keyboardRow">
-
-                <Button
-                    android:id="@+id/kbEraseAll"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/eraseAll" />
-
-                <Button
-                    android:id="@+id/kbEraseLast"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/eraseLast" />
-
-                <Button
-                    android:id="@+id/kbPer"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opPer" />
-
-                <Button
-                    android:id="@+id/kbDiv"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opDiv" />
-
-            </TableRow>
-
-            <TableRow style="@style/keyboardRow">
-
-                <Button
-                    android:id="@+id/kbNum7"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num7" />
-
-                <Button
-                    android:id="@+id/kbNum8"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num8" />
-
-                <Button
-                    android:id="@+id/kbNum9"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num9" />
-
-                <Button
-                    android:id="@+id/kbMul"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opMul" />
-
-            </TableRow>
-
-            <TableRow style="@style/keyboardRow">
-
-                <Button
-                    android:id="@+id/kbNum4"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num4" />
-
-                <Button
-                    android:id="@+id/kbNum5"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num5" />
-
-                <Button
-                    android:id="@+id/kbNum6"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num6" />
-
-                <Button
-                    android:id="@+id/kbSub"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opSub" />
-
-            </TableRow>
-
-            <TableRow style="@style/keyboardRow">
-
-                <Button
-                    android:id="@+id/kbNum1"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num1" />
-
-                <Button
-                    android:id="@+id/kbNum2"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num2" />
-
-                <Button
-                    android:id="@+id/kbNum3"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num3" />
-
-                <Button
-                    android:id="@+id/kbAdd"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opAdd" />
-
-            </TableRow>
-
-            <TableRow style="@style/keyboardRow">
-
-                <Button
-                    android:id="@+id/kbMode"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/mode" />
-
-                <Button
-                    android:id="@+id/kbNum0"
-                    style="@style/keyboardButton"
-                    android:onClick="kbNumButtonClick"
-                    android:text="@string/num0" />
-
-                <Button
-                    android:id="@+id/kbDot"
-                    style="@style/keyboardButton"
-                    android:text="@string/dot" />
-
-                <Button
-                    android:id="@+id/kbEqu"
-                    style="@style/keyboardButtonExtended"
-                    android:text="@string/opEqu" />
-
-            </TableRow>
-
-        </TableLayout>
-        <!-- Keyboard end -->
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

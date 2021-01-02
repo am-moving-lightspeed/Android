@@ -1,2 +1,3 @@
+include ':javatuples-1.2'
 include ':app'
 rootProject.name = "Converter"

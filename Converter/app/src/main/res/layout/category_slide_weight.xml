@@ -1,69 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="categories.WeightFragment">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <LinearLayout style="@style/unitRow">
 
+        <FrameLayout style="@style/unitFrame">
 
-        <LinearLayout style="@style/unitRow">
+            <TextView
+                android:id="@+id/unit1"
+                style="@style/unitFrameTextBlock"
+                android:text="@string/gram" />
 
-            <FrameLayout style="@style/unitFrame">
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/unit1"
-                    style="@style/unitFrameTextBlock"
-                    android:text="@string/gram" />
+        <EditText
+            android:id="@+id/inputField1"
+            style="@style/editTextCustom"
+            tools:ignore="LabelFor" />
 
-            </FrameLayout>
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/inputField1"
-                style="@style/editTextCustom"
-                tools:ignore="LabelFor" />
+    <LinearLayout style="@style/unitRow">
 
-        </LinearLayout>
+        <FrameLayout style="@style/unitFrame">
 
-        <LinearLayout style="@style/unitRow">
+            <TextView
+                android:id="@+id/unit2"
+                style="@style/unitFrameTextBlock"
+                android:text="@string/kilogram" />
 
-            <FrameLayout style="@style/unitFrame">
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/unit2"
-                    style="@style/unitFrameTextBlock"
-                    android:text="@string/kilogram" />
+        <EditText
+            android:id="@+id/inputField2"
+            style="@style/editTextCustom"
+            tools:ignore="LabelFor" />
 
-            </FrameLayout>
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/inputField2"
-                style="@style/editTextCustom"
-                tools:ignore="LabelFor" />
+    <LinearLayout style="@style/unitRow">
 
-        </LinearLayout>
+        <FrameLayout style="@style/unitFrame">
 
-        <LinearLayout style="@style/unitRow">
+            <TextView
+                android:id="@+id/unit3"
+                style="@style/unitFrameTextBlock"
+                android:text="@string/ton" />
 
-            <FrameLayout style="@style/unitFrame">
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/unit3"
-                    style="@style/unitFrameTextBlock"
-                    android:text="@string/ton" />
-
-            </FrameLayout>
-
-            <EditText
-                android:id="@+id/inputField3"
-                style="@style/editTextCustom"
-                tools:ignore="LabelFor" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/inputField3"
+            style="@style/editTextCustom"
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 
@@ -72,4 +64,4 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-</androidx.fragment.app.FragmentContainerView>
+</LinearLayout>
