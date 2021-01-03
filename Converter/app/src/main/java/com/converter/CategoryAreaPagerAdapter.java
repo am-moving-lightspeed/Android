@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,13 +19,17 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
 
     private int                     _count;
     private SparseArray<Fragment>   _fragments;
+    private AppCompatActivity       _activityContext;
 
 
-    public CategoryAreaPagerAdapter(FragmentManager fragmentManager, int count) {
+    public CategoryAreaPagerAdapter(FragmentManager   fragmentManager,
+                                    int               count,
+                                    AppCompatActivity activityContext) {
 
         super(fragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        _count     = count;
-        _fragments = new SparseArray<>();
+        _fragments       = new SparseArray<>();
+        _activityContext = activityContext;
+        _count           = count;
     }
 
     @NonNull
@@ -33,6 +38,7 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
 
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
         _fragments.put(position, fragment);
+
         return fragment;
     }
 
@@ -55,12 +61,12 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 1:
-                return _fragments.get(1, new DistanceFragment());
+                return _fragments.get(1, new DistanceFragment(_activityContext));
             case 2:
-                return _fragments.get(2, new CurrencyFragment());
+                return _fragments.get(2, new CurrencyFragment(_activityContext));
             case 0:
             default:
-                return _fragments.get(0, new WeightFragment());
+                return _fragments.get(0, new WeightFragment(_activityContext));
         }
     }
 
