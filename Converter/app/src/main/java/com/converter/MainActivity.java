@@ -13,8 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import org.javatuples.Quartet;
+import org.javatuples.Triplet;
 
 import fragments.CategoryFragment;
+import fragments.NavigationFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -64,11 +66,36 @@ public class MainActivity extends AppCompatActivity {
 
                 CategoryFragment active =
                     (CategoryFragment) _pagerAdapter.getItem(_viewPager.getCurrentItem());
+                NavigationFragment navigation =
+                    (NavigationFragment) _fragmentManager.findFragmentById(R.id.navigationFragmentContainer);
+
                 if (state == ViewPager.SCROLL_STATE_IDLE) {
                     _etOutput0     = active.getTextFields().getValue0();
                     _etOutput1     = active.getTextFields().getValue1();
                     _etOutput2     = active.getTextFields().getValue2();
                     _etActiveInput = active.getTextFields().getValue3();
+
+                    if (navigation != null) {
+                        Triplet<Button, Button, Button> navigationButtons = navigation.getNavigationButtons();
+                        switch (_viewPager.getCurrentItem()) {
+
+                            case 0:
+                                navigation.resetActiveButtonColor(navigationButtons.getValue0(),
+                                                                  navigationButtons.getValue1(),
+                                                                  navigationButtons.getValue2());
+                                break;
+                            case 1:
+                                navigation.resetActiveButtonColor(navigationButtons.getValue1(),
+                                                                  navigationButtons.getValue0(),
+                                                                  navigationButtons.getValue2());
+                                break;
+                            case 2:
+                                navigation.resetActiveButtonColor(navigationButtons.getValue2(),
+                                                                  navigationButtons.getValue0(),
+                                                                  navigationButtons.getValue1());
+                                break;
+                        }
+                    }
 
 //                    InputMethodManager inputMethodManager =
 //                        (InputMethodManager) getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
@@ -101,6 +128,11 @@ public class MainActivity extends AppCompatActivity {
     public int getCurrentFragmentLayout() {
 
         return _LAYOUTS[_viewPager.getCurrentItem()];
+    }
+
+    public void scrollPager(int position) {
+
+        _viewPager.setCurrentItem(position);
     }
 
     //region OnClick event handlers
