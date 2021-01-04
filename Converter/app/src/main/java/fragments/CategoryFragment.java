@@ -33,13 +33,18 @@ public class CategoryFragment extends Fragment {
     protected int               _layoutId;
     protected AppCompatActivity _activityContext;
 
+    // Event handler
+    protected TextWatcher _textWatcher;
+
 
     public CategoryFragment(@LayoutRes int contentLayoutId, AppCompatActivity activity) {
 
         super(contentLayoutId);
-        _layoutId = contentLayoutId;
+        _layoutId        = contentLayoutId;
         _activityContext = activity;
+        _textWatcher     = provideTextChangedListener();
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -51,6 +56,44 @@ public class CategoryFragment extends Fragment {
         _etOutput2     = view.findViewById(R.id.inputField2);
         _etActiveInput = _etOutput0;
 
+        provideTextFields();
+
+        //region Events
+        _etActiveInput.addTextChangedListener(_textWatcher);
+
+        View unitRow0 = view.findViewById(R.id.unitRow0);
+        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow0, view, this));
+
+        View unitRow1 = view.findViewById(R.id.unitRow1);
+        unitRow1.setOnTouchListener(new UnitOnTouchListener(unitRow1, view, this));
+
+        View unitRow2 = view.findViewById(R.id.unitRow2);
+        unitRow2.setOnTouchListener(new UnitOnTouchListener(unitRow2, view, this));
+        //endregion
+    }
+
+
+    public Quartet<EditText, EditText, EditText, EditText> getTextFields() {
+
+        return new Quartet<>(_etOutput0, _etOutput1, _etOutput2, _etActiveInput);
+    }
+
+
+    public void resetActiveInput(View newActive) {
+
+        _etActiveInput.removeTextChangedListener(_textWatcher);
+        _etActiveInput = (EditText) newActive;
+        _etActiveInput.addTextChangedListener(_textWatcher);
+        provideTextFields();
+    }
+
+
+    /*
+     * Provide variables for AppCompatActivity with those,
+     * which have been initialized on this fragment's view creation.
+     */
+    public void provideTextFields() {
+
         if (((MainActivity) _activityContext).getCurrentFragmentLayout() == _layoutId) {
 
             ((MainActivity) _activityContext).setTextFields(
@@ -60,10 +103,13 @@ public class CategoryFragment extends Fragment {
                               _etActiveInput)
             );
         }
+    }
 
 
-        //region Events
-        _etActiveInput.addTextChangedListener(new TextWatcher() {
+    //region TextChanged event handlers
+    private TextWatcher provideTextChangedListener() {
+
+        return new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -92,31 +138,18 @@ public class CategoryFragment extends Fragment {
                 }
             }
 
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+
             @Override
             public void afterTextChanged(Editable s) {}
-        });
-
-        View unitRow0 = view.findViewById(R.id.unitRow0);
-        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow0, view));
-
-        View unitRow1 = view.findViewById(R.id.unitRow1);
-        unitRow1.setOnTouchListener(new UnitOnTouchListener(unitRow1, view));
-
-        View unitRow2 = view.findViewById(R.id.unitRow2);
-        unitRow2.setOnTouchListener(new UnitOnTouchListener(unitRow2, view));
-        //endregion
+        };
     }
 
-    public Quartet<EditText, EditText, EditText, EditText> getTextFields() {
 
-        return new Quartet<>(_etOutput0, _etOutput1, _etOutput2, _etActiveInput);
-    }
-
-    //region TextChanged event handlers
-    public void weightChanged(double value) {
+    private void weightChanged(double value) {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(
@@ -144,7 +177,8 @@ public class CategoryFragment extends Fragment {
         }
     }
 
-    public void distanceChanged(double value) {
+
+    private void distanceChanged(double value) {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(
@@ -172,7 +206,8 @@ public class CategoryFragment extends Fragment {
         }
     }
 
-    public void currencyChanged(double value) {
+
+    private void currencyChanged(double value) {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(

@@ -8,11 +8,17 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.converter.R;
 
+import fragments.CategoryFragment;
+
 
 public class UnitOnTouchListener implements View.OnTouchListener {
+
+    //region Variables
+    private Fragment _context;
 
     private float   _coordinateStartY0;
     private float   _coordinateStartY1;
@@ -21,20 +27,19 @@ public class UnitOnTouchListener implements View.OnTouchListener {
     private View _vContainerSelected;
     private View _vContainer0;
     private View _vContainer1;
+    private View _etActiveInput;
 
     private int _vContainerSelectedPosition;
-    private int _vContainer0Position;
-    private int _vContainer1Position;
 
-    /*
-     * to make sure #setTops method executes once
-     */
+    // To make sure #setTops method executes once.
     private boolean areTopsDefined = false;
+    //endregion
 
 
-    public UnitOnTouchListener(View view, @NonNull View parent) {
+    public UnitOnTouchListener(View view, @NonNull View parent, Fragment context) {
 
         _vContainerSelected = view;
+        _context            = context;
         View tempView0      = parent.findViewById(R.id.unitRow0);
         View tempView1      = parent.findViewById(R.id.unitRow1);
         View tempView2      = parent.findViewById(R.id.unitRow2);
@@ -52,8 +57,11 @@ public class UnitOnTouchListener implements View.OnTouchListener {
             areTopsDefined = true;
         }
 
+        ((CategoryFragment) _context).resetActiveInput(_etActiveInput);
+
         handleMovingEvent(event);
 
+        view.performClick();
         return true;
     }
 
@@ -64,16 +72,19 @@ public class UnitOnTouchListener implements View.OnTouchListener {
     private void distributeByValue(View view0, View view1, View view2) {
 
         if (_vContainerSelected.equals(view0)) {
-            _vContainer0 = view1;
-            _vContainer1 = view2;
+            _vContainer0   = view1;
+            _vContainer1   = view2;
+            _etActiveInput = view0.findViewById(R.id.inputField0);
         }
         else if (_vContainerSelected.equals(view1)) {
-            _vContainer0 = view0;
-            _vContainer1 = view2;
+            _vContainer0   = view0;
+            _vContainer1   = view2;
+            _etActiveInput = view1.findViewById(R.id.inputField1);
         }
         else if (_vContainerSelected.equals(view2)) {
-            _vContainer0 = view0;
-            _vContainer1 = view1;
+            _vContainer0   = view0;
+            _vContainer1   = view1;
+            _etActiveInput = view2.findViewById(R.id.inputField2);
         }
     }
 
@@ -92,21 +103,15 @@ public class UnitOnTouchListener implements View.OnTouchListener {
 
         if (_vContainerSelected.getY() < _vContainer0.getY()) {
             _vContainerSelectedPosition = 0;
-            _vContainer0Position = 1;
-            _vContainer1Position = 2;
         } else if (_vContainerSelected.getY() < _vContainer1.getY()) {
             _vContainerSelectedPosition = 1;
-            _vContainer0Position = 0;
-            _vContainer1Position = 2;
         } else {
             _vContainerSelectedPosition = 2;
-            _vContainer0Position = 0;
-            _vContainer1Position = 1;
         }
     }
 
     /*
-     * Remember Y-start position for every container
+     * Remember Y-start position for every container.
      */
     private void setTops() {
 
@@ -130,7 +135,7 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         }
     }
 
-    private void handleMovingEvent(MotionEvent event) {
+    private void handleMovingEvent(@NonNull MotionEvent event) {
 
         if (event.getActionMasked() == MotionEvent.ACTION_UP) {
             switch (_vContainerSelectedPosition) {
@@ -140,10 +145,6 @@ public class UnitOnTouchListener implements View.OnTouchListener {
 
                 case 2:
                     performPositionDoubleExchange();
-
-//                    _vContainerSelectedPosition = 0;
-//                    _vContainer0Position        = 1;
-//                    _vContainer1Position        = 2;
                     break;
 
                 case 0:

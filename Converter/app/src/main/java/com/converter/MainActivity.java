@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 NavigationFragment navigation =
                     (NavigationFragment) _fragmentManager.findFragmentById(R.id.navigationFragmentContainer);
 
-                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                if (state == ViewPager.SCROLL_STATE_SETTLING) {
                     _etOutput0     = active.getTextFields().getValue0();
                     _etOutput1     = active.getTextFields().getValue1();
                     _etOutput2     = active.getTextFields().getValue2();
@@ -96,10 +96,6 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                         }
                     }
-
-//                    InputMethodManager inputMethodManager =
-//                        (InputMethodManager) getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE);
-//                    inputMethodManager.hideSoftInputFromWindow(_etActiveInput.getWindowToken(), 0);
                 }
             }
 
