@@ -31,14 +31,9 @@
     <string name="categoryWeight">WEIGHT</string>
     <string name="categoryDistance">DISTANCE</string>
     <string name="categoryCurrency">CURRENCY</string>
-    <string name="appHint0">Swipe left/right in order to change</string>
-    <string name="appHint1">category (you can tap navigation buttons</string>
-    <string name="appHint2">though). To change current input tap on</string>
-    <string name="appHint3">unit\'s name (kg, mm, BYN, etc.). Tap and</string>
-    <string name="appHint4">hold to copy to clipboard.</string>
-    <string name="appHintAlt0">Swipe left/right in order to change category (you can tap navigation</string>
-    <string name="appHintAlt1">buttons though). To change current input tap on unit\'s name (kg, mm,</string>
-    <string name="appHintAlt2">BYN, etc.). Tap and hold to copy to clipboard.</string>
+    <string name="appHint0">Swipe left/right in order to change category (you can tap navigation</string>
+    <string name="appHint1">buttons though). To change current input tap on unit\'s name (kg, mm,</string>
+    <string name="appHint2">BYN, etc.). Tap and hold to copy to clipboard.</string>
 
     <!--  Measure units  -->
     <string name="gram">g</string>

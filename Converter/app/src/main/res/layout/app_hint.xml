@@ -17,12 +17,4 @@
         style="@style/appHintText"
         android:text="@string/appHint2" />
 
-    <TextView
-        style="@style/appHintText"
-        android:text="@string/appHint3" />
-
-    <TextView
-        style="@style/appHintText"
-        android:text="@string/appHint4" />
-
 </LinearLayout>
