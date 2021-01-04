@@ -2,10 +2,9 @@
 
     <style name="Default" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/colorBlackSpecific</item>
-        <item name="android:background">@color/colorBlackSpecific</item>
         <item name="android:textColor">@color/colorLightGreySpecific</item>
         <item name="android:buttonStyle">@color/colorBlackSpecific</item>
-        <item name="colorPrimaryDark">@color/colorBlackAlternativeSpecific</item>
+        <item name="android:colorPrimaryDark">@color/colorBlackAlternativeSpecific</item>
     </style>
 
 </resources>

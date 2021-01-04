@@ -1,11 +1,16 @@
 package fragments;
 
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -34,7 +39,8 @@ public class CategoryFragment extends Fragment {
     protected AppCompatActivity _activityContext;
 
     // Event handler
-    protected TextWatcher _textWatcher;
+    protected TextWatcher          _textWatcher;
+    protected View.OnTouchListener _etOnTouchListener;
 
 
     public CategoryFragment(@LayoutRes int contentLayoutId, AppCompatActivity activity) {
@@ -46,6 +52,7 @@ public class CategoryFragment extends Fragment {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
@@ -60,6 +67,12 @@ public class CategoryFragment extends Fragment {
 
         //region Events
         _etActiveInput.addTextChangedListener(_textWatcher);
+        _etOutput0.setOnClickListener(provideEditTextClickHandler());
+        _etOutput1.setOnClickListener(provideEditTextClickHandler());
+        _etOutput2.setOnClickListener(provideEditTextClickHandler());
+        _etOutput0.setOnLongClickListener(provideEditTextLongClickHandler(_etOutput0));
+        _etOutput1.setOnLongClickListener(provideEditTextLongClickHandler(_etOutput1));
+        _etOutput2.setOnLongClickListener(provideEditTextLongClickHandler(_etOutput2));
 
         View unitRow0 = view.findViewById(R.id.unitRow0);
         unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow0, view, this));
@@ -106,7 +119,43 @@ public class CategoryFragment extends Fragment {
     }
 
 
-    //region TextChanged event handlers
+    //region "Edit text clicked" event handlers
+    private View.OnClickListener provideEditTextClickHandler() {
+
+        return new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {}
+        };
+    }
+
+
+    private View.OnLongClickListener provideEditTextLongClickHandler(final View view) {
+
+        return new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                ClipboardManager manager =
+                    (ClipboardManager) _activityContext.getSystemService(Context.CLIPBOARD_SERVICE);
+
+                manager.setPrimaryClip(
+                    ClipData.newPlainText(
+                        "Converter",
+                        ((EditText) view).getText()
+                    )
+                );
+
+                Toast.makeText(getContext(), "Copied to clipboard", Toast.LENGTH_SHORT).show();
+
+                return true;
+            }
+        };
+    }
+    //endregion
+
+
+    //region "Text changed" event handlers
     private TextWatcher provideTextChangedListener() {
 
         return new TextWatcher() {
@@ -125,14 +174,14 @@ public class CategoryFragment extends Fragment {
                     buffer += "0";
                 }
 
-                if ((buffer.length() == 2)    &&
-                    (buffer.charAt(0) == '0') &&
+                if ((buffer.length() == 2)     &&
+                    (buffer.charAt(0) == '0')  &&
                     (buffer.charAt(1) == '0')) {
 
                     _etActiveInput.setText("0");
                 }
 
-                if ((buffer.length() == 2) &&
+                if ((buffer.length() == 2)     &&
                     (buffer.charAt(0) == '0')) {
 
                     _etActiveInput.setText(String.valueOf(buffer.charAt(1)));
@@ -162,6 +211,7 @@ public class CategoryFragment extends Fragment {
     }
 
 
+    @NonNull
     private String applyAccuracy(String string) {
 
         int count = 0;

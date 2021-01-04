@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,16 +21,16 @@ public class UnitOnTouchListener implements View.OnTouchListener {
     //region Variables
     private Fragment _context;
 
-    private float   _coordinateStartY0;
-    private float   _coordinateStartY1;
-    private float   _coordinateStartY2;
+    private float _coordinateStartY0;
+    private float _coordinateStartY1;
+    private float _coordinateStartY2;
 
     private View _vContainerSelected;
     private View _vContainer0;
     private View _vContainer1;
     private View _etActiveInput;
 
-    private int _vContainerSelectedPosition;
+    private int _ContainerSelectedPosition;
 
     // To make sure #setTops method executes once.
     private boolean areTopsDefined = false;
@@ -47,6 +48,7 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         distributeByValue(tempView0, tempView1, tempView2);
     }
 
+
     @Override
     public boolean onTouch(View view, MotionEvent event) {
 
@@ -57,13 +59,15 @@ public class UnitOnTouchListener implements View.OnTouchListener {
             areTopsDefined = true;
         }
 
-        ((CategoryFragment) _context).resetActiveInput(_etActiveInput);
-
         handleMovingEvent(event);
+
+        ((CategoryFragment) _context).resetActiveInput(_etActiveInput);
+        ((EditText) _etActiveInput).setText(((EditText) _etActiveInput).getText());
 
         view.performClick();
         return true;
     }
+
 
     /*
      * _vContainerSelected is the object that has caused this event,
@@ -88,6 +92,7 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         }
     }
 
+
     /*
      * Call this method to rearrange objects, ordering by
      * their Y coordinate, so _vContainer0's Y coordinate is always
@@ -102,20 +107,23 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         }
 
         if (_vContainerSelected.getY() < _vContainer0.getY()) {
-            _vContainerSelectedPosition = 0;
-        } else if (_vContainerSelected.getY() < _vContainer1.getY()) {
-            _vContainerSelectedPosition = 1;
-        } else {
-            _vContainerSelectedPosition = 2;
+            _ContainerSelectedPosition = 0;
+        }
+        else if (_vContainerSelected.getY() < _vContainer1.getY()) {
+            _ContainerSelectedPosition = 1;
+        }
+        else {
+            _ContainerSelectedPosition = 2;
         }
     }
+
 
     /*
      * Remember Y-start position for every container.
      */
     private void setTops() {
 
-        switch (_vContainerSelectedPosition) {
+        switch (_ContainerSelectedPosition) {
             case 0:
                 _coordinateStartY0 = _vContainerSelected.getY();
                 _coordinateStartY1 = _vContainer0.getY();
@@ -135,10 +143,11 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         }
     }
 
+
     private void handleMovingEvent(@NonNull MotionEvent event) {
 
         if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-            switch (_vContainerSelectedPosition) {
+            switch (_ContainerSelectedPosition) {
                 case 1:
                     performPositionExchange();
                     break;
@@ -154,6 +163,8 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         }
     }
 
+
+    //region Animations
     private void performPositionExchange() {
 
         ObjectAnimator animator0 = ObjectAnimator.ofFloat(_vContainerSelected,
@@ -169,6 +180,7 @@ public class UnitOnTouchListener implements View.OnTouchListener {
         animatorSet.play(animator0).with(animator1);
         animatorSet.start();
     }
+
 
     private void performPositionDoubleExchange() {
 
@@ -191,5 +203,6 @@ public class UnitOnTouchListener implements View.OnTouchListener {
                     .with(animator2_);
         animatorSet_.start();
     }
+    //endregion
 
 }
