@@ -20,6 +20,8 @@ import org.javatuples.Quartet;
 
 import java.util.Locale;
 
+import services.UnitOnTouchListener;
+
 
 public class CategoryFragment extends Fragment {
 
@@ -44,9 +46,9 @@ public class CategoryFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        _etOutput0     = view.findViewById(R.id.inputField1);
-        _etOutput1     = view.findViewById(R.id.inputField2);
-        _etOutput2     = view.findViewById(R.id.inputField3);
+        _etOutput0     = view.findViewById(R.id.inputField0);
+        _etOutput1     = view.findViewById(R.id.inputField1);
+        _etOutput2     = view.findViewById(R.id.inputField2);
         _etActiveInput = _etOutput0;
 
         if (((MainActivity) _activityContext).getCurrentFragmentLayout() == _layoutId) {
@@ -96,6 +98,15 @@ public class CategoryFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {}
         });
+
+        View unitRow0 = view.findViewById(R.id.unitRow0);
+        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow0, view));
+
+        View unitRow1 = view.findViewById(R.id.unitRow1);
+        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow1, view));
+
+        View unitRow2 = view.findViewById(R.id.unitRow2);
+        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow2, view));
         //endregion
     }
 

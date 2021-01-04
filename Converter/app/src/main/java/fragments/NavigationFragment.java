@@ -37,9 +37,9 @@ public class NavigationFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        _bCategory0 = view.findViewById(R.id.nav1);
-        _bCategory1 = view.findViewById(R.id.nav2);
-        _bCategory2 = view.findViewById(R.id.nav3);
+        _bCategory0 = view.findViewById(R.id.nav0);
+        _bCategory1 = view.findViewById(R.id.nav1);
+        _bCategory2 = view.findViewById(R.id.nav2);
 
 
         //region Events

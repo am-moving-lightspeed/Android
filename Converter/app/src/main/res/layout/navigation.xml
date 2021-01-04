@@ -11,23 +11,23 @@
         android:layout_weight="1" />
 
     <Button
-        android:id="@+id/nav1"
+        android:id="@+id/nav0"
         style="@style/navigationButtonActive"
-        android:text="@string/categoryWeight"
-        android:tag="0" />
+        android:tag="0"
+        android:text="@string/categoryWeight" />
+
+    <Button
+        android:id="@+id/nav1"
+        style="@style/navigationButton"
+        android:layout_marginHorizontal="10dp"
+        android:tag="1"
+        android:text="@string/categoryDistance" />
 
     <Button
         android:id="@+id/nav2"
         style="@style/navigationButton"
-        android:layout_marginHorizontal="10dp"
-        android:text="@string/categoryDistance"
-        android:tag="1"/>
-
-    <Button
-        android:id="@+id/nav3"
-        style="@style/navigationButton"
-        android:text="@string/categoryCurrency"
-        android:tag="2"/>
+        android:tag="2"
+        android:text="@string/categoryCurrency" />
 
     <Space
         android:layout_width="0dp"
