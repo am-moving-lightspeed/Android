@@ -92,7 +92,7 @@ public class CategoryFragment extends Fragment {
      * Provide variables for AppCompatActivity with those,
      * which have been initialized on this fragment's view creation.
      */
-    public void provideTextFields() {
+    private void provideTextFields() {
 
         if (((MainActivity) _activityContext).getCurrentFragmentLayout() == _layoutId) {
 
@@ -125,6 +125,19 @@ public class CategoryFragment extends Fragment {
                     buffer += "0";
                 }
 
+                if ((buffer.length() == 2)    &&
+                    (buffer.charAt(0) == '0') &&
+                    (buffer.charAt(1) == '0')) {
+
+                    _etActiveInput.setText("0");
+                }
+
+                if ((buffer.length() == 2) &&
+                    (buffer.charAt(0) == '0')) {
+
+                    _etActiveInput.setText(String.valueOf(buffer.charAt(1)));
+                }
+
                 value = Double.parseDouble(buffer);
 
                 if (_layoutId == R.layout.category_slide_weight) {
@@ -149,30 +162,50 @@ public class CategoryFragment extends Fragment {
     }
 
 
+    private String applyAccuracy(String string) {
+
+        int count = 0;
+        for (int i = string.length() - 1; i > 0; i--) {
+            if (string.charAt(i) == '0') {
+                count++;
+            }
+            else if (string.charAt(i) == '.') {
+                count++;
+                break;
+            }
+            else {
+                break;
+            }
+        }
+
+        return string.substring(0, string.length() - count);
+    }
+
+
     private void weightChanged(double value) {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value / 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value / 1000.0))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value / 1000.0 / 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value / 1000.0 / 1000.0))
             );
         }
         else if (_etActiveInput.equals(_etOutput1)) {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 1000.0))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value / 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value / 1000.0))
             );
         }
         else {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 1000.0 * 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 1000.0 * 1000.0))
             );
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value * 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 1000.0))
             );
         }
     }
@@ -182,26 +215,26 @@ public class CategoryFragment extends Fragment {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value / 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value / 1000.0))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value * 0.000621371)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 0.000621371))
             );
         }
         else if (_etActiveInput.equals(_etOutput1)) {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 1000.0)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 1000.0))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value / 0.621371)
+                applyAccuracy(String.format(Locale.US, "%.5f", value / 0.621371))
             );
         }
         else {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 0.000621371)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 0.000621371))
             );
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value * 0.621371)
+                applyAccuracy(String.format(Locale.US, "%.5f", value * 0.621371))
             );
         }
     }
@@ -211,26 +244,26 @@ public class CategoryFragment extends Fragment {
 
         if (_etActiveInput.equals(_etOutput0)) {
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value * 28.63)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 28.63))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value * 0.38)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 0.38))
             );
         }
         else if (_etActiveInput.equals(_etOutput1)) {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 0.03)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 0.03))
             );
             _etOutput2.setText(
-                String.format(Locale.US, "%f", value * 0.01)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 0.01))
             );
         }
         else {
             _etOutput0.setText(
-                String.format(Locale.US, "%f", value * 2.63)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 2.63))
             );
             _etOutput1.setText(
-                String.format(Locale.US, "%f", value * 75.36)
+                applyAccuracy(String.format(Locale.US, "%.2f", value * 75.36))
             );
         }
     }

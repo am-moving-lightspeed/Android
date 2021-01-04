@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/appHint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/appHintText"
+        android:text="@string/appHint0" />
+
+    <TextView
+        style="@style/appHintText"
+        android:text="@string/appHint1" />
+
+    <TextView
+        style="@style/appHintText"
+        android:text="@string/appHint2" />
+
+    <TextView
+        style="@style/appHintText"
+        android:text="@string/appHint3" />
+
+</LinearLayout>
