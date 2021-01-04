@@ -5,11 +5,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout style="@style/unitRow">
+    <LinearLayout
+        android:id="@+id/unitRow0"
+        style="@style/unitRow">
 
-        <FrameLayout
-            android:id="@+id/unitRow0"
-            style="@style/unitFrame">
+        <FrameLayout style="@style/unitFrame">
 
             <TextView
                 android:id="@+id/unit0"

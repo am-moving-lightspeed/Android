@@ -103,10 +103,10 @@ public class CategoryFragment extends Fragment {
         unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow0, view));
 
         View unitRow1 = view.findViewById(R.id.unitRow1);
-        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow1, view));
+        unitRow1.setOnTouchListener(new UnitOnTouchListener(unitRow1, view));
 
         View unitRow2 = view.findViewById(R.id.unitRow2);
-        unitRow0.setOnTouchListener(new UnitOnTouchListener(unitRow2, view));
+        unitRow2.setOnTouchListener(new UnitOnTouchListener(unitRow2, view));
         //endregion
     }
 
