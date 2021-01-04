@@ -40,7 +40,6 @@ public class CategoryFragment extends Fragment {
 
     // Event handler
     protected TextWatcher          _textWatcher;
-    protected View.OnTouchListener _etOnTouchListener;
 
 
     public CategoryFragment(@LayoutRes int contentLayoutId, AppCompatActivity activity) {
@@ -146,7 +145,8 @@ public class CategoryFragment extends Fragment {
                     )
                 );
 
-                Toast.makeText(getContext(), "Copied to clipboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Copied to clipboard", Toast.LENGTH_SHORT)
+                     .show();
 
                 return true;
             }

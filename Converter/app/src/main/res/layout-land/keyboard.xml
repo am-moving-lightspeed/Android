@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="0.9">
+
+    <TableRow style="@style/keyboardRow">
+
+        <Button
+            android:id="@+id/kbEraseAll"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/eraseAll" />
+
+        <Button
+            android:id="@+id/kbEraseLast"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/eraseLast" />
+
+        <Button
+            android:id="@+id/kbPer"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opPer" />
+
+        <Button
+            android:id="@+id/kbDiv"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opDiv" />
+
+    </TableRow>
+
+    <TableRow style="@style/keyboardRow">
+
+        <Button
+            android:id="@+id/kbNum7"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num7" />
+
+        <Button
+            android:id="@+id/kbNum8"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num8" />
+
+        <Button
+            android:id="@+id/kbNum9"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num9" />
+
+        <Button
+            android:id="@+id/kbMul"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opMul" />
+
+    </TableRow>
+
+    <TableRow style="@style/keyboardRow">
+
+        <Button
+            android:id="@+id/kbNum4"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num4" />
+
+        <Button
+            android:id="@+id/kbNum5"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num5" />
+
+        <Button
+            android:id="@+id/kbNum6"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num6" />
+
+        <Button
+            android:id="@+id/kbSub"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opSub" />
+
+    </TableRow>
+
+    <TableRow style="@style/keyboardRow">
+
+        <Button
+            android:id="@+id/kbNum1"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num1" />
+
+        <Button
+            android:id="@+id/kbNum2"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num2" />
+
+        <Button
+            android:id="@+id/kbNum3"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num3" />
+
+        <Button
+            android:id="@+id/kbAdd"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opAdd" />
+
+    </TableRow>
+
+    <TableRow style="@style/keyboardRow">
+
+        <Button
+            android:id="@+id/kbMode"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/mode" />
+
+        <Button
+            android:id="@+id/kbNum0"
+            style="@style/keyboardButton"
+            android:onClick="kbNumButtonClick"
+            android:text="@string/num0" />
+
+        <Button
+            android:id="@+id/kbDot"
+            style="@style/keyboardButton"
+            android:text="@string/dot" />
+
+        <Button
+            android:id="@+id/kbEqu"
+            style="@style/keyboardButtonExtended"
+            android:text="@string/opEqu" />
+
+    </TableRow>
+
+</TableLayout>
