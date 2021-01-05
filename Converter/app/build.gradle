@@ -8,16 +8,46 @@ android {
         applicationId "com.converter"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 16
+        versionName "1.4.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        stock {
+            dimension           "version"
+            applicationIdSuffix ".stock"
+            versionNameSuffix   "-stock"
+        }
+        premium {
+            dimension           "version"
+            applicationIdSuffix ".premium"
+            versionNameSuffix   "-premium"
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('D:\\Android_projects\\Keystores\\keystores.jks')
+            storePassword "keystores1"
+            keyAlias      "keystores1"
+            keyPassword   "keystores1"
+        }
+
+        release {
+            storeFile file('D:\\Android_projects\\Keystores\\keystores.jks')
+            storePassword "keystores2"
+            keyAlias      "keystores2"
+            keyPassword   "keystores2"
         }
     }
 }
