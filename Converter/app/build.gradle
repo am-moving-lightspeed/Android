@@ -38,16 +38,16 @@ android {
     signingConfigs {
         debug {
             storeFile file('D:\\Android_projects\\Keystores\\keystores.jks')
-            storePassword "keystores1"
-            keyAlias      "keystores1"
-            keyPassword   "keystores1"
+            storePassword "keystores"
+            keyAlias      "keystores"
+            keyPassword   "keystores"
         }
 
         release {
             storeFile file('D:\\Android_projects\\Keystores\\keystores.jks')
-            storePassword "keystores2"
-            keyAlias      "keystores2"
-            keyPassword   "keystores2"
+            storePassword "keystores"
+            keyAlias      "keystores"
+            keyPassword   "keystores"
         }
     }
 }
