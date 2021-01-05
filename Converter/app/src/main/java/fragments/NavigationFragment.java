@@ -9,17 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.converter.R;
 
 import org.javatuples.Triplet;
 
 import services.NavigationButtonOnClickListener;
+import services.ViewPagerViewModel;
 
 
 public class NavigationFragment extends Fragment {
 
     private AppCompatActivity _activityContext;
+
+    private ViewModel _viewModel;
 
     private Button _bCategory0;
     private Button _bCategory1;
@@ -30,7 +35,9 @@ public class NavigationFragment extends Fragment {
 
         super(R.layout.navigation);
         _activityContext = activity;
+        _viewModel       = new ViewModelProvider(_activityContext).get(ViewPagerViewModel.class);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -42,37 +49,46 @@ public class NavigationFragment extends Fragment {
         _bCategory2 = view.findViewById(R.id.nav2);
 
 
+        switch (((ViewPagerViewModel) _viewModel).getCurrentItem()) {
+            case 0:
+                resetActiveButtonColor(_bCategory0,
+                                       _bCategory1,
+                                       _bCategory2);
+                break;
+            case 1:
+                resetActiveButtonColor(_bCategory1,
+                                       _bCategory0,
+                                       _bCategory2);
+                break;
+            case 2:
+                resetActiveButtonColor(_bCategory2,
+                                       _bCategory0,
+                                       _bCategory1);
+                break;
+        }
+
+
         //region Events
         _bCategory0.setOnClickListener(
-            new NavigationButtonOnClickListener(_bCategory0,
-                                                _bCategory1,
-                                                _bCategory2,
-                                                _activityContext,
-                                                getResources())
+            new NavigationButtonOnClickListener(_bCategory0, _activityContext)
         );
 
         _bCategory1.setOnClickListener(
-            new NavigationButtonOnClickListener(_bCategory1,
-                                                _bCategory0,
-                                                _bCategory2,
-                                                _activityContext,
-                                                getResources())
+            new NavigationButtonOnClickListener(_bCategory1, _activityContext)
         );
 
         _bCategory2.setOnClickListener(
-            new NavigationButtonOnClickListener(_bCategory2,
-                                                _bCategory0,
-                                                _bCategory1,
-                                                _activityContext,
-                                                getResources())
+            new NavigationButtonOnClickListener(_bCategory2, _activityContext)
         );
         //endregion
     }
+
 
     public Triplet<Button, Button, Button> getNavigationButtons() {
 
         return new Triplet<>(_bCategory0, _bCategory1, _bCategory2);
     }
+
 
     public void resetActiveButtonColor(Button category0, Button category1, Button category2) {
 

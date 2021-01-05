@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.converter.MainActivity;
 import com.converter.R;
@@ -26,6 +27,7 @@ import org.javatuples.Quartet;
 import java.util.Locale;
 
 import services.UnitOnTouchListener;
+import services.ViewPagerViewModel;
 
 
 public class CategoryFragment extends Fragment {
@@ -105,8 +107,13 @@ public class CategoryFragment extends Fragment {
      * which have been initialized on this fragment's view creation.
      */
     private void provideTextFields() {
+        ViewPagerViewModel viewModel =
+            new ViewModelProvider(_activityContext).get(ViewPagerViewModel.class);
+        ((MainActivity) _activityContext).getViewPager()
+                                         .setCurrentItem(viewModel.getCurrentItem());
 
-        if (((MainActivity) _activityContext).getCurrentFragmentLayout() == _layoutId) {
+        int a = ((MainActivity) _activityContext).getCurrentFragmentLayout();
+        if (a == _layoutId) {
 
             ((MainActivity) _activityContext).setTextFields(
                 new Quartet<>(_etOutput0,

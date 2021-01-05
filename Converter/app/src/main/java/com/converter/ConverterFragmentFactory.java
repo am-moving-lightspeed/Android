@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentFactory;
 
+import fragments.CurrencyFragment;
+import fragments.DistanceFragment;
 import fragments.KeyboardFragment;
 import fragments.NavigationFragment;
+import fragments.WeightFragment;
 
 
 public class ConverterFragmentFactory extends FragmentFactory {
@@ -21,6 +24,7 @@ public class ConverterFragmentFactory extends FragmentFactory {
         _activityContext = activityContext;
     }
 
+
     @NonNull
     @Override
     public Fragment instantiate(@NonNull ClassLoader classLoader, @NonNull String className) {
@@ -31,6 +35,15 @@ public class ConverterFragmentFactory extends FragmentFactory {
         }
         else if(fragmentClass.equals(NavigationFragment.class)) {
             return new NavigationFragment(_activityContext);
+        }
+        else if(fragmentClass.equals(WeightFragment.class)) {
+            return new WeightFragment(_activityContext);
+        }
+        else if(fragmentClass.equals(DistanceFragment.class)) {
+            return new DistanceFragment(_activityContext);
+        }
+        else if(fragmentClass.equals(CurrencyFragment.class)) {
+            return new CurrencyFragment(_activityContext);
         }
         else {
             return super.instantiate(classLoader, className);

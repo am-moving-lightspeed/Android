@@ -1,13 +1,20 @@
 package com.converter;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +24,7 @@ import org.javatuples.Triplet;
 
 import fragments.CategoryFragment;
 import fragments.NavigationFragment;
+import services.ViewPagerViewModel;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager            _viewPager;
     private FragmentPagerAdapter _pagerAdapter;
     private FragmentManager      _fragmentManager;
+    private ViewModel            _viewModel;
+    private Vibrator             _vibrator;
 
     private EditText _etActiveInput;
     private EditText _etOutput0;
@@ -56,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
                                                      _LAYOUTS.length,
                                                      this);
         _viewPager.setAdapter(_pagerAdapter);
+        _viewPager.setOffscreenPageLimit(_LAYOUTS.length - 1);
+
+        _viewModel = new ViewModelProvider(this).get(ViewPagerViewModel.class);
+
+        _vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
         //region Events
@@ -77,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (navigation != null) {
                         Triplet<Button, Button, Button> navigationButtons = navigation.getNavigationButtons();
-                        switch (_viewPager.getCurrentItem()) {
 
+                        switch (_viewPager.getCurrentItem()) {
                             case 0:
                                 navigation.resetActiveButtonColor(navigationButtons.getValue0(),
                                                                   navigationButtons.getValue1(),
@@ -99,14 +114,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
             @Override
-            public void onPageSelected(int position) {}
+            public void onPageSelected(int position) {
+
+                ((ViewPagerViewModel) _viewModel).setCurrentItem(position);
+            }
+
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
         });
         //endregion
     }
+
 
     public void setTextFields(Quartet<EditText, EditText, EditText, EditText> fields) {
 
@@ -116,26 +137,38 @@ public class MainActivity extends AppCompatActivity {
         _etActiveInput = fields.getValue3();
     }
 
+
     public Quartet<EditText, EditText, EditText, EditText> getTextFields() {
 
         return new Quartet<>(_etOutput0, _etOutput1, _etOutput2, _etActiveInput);
     }
 
-    public int getCurrentFragmentLayout() {
 
+    public int getCurrentFragmentLayout() {
         return _LAYOUTS[_viewPager.getCurrentItem()];
     }
+
 
     public void scrollPager(int position) {
 
         _viewPager.setCurrentItem(position);
     }
 
+
+    public ViewPager getViewPager() {
+
+        return _viewPager;
+    }
+
+
     //region OnClick event handlers
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     public void kbNumButtonClick(View view) {
 
         Button btn = (Button) view;
         _etActiveInput.append(btn.getText());
+
+        _vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE));
     }
     //endregion
 

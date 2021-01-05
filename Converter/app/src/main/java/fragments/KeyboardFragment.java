@@ -1,13 +1,18 @@
 package fragments;
 
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -20,27 +25,31 @@ import org.javatuples.Quartet;
 public class KeyboardFragment extends Fragment {
 
     private AppCompatActivity _activityContext;
+    private Vibrator          _vibrator;
 
 
     public KeyboardFragment(AppCompatActivity context) {
 
         super(R.layout.keyboard);
         _activityContext = context;
+        _vibrator        = (Vibrator) _activityContext.getSystemService(Context.VIBRATOR_SERVICE);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
 
-        Button _bDot       = view.findViewById(R.id.kbDot);
-        Button _bEraseAll  = view.findViewById(R.id.kbEraseAll);
-        Button _bEraseLast = view.findViewById(R.id.kbEraseLast);
+        Button bDot = view.findViewById(R.id.kbDot);
+        Button bEraseAll = view.findViewById(R.id.kbEraseAll);
+        Button bEraseLast = view.findViewById(R.id.kbEraseLast);
 
 
         //region Events
-        _bDot.setOnClickListener(new View.OnClickListener() {
+        bDot.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onClick(View v) {
 
@@ -52,11 +61,14 @@ public class KeyboardFragment extends Fragment {
                 else if (!active.getText().toString().contains(".")) {
                     active.append(".");
                 }
+
+                _vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE));
             }
         });
 
-        _bEraseLast.setOnClickListener(new View.OnClickListener() {
+        bEraseLast.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onClick(View view) {
 
@@ -76,11 +88,14 @@ public class KeyboardFragment extends Fragment {
                               .substring(0, active.length() - 1)
                     );
                 }
+
+                _vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE));
             }
         });
 
-        _bEraseAll.setOnClickListener(new View.OnClickListener() {
+        bEraseAll.setOnClickListener(new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onClick(View view) {
 
@@ -90,6 +105,8 @@ public class KeyboardFragment extends Fragment {
                 fields.getValue0().setText("");
                 fields.getValue1().setText("");
                 fields.getValue2().setText("");
+
+                _vibrator.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE));
             }
         });
         //endregion

@@ -32,6 +32,7 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
         _count           = count;
     }
 
+
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -42,6 +43,7 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
+
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
@@ -49,11 +51,13 @@ public class CategoryAreaPagerAdapter extends FragmentPagerAdapter {
         _fragments.remove(position);
     }
 
+
     @Override
     public int getCount() {
 
         return _count;
     }
+
 
     @NonNull
     @Override
