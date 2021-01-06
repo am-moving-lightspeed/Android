@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/libraryItem">
+
+    <!-- Header -->
+    <TextView
+        style="@style/librarySequence_content.text.header"
+        android:text="@string/_header" />
+
+    <View style="@style/librarySequence_content.separator" />
+
+    <!-- Description -->
+    <TextView
+        style="@style/librarySequence_content.text.description"
+        android:text="@string/asd" />
+
+    <FrameLayout style="@style/librarySequence_content.separator" />
+
+    <!-- Additional info-->
+    <TextView
+        style="@style/librarySequence_content.text.additional_info"
+        android:text="@string/_header" />
+
+    <!-- Additional info-->
+    <TextView
+        style="@style/librarySequence_content.text.additional_info"
+        android:text="@string/_header" />
+
+</LinearLayout>
