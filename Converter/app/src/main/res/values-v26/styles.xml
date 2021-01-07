@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="navigationButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/arista_pro</item>
+    </style>
+
+    <style name="unitFrameTextBlock">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/arista_pro</item>
+    </style>
+
+    <style name="editTextCustom">
+        <item name="android:background">@color/colorBlackAlternativeSpecific</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:autofillHints">none</item>
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/colorLightGreySpecific</item>
+        <item name="android:hint">0</item>
+        <item name="android:textColorHint">@color/colorDarkGreySpecific</item>
+    </style>
+
+    <style name="keyboardButtonExtended" parent="keyboardButton">
+        <item name="android:textColor">@color/colorOrangeSpecific</item>
+        <item name="android:fontFamily">@font/arista_pro</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="appHintText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorDarkGreySpecific</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/arista_pro_extralight</item>
+    </style>
+
+</resources>
