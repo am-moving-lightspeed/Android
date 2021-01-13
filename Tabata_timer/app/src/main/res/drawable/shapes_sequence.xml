@@ -11,9 +11,9 @@
     <solid android:color="@color/colorPrimary" />
 
     <padding
-        android:bottom="@dimen/libraryItem_paddingBottom"
-        android:left="@dimen/libraryItem_marginHorizontal"
-        android:right="@dimen/libraryItem_marginHorizontal"
-        android:top="@dimen/libraryItem_paddingTop" />
+        android:bottom="@dimen/sequence_paddingBottom"
+        android:left="@dimen/sequence_paddingHorizontal"
+        android:right="@dimen/sequence_paddingHorizontal"
+        android:top="@dimen/sequence_paddingTop" />
 
 </shape>

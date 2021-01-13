@@ -5,7 +5,7 @@
     <gradient
         android:angle="270"
         android:centerColor="@color/colorPrimary"
-        android:endColor="@color/colorTerracottaTransparent"
+        android:endColor="@color/colorTerracottaDim"
         android:startColor="@color/colorBlueDark" />
 
 </shape>

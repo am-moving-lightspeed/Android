@@ -10,7 +10,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.tabatatimer.R;
-import com.tabatatimer.adapters.SequenceAdapter;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -33,19 +32,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-//        TODO: Create Intent
-        Intent toLoadingActivity = new Intent(this, LoadingActivity.class);
-        startActivity(toLoadingActivity);
+//        Intent toLoadingActivity = new Intent(this, LoadingActivity.class);
+//        startActivity(toLoadingActivity);
 
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        mSequencesList = findViewById(R.id.sequencesList);
-////        mSequencesList.setAdapter(new SequenceAdapter());
-//
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
+        setContentView(R.layout.activity_main);
+
+//        mSequencesList = findViewById(R.id.librarySequencesList);
+//        mSequencesList.setAdapter(new SequenceAdapter());
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //
@@ -57,19 +55,19 @@ public class MainActivity extends AppCompatActivity {
 //                        .show();
 //            }
 //        });
-//
-//        DrawerLayout   drawer         = findViewById(R.id.drawer_layout);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-//                                   .setDrawerLayout(drawer)
-//                                   .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
+
+        DrawerLayout   drawer         = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+            R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                                   .setDrawerLayout(drawer)
+                                   .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
 

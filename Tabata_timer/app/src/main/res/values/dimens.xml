@@ -1,19 +1,17 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="activity_marginHorizontal">16dp</dimen>
+    <dimen name="activity_marginVertical">16dp</dimen>
+    <dimen name="navigationMenuHeaderContent_spacing">8dp</dimen>
+    <dimen name="navigationMenuHeader_height">175dp</dimen>
 
     <!-- Library -->
-    <dimen name="libraryItem_marginVertical">8dp</dimen>
-    <dimen name="libraryItem_marginHorizontal">10dp</dimen>
-    <dimen name="libraryItem_paddingTop">14dp</dimen>
-    <dimen name="libraryItem_paddingBottom">16dp</dimen>
-    <dimen name="libraryItem_paddingHorizontal">12dp</dimen>
-    <dimen name="libraryItem_content_marginBottom">12dp</dimen>
-    <dimen name="libraryItem_content_marginBottomLess">8dp</dimen>
+    <dimen name="sequence_marginBottom">12dp</dimen>
+    <dimen name="sequence_paddingTop">14dp</dimen>
+    <dimen name="sequence_paddingBottom">16dp</dimen>
+    <dimen name="sequence_paddingHorizontal">12dp</dimen>
+    <dimen name="sequenceContent_marginBottom">12dp</dimen>
+    <dimen name="sequenceContent_marginBottomLess">8dp</dimen>
 
 </resources>

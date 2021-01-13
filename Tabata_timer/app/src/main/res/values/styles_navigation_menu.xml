@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="navigationMenuHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/navigationMenuHeader_height</item>
+        <item name="android:paddingLeft">@dimen/activity_marginHorizontal</item>
+        <item name="android:paddingRight">@dimen/activity_marginHorizontal</item>
+        <item name="android:paddingTop">@dimen/activity_marginVertical</item>
+        <item name="android:paddingBottom">@dimen/activity_marginVertical</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/shapes_navigation_menu_header</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/navigationMenuHeaderContent_spacing</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent.sequenceHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/navigationMenuHeaderContent_spacing</item>
+    </style>
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="libraryBackground">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="libraryContent" parent="libraryBackground" />
+
+    <style name="libraryContentFab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="borderWidth">1dp</item>
+    </style>
+
+    <style name="libraryContentFab.addSequence">
+        <item name="srcCompat">@drawable/ic_add_sequence</item>
+        <item name="backgroundTint">@color/colorViolet</item>
+        <item name="android:backgroundTint">@color/colorVioletDark</item>
+    </style>
+
+    <style name="libraryContentFab.deleteSequence">
+        <item name="srcCompat">@drawable/ic_delete_sequence</item>
+        <item name="backgroundTint">@color/colorTerracotta</item>
+        <item name="android:backgroundTint">@color/colorTerracottaDim</item>
+    </style>
+
+    <style name="libraryContentFab.editSequence">
+        <item name="srcCompat">@drawable/ic_edit_sequence</item>
+        <item name="backgroundTint">@color/colorBlue</item>
+        <item name="android:backgroundTint">@color/colorBlueDark</item>
+    </style>
+
+</resources>

@@ -8,7 +8,7 @@
         <TextView
             android:id="@+id/sequenceHeader"
             style="@style/sequenceContent.text.header"
-            android:text="@string/_header" />
+            android:text="@string/header" />
 
         <View style="@style/sequenceContent.separator" />
 
@@ -24,13 +24,13 @@
         <TextView
             android:id="@+id/sequencePhasesAmount"
             style="@style/sequenceContent.text.additionalInfo"
-            android:text="@string/_header" />
+            android:text="@string/header" />
 
         <!-- Additional info-->
         <TextView
             android:id="@+id/sequenceTotalTime"
             style="@style/sequenceContent.text.additionalInfo"
-            android:text="@string/_header" />
+            android:text="@string/header" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -11,35 +11,35 @@
     <style name="sequenceCard">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/libraryItem_marginHorizontal</item>
-        <item name="android:layout_marginRight">@dimen/libraryItem_marginHorizontal</item>
-        <item name="android:layout_marginTop">@dimen/libraryItem_marginVertical</item>
-        <item name="android:layout_marginBottom">@dimen/libraryItem_marginVertical</item>
+        <item name="android:layout_marginBottom">@dimen/sequence_marginBottom</item>
         <item name="cardBackgroundColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="sequenceContent">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/libraryItem_content_marginBottom</item>
+        <item name="android:layout_marginBottom">@dimen/sequenceContent_marginBottom</item>
     </style>
 
     <style name="sequenceContent.text">
         <item name="android:gravity">left</item>
         <item name="android:scrollHorizontally">false</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="sequenceContent.text.header">
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
     </style>
 
     <style name="sequenceContent.text.description">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/sequenceDescription_textSize</item>
+        <item name="android:maxLines">2</item>
     </style>
 
     <style name="sequenceContent.text.additionalInfo">
-        <item name="android:layout_marginBottom">@dimen/libraryItem_content_marginBottomLess</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginBottom">@dimen/sequenceContent_marginBottomLess</item>
+        <item name="android:textSize">@dimen/sequenceAdditionalInfo_textSize</item>
     </style>
 
     <style name="sequenceContent.separator">

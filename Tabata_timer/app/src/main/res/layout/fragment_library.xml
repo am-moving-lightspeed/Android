@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sequencesList"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.gallery.LibraryFragment">
+    style="@style/libraryBackground">
 
-    <!-- TODO: Replace hardcoded containers with fragments -->
-    <!-- TODO: Set dependency between width and height -->
-    <include layout="@layout/sequence" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/librarySequencesList"
+        style="@style/libraryContent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".ui.gallery.LibraryFragment">
 
-    <include layout="@layout/sequence" />
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <include layout="@layout/sequence" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addSequence"
+        style="@style/libraryContentFab.addSequence"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/fab_deleteSequence" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_deleteSequence"
+        style="@style/libraryContentFab.deleteSequence"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-</LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_editSequence"
+        style="@style/libraryContentFab.editSequence"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/fab_addSequence" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

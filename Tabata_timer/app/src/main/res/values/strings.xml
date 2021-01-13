@@ -1,9 +1,10 @@
 <resources>
 
+    <!-- Misc -->
     <string name="app_name">Tabata timer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="navigationMenuHeader_title">Current sequence</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -13,7 +14,7 @@
 
 
     <!-- Placeholders -->
-    <string name="_header">My program</string>
+    <string name="header">Lorem ipsum</string>
     <string name="description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua.
