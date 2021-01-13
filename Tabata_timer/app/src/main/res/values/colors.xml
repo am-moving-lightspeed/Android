@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#393E44</color>
-    <color name="colorPrimaryDark">#161B21</color>
-    <color name="colorPrimaryDarker">#0D1117</color>
+    <color name="colorPrimary">#161B21</color>
+    <color name="colorPrimaryDark">#0D1117</color>
+    <color name="colorWindowBackground">#0D1117</color>
+    <color name="colorStroke">#30363D</color>
     <color name="colorPrimaryText">#A5B0C0</color>
     <color name="colorViolet">#A371F7</color>
     <color name="colorVioletDark">#1F1D2F</color>
     <color name="colorGreen">#2EA043</color>
     <color name="colorBlue">#55A2F2</color>
     <color name="colorBlueDark">#21262D</color>
+    <color name="colorTerracotta">#F9826C</color>
+    <color name="colorTerracottaTransparent">#1AF9826C</color>
 
 </resources>

@@ -18,18 +18,18 @@ public class LibraryFragment extends Fragment {
 
     private LibraryViewModel libraryViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        libraryViewModel =
-            ViewModelProviders.of(this).get(LibraryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_library, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        libraryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
-    }
+//    public View onCreateView(@NonNull LayoutInflater inflater,
+//                             ViewGroup container, Bundle savedInstanceState) {
+//        libraryViewModel =
+//            ViewModelProviders.of(this).get(LibraryViewModel.class);
+//        View root = inflater.inflate(R.layout.fragment_library, container, false);
+////        final TextView textView = root.findViewById(R.id.);
+//        libraryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
+//        return root;
+//    }
 }

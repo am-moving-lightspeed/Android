@@ -1,66 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sequencesList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.gallery.LibraryFragment">
 
     <!-- TODO: Replace hardcoded containers with fragments -->
     <!-- TODO: Set dependency between width and height -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <include layout="@layout/sequence" />
 
-        <FrameLayout
-            style="@style/LibraryItem"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:background="#723">
+    <include layout="@layout/sequence" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            style="@style/LibraryItem"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#aaa">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            style="@style/LibraryItem"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#723">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            style="@style/LibraryItem"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="#aaa">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </FrameLayout>
-    </LinearLayout>
+    <include layout="@layout/sequence" />
 
 
-</androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
