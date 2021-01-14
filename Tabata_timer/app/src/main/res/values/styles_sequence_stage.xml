@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Inherited -->
+    <style name="sequenceStageCard" parent="sequenceCard" />
+
+    <style name="sequenceStage" parent="sequence" />
+
+    <style name="sequenceStageContent" parent="sequenceContent" />
+
+    <style name="sequenceStageContent.separator" parent="sequenceContent.separator" />
+
+    <style name="sequenceStageContent.text" parent="sequenceContent.text">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- New -->
+    <style name="sequenceStage.active">
+        <item name="android:background">@drawable/shapes_sequence_stage_active</item>
+    </style>
+
+    <style name="sequenceStageContent.text.header">
+        <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
+    </style>
+
+    <style name="sequenceStageContent.text.description">
+        <item name="android:textSize">@dimen/sequenceDescription_textSize</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="sequenceStageContent.text.description.active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="sequenceStageContent.duration">
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="sequenceStageContent.duration.container">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="sequenceStageContent.duration.label">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="sequenceStageContent.duration.time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/sequenceStageDuration_textSize</item>
+    </style>
+
+    <style name="sequenceStageContent.timeLeft">
+        <item name="android:layout_marginLeft">
+            @dimen/sequenceStageContentProgressBar_marginHorizontal
+        </item>
+        <item name="android:layout_marginRight">
+            @dimen/sequenceStageContentProgressBar_marginHorizontal
+        </item>
+        <item name="android:layout_marginBottom">
+            @dimen/sequenceStageContentProgressBar_marginHorizontal
+        </item>
+        <item name="android:gravity">end</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="sequenceStageContent.timeLeft.active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="sequenceStageContentProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">
+            @dimen/sequenceStageContentProgressBar_marginHorizontal
+        </item>
+        <item name="android:layout_marginRight">
+            @dimen/sequenceStageContentProgressBar_marginHorizontal
+        </item>
+        <item name="android:progress">25</item>
+        <item name="android:progressDrawable">@drawable/shapes_sequence_stage_progress_bar</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="sequenceStageContentProgressBar.active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+</resources>

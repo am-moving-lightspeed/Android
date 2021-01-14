@@ -17,7 +17,7 @@
         android:text="@string/navigationMenuHeader_stage" />
 
     <TextView
-        style="@style/navigationMenuHeaderContent.noSpacing"
+        style="@style/navigationMenuHeaderContent"
         android:text="@string/navigationMenuHeader_status" />
 
 </LinearLayout>

@@ -13,22 +13,13 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_addSequence"
-        style="@style/libraryContentFab.addSequence"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/fab_deleteSequence" />
+    <LinearLayout
+        style="@style/fabContainer"
+        tools:ignore="MissingConstraints">
+        <!-- Constraints are defined in the style. -->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_deleteSequence"
-        style="@style/libraryContentFab.deleteSequence"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <include layout="@layout/action_button_add" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_editSequence"
-        style="@style/libraryContentFab.editSequence"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/fab_addSequence" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

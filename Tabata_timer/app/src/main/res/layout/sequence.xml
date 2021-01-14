@@ -18,7 +18,7 @@
             style="@style/sequenceContent.text.description"
             android:text="@string/description" />
 
-        <FrameLayout style="@style/sequenceContent.separator" />
+        <View style="@style/sequenceContent.separator" />
 
         <!-- Additional info-->
         <TextView

@@ -15,12 +15,12 @@ import com.tabatatimer.misc.SequenceInfoStructure;
 
 public class SequenceAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
 
-    private SequenceInfoStructure[] mSequencesInfo;
+    private SequenceInfoStructure[] mSequencesData;
 
 
-    public SequenceAdapter(SequenceInfoStructure[] info) {
+    public SequenceAdapter(SequenceInfoStructure[] data) {
 
-        mSequencesInfo = info;
+        mSequencesData = data;
     }
 
 
@@ -38,17 +38,17 @@ public class SequenceAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SequenceViewHolder holder, int position) {
 
-        holder.setHeader(mSequencesInfo[position].header)
-              .setDescription(mSequencesInfo[position].description)
-              .setPhasesAmountInfo(mSequencesInfo[position].phasesAmountInfo)
-              .setTotalTimeInfo(mSequencesInfo[position].totalTimeInfo);
+        holder.setHeader(mSequencesData[position].header)
+              .setDescription(mSequencesData[position].description)
+              .setPhasesAmountInfo(mSequencesData[position].phasesAmountInfo)
+              .setTotalTimeInfo(mSequencesData[position].totalTimeInfo);
     }
 
 
     @Override
     public int getItemCount() {
 
-        return mSequencesInfo.length;
+        return mSequencesData.length;
     }
 
 }

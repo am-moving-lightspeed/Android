@@ -10,6 +10,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.tabatatimer.R;
+import com.tabatatimer.adapters.SequenceStageAdapter;
+import com.tabatatimer.misc.SequenceStageInfoStructure;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,8 +27,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private RecyclerView        mSequencesList;
-
+    private RecyclerView        mSequences;
+    private RecyclerView        mSequenceStages;
 
 
     @Override
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 //        mSequencesList = findViewById(R.id.librarySequencesList);
 //        mSequencesList.setAdapter(new SequenceAdapter());

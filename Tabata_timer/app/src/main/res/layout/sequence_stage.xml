@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/sequenceStageCard">
+
+    <LinearLayout style="@style/sequenceStage.active">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/sequenceStageHeader"
+            style="@style/sequenceStageContent.text.header"
+            android:text="@string/header" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/sequenceStageDescription"
+            style="@style/sequenceStageContent.text.description.active"
+            android:text="@string/description" />
+
+        <View style="@style/sequenceStageContent.separator" />
+
+        <LinearLayout style="@style/sequenceStageContent.duration.container">
+
+            <TextView
+                style="@style/sequenceStageContent.duration.label"
+                android:text="@string/sequenceStage_duration" />
+
+            <TextView
+                android:id="@+id/sequenceStageTime"
+                style="@style/sequenceStageContent.duration.time"
+                android:text="@string/time" />
+
+            <Space style="@style/sequenceStageContent.duration.label" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/sequenceStageTimeLeft"
+            style="@style/sequenceStageContent.timeLeft.active"
+            android:text="@string/timeLeft" />
+
+        <ProgressBar style="@style/sequenceStageContentProgressBar.active" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -8,6 +8,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Sequence stage -->
+    <string name="sequenceStage_duration">Duration:</string>
+
     <!-- Menu -->
     <string name="navigationMenuHeader_title">Current sequence</string>
     <string name="navigationMenuHeader_stage">Stage:</string>
@@ -22,6 +25,8 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua.
     </string>
+    <string name="time">01:30</string>
+    <string name="timeLeft">-00:17</string>
 
     <!-- Loading -->
     <string name="letter_L">L</string>
