@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="navigationMenuBodyContent" parent="android:Widget.TextView">
+        <item name="fontFamily">@font/droid_sans</item>
+    </style>
+
     <style name="navigationMenuHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/navigationMenuHeader_height</item>
@@ -16,12 +20,19 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">@dimen/navigationMenuHeaderContent_spacing</item>
+        <item name="fontFamily">@font/droid_sans</item>
     </style>
 
     <style name="navigationMenuHeaderContent.sequenceHeader">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">@dimen/navigationMenuHeaderContent_spacing</item>
+        <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent.sequenceStage">
+        <item name="android:textSize">@dimen/sequenceAdditionalInfo_textSize</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent.noSpacing">
+        <item name="android:paddingTop">0dp</item>
     </style>
 
 </resources>

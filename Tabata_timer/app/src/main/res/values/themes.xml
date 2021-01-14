@@ -9,7 +9,6 @@
         <!-- Text -->
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="android:textSize">@dimen/default_textSize</item>
-        <item name="android:fontFamily">@font/droid_sans</item>
     </style>
 
     <style name="MainTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />

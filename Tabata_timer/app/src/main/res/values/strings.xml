@@ -4,14 +4,17 @@
     <string name="app_name">Tabata timer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="navigationMenuHeader_title">Current sequence</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-
+    <!-- Menu -->
+    <string name="navigationMenuHeader_title">Current sequence</string>
+    <string name="navigationMenuHeader_stage">Stage:</string>
+    <string name="navigationMenuHeader_status">Status:</string>
+    <string name="menuSequence">Home</string>
+    <string name="menuLibrary">Library</string>
+    <string name="menuSettings">Settings</string>
 
     <!-- Placeholders -->
     <string name="header">Lorem ipsum</string>
@@ -19,7 +22,6 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua.
     </string>
-    <string name="menuSequence">Sequence</string>
 
     <!-- Loading -->
     <string name="letter_L">L</string>

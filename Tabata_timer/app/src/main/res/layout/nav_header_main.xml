@@ -11,22 +11,13 @@
         style="@style/navigationMenuHeaderContent.sequenceHeader"
         android:text="@string/navigationMenuHeader_title" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <TextView
+        android:id="@+id/navigationMenuHeader_stage"
+        style="@style/navigationMenuHeaderContent.sequenceStage"
+        android:text="@string/navigationMenuHeader_stage" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/navigationMenuHeaderContent_spacing"
-        android:text="@string/navigationMenuHeader_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
+        style="@style/navigationMenuHeaderContent.noSpacing"
+        android:text="@string/navigationMenuHeader_status" />
 
 </LinearLayout>
