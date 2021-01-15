@@ -13,14 +13,16 @@ import com.tabatatimer.viewholders.SequenceStageViewHolder;
 
 
 
-public class SequenceStageAdapter extends RecyclerView.Adapter<SequenceStageViewHolder> {
+public class StagesRecyclerViewAdapter extends RecyclerView.Adapter<SequenceStageViewHolder> {
 
     private SequenceStageInfoStructure[] mSequenceStagesData;
+    private int                          mActivePosition;
 
 
-    public SequenceStageAdapter(SequenceStageInfoStructure[] data) {
+    public StagesRecyclerViewAdapter(SequenceStageInfoStructure[] data) {
 
         mSequenceStagesData = data;
+        mActivePosition     = -1;
     }
 
 
@@ -49,6 +51,20 @@ public class SequenceStageAdapter extends RecyclerView.Adapter<SequenceStageView
     public int getItemCount() {
 
         return mSequenceStagesData.length;
+    }
+
+
+    public void setCurrentPosition(int position) {
+
+        mActivePosition = (position >= 0) && (position < mSequenceStagesData.length) ?
+                          position :
+                          0;
+    }
+
+
+    public int getCurrentPosition() {
+
+        return mActivePosition;
     }
 
 }

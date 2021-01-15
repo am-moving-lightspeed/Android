@@ -12,6 +12,26 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
+        style="@style/fabContainer.centered"
+        tools:ignore="MissingConstraints">
+        <!-- Constraints are defined in the style. -->
+
+        <Button
+            android:id="@+id/actionBtn_play"
+            style="@style/btn.playSequence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/actionBtn_stop"
+            style="@style/btn.stopSequence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
         style="@style/fabContainer"
         tools:ignore="MissingConstraints">
         <!-- Constraints are defined in the style. -->

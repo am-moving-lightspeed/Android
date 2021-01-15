@@ -1,17 +1,11 @@
 package com.tabatatimer.activities;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.tabatatimer.R;
-import com.tabatatimer.adapters.SequenceStageAdapter;
-import com.tabatatimer.misc.SequenceStageInfoStructure;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -42,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        mSequencesList = findViewById(R.id.librarySequencesList);
-//        mSequencesList.setAdapter(new SequenceAdapter());
+//        mSequencesList.setAdapter(new LibraryAdapter());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

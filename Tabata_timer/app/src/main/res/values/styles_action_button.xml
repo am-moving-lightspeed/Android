@@ -9,6 +9,10 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <style name="fabContainer.centered">
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+    </style>
+
     <style name="fab">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -31,6 +35,25 @@
         <item name="srcCompat">@drawable/ic_edit_sequence</item>
         <item name="backgroundTint">@color/colorBlue</item>
         <item name="android:backgroundTint">@color/colorBlueDark</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:topRightRadius">200dp</item>
+        <item name="android:topLeftRadius">200dp</item>
+    </style>
+
+    <style name="btn.playSequence">
+        <item name="android:layout_width">300dp</item>
+        <item name="srcCompat">@drawable/ic_play_sequence</item>
+        <item name="backgroundTint">@color/colorPrimaryText</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="btn.stopSequence">
+        <item name="android:layout_width">300dp</item>
+        <item name="srcCompat">@drawable/ic_play_sequence</item>
+        <item name="backgroundTint">@color/colorPrimaryText</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
     </style>
 
 </resources>

@@ -2,7 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/sequenceStageCard">
 
-    <LinearLayout style="@style/sequenceStage.active">
+    <LinearLayout
+        android:id="@+id/sequenceStageBackground"
+        style="@style/sequenceStage">
 
         <!-- Header -->
         <TextView
@@ -13,7 +15,7 @@
         <!-- Description -->
         <TextView
             android:id="@+id/sequenceStageDescription"
-            style="@style/sequenceStageContent.text.description.active"
+            style="@style/sequenceStageContent.text.description"
             android:text="@string/description" />
 
         <View style="@style/sequenceStageContent.separator" />
@@ -37,10 +39,12 @@
 
         <TextView
             android:id="@+id/sequenceStageTimeLeft"
-            style="@style/sequenceStageContent.timeLeft.active"
+            style="@style/sequenceStageContent.timeLeft"
             android:text="@string/timeLeft" />
 
-        <ProgressBar style="@style/sequenceStageContentProgressBar.active" />
+        <ProgressBar
+            android:id="@+id/sequenceStageProgressBar"
+            style="@style/sequenceStageContentProgressBar" />
 
     </LinearLayout>
 

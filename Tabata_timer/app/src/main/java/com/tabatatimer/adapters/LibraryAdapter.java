@@ -13,12 +13,12 @@ import com.tabatatimer.misc.SequenceInfoStructure;
 
 
 
-public class SequenceAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
+public class LibraryAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
 
     private SequenceInfoStructure[] mSequencesData;
 
 
-    public SequenceAdapter(SequenceInfoStructure[] data) {
+    public LibraryAdapter(SequenceInfoStructure[] data) {
 
         mSequencesData = data;
     }
