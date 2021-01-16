@@ -10,13 +10,13 @@
         <TextView
             android:id="@+id/sequenceStageHeader"
             style="@style/sequenceStageContent.text.header"
-            android:text="@string/header" />
+            android:text="@string/headerPlaceholder" />
 
         <!-- Description -->
         <TextView
             android:id="@+id/sequenceStageDescription"
             style="@style/sequenceStageContent.text.description"
-            android:text="@string/description" />
+            android:text="@string/descriptionPlaceholder" />
 
         <View style="@style/sequenceStageContent.separator" />
 
@@ -29,7 +29,7 @@
             <TextView
                 android:id="@+id/sequenceStageTime"
                 style="@style/sequenceStageContent.duration.time"
-                android:text="@string/time" />
+                android:text="@string/timePlaceholder" />
 
             <Space style="@style/sequenceStageContent.duration.label" />
 
@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/sequenceStageTimeLeft"
             style="@style/sequenceStageContent.timeLeft"
-            android:text="@string/timeLeft" />
+            android:text="@string/timeLeftPlaceholder" />
 
         <ProgressBar
             android:id="@+id/sequenceStageProgressBar"

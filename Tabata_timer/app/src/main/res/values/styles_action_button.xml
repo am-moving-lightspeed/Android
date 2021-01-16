@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="fabContainer">
+    <style name="fabFrame">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="layout_constraintRight_toRightOf">parent</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="fabContainer.centered">
-        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="android:layout_marginBottom">@dimen/fabFrame_marginBottom</item>
+        <item name="android:paddingStart">@dimen/actionButtonFrame_padding</item>
+        <item name="android:paddingEnd">@dimen/fabFrame_paddingEnd</item>
+        <item name="android:paddingTop">@dimen/actionButtonFrame_padding</item>
+        <item name="android:paddingBottom">@dimen/actionButtonFrame_padding</item>
+        <item name="android:background">@drawable/shapes_fab_bar_item</item>
     </style>
 
     <style name="fab">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">end</item>
         <item name="borderWidth">1dp</item>
     </style>
 
@@ -38,22 +38,25 @@
     </style>
 
     <style name="btn">
-        <item name="android:topRightRadius">200dp</item>
-        <item name="android:topLeftRadius">200dp</item>
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
     </style>
 
     <style name="btn.playSequence">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@drawable/shapes_action_button_play</item>
         <item name="srcCompat">@drawable/ic_play_sequence</item>
-        <item name="backgroundTint">@color/colorPrimaryText</item>
-        <item name="android:backgroundTint">@color/colorPrimary</item>
     </style>
 
     <style name="btn.stopSequence">
-        <item name="android:layout_width">300dp</item>
-        <item name="srcCompat">@drawable/ic_play_sequence</item>
-        <item name="backgroundTint">@color/colorPrimaryText</item>
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:background">@drawable/shapes_action_button_stop</item>
+        <item name="android:src">@drawable/ic_stop_sequence</item>
+    </style>
+
+    <style name="btn.restartSequence">
+        <item name="android:background">@drawable/shapes_action_button_restart</item>
+        <item name="srcCompat">@drawable/ic_restart_stage</item>
     </style>
 
 </resources>

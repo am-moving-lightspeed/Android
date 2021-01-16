@@ -14,7 +14,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
-        style="@style/fabContainer"
+        style="@style/actionButtonBarBase"
         tools:ignore="MissingConstraints">
         <!-- Constraints are defined in the style. -->
 

@@ -8,36 +8,91 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stagesRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        style="@style/stagesRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        style="@style/fabContainer.centered"
-        tools:ignore="MissingConstraints">
-        <!-- Constraints are defined in the style. -->
+    <!-- Action buttons bar start -->
+    <FrameLayout
+        android:id="@+id/actionButtonsBarBase"
+        style="@style/actionButtonBarBase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/actionBtn_play"
+    <FrameLayout
+        android:id="@+id/actionBtnContainer_play"
+        style="@style/actionButtonFrame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/abPlay"
             style="@style/btn.playSequence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:contentDescription="@string/actionButtonPlay_description" />
 
-        <Button
-            android:id="@+id/actionBtn_stop"
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/actionBtnContainer_stop"
+        style="@style/actionButtonFrame"
+        app:layout_constraintBottom_toBottomOf="@id/actionBtnContainer_play"
+        app:layout_constraintStart_toEndOf="@id/actionBtnContainer_play">
+
+        <ImageView
+            android:id="@+id/abStop"
             style="@style/btn.stopSequence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:contentDescription="@string/actionButtonStop_description" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/actionBtnContainer_restart"
+        style="@style/actionButtonFrame"
+        app:layout_constraintBottom_toBottomOf="@id/actionBtnContainer_play"
+        app:layout_constraintEnd_toStartOf="@id/actionBtnContainer_play">
+
+        <ImageView
+            android:id="@+id/abRestart"
+            style="@style/btn.restartSequence"
+            android:contentDescription="@string/actionButtonRestart_description" />
+
+    </FrameLayout>
+    <!-- Action buttons bar end -->
+
+    <!-- CRUD action buttons bar start -->
+    <FrameLayout
+        android:id="@+id/fabAddFrame"
+        style="@style/fabFrame"
+        app:layout_constraintBottom_toTopOf="@id/fabEditFrame"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <include layout="@layout/action_button_add" />
+
+    </FrameLayout>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/fabContainer"
-        tools:ignore="MissingConstraints">
-        <!-- Constraints are defined in the style. -->
+    <FrameLayout
+        android:id="@+id/fabEditFrame"
+        style="@style/fabFrame"
+        app:layout_constraintBottom_toTopOf="@id/fabDeleteFrame"
+        app:layout_constraintStart_toEndOf="parent">
 
         <include layout="@layout/action_button_edit" />
 
-    </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fabDeleteFrame"
+        style="@style/fabFrame"
+        android:layout_marginBottom="@dimen/fabFrame_marginBottomMore"
+        app:layout_constraintBottom_toBottomOf="@id/stagesRecyclerView"
+        app:layout_constraintStart_toEndOf="parent">
+
+        <include layout="@layout/action_button_delete" />
+
+    </FrameLayout>
+    <!-- CRUD action buttons bar end -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

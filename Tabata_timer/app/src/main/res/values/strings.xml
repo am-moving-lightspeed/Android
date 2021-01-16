@@ -8,6 +8,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Action buttons -->
+    <string name="actionButtonPlay_description">Play</string>
+    <string name="actionButtonStop_description">Stop</string>
+    <string name="actionButtonRestart_description">Restart stage</string>
+
     <!-- Sequence stage -->
     <string name="sequenceStage_duration">Duration:</string>
 
@@ -20,13 +25,14 @@
     <string name="menuSettings">Settings</string>
 
     <!-- Placeholders -->
-    <string name="header">Lorem ipsum</string>
-    <string name="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    <string name="headerPlaceholder">Lorem ipsum</string>
+    <string name="descriptionPlaceholder">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua.
     </string>
-    <string name="time">01:30</string>
-    <string name="timeLeft">-00:17</string>
+    <string name="timePlaceholder">01:30</string>
+    <string name="timeLeftPlaceholder">-00:17</string>
 
     <!-- Loading -->
     <string name="letter_L">L</string>

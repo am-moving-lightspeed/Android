@@ -5,30 +5,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
 import com.tabatatimer.adapters.StagesRecyclerViewAdapter;
+import com.tabatatimer.layoutmanagers.StagesRecyclerViewLayoutManager;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
 
 
 
 public class SequenceFragment extends Fragment {
 
+    // TODO: implement usage
+    private boolean isSequenceRunning;
+
     private SequenceViewModel sequenceViewModel;
 
-    private Button mBPLay;
-    private Button mBStop;
+    private View mEditButtonFrame;
+    private View mDeleteButtonFrame;
 
-    private RecyclerView              mStagesRecyclerView;
-    private StagesRecyclerViewAdapter mStagesRecyclerViewAdapter;
+    private RecyclerView                    mStagesRecyclerView;
+    private StagesRecyclerViewAdapter       mStagesRecyclerViewAdapter;
+    private StagesRecyclerViewLayoutManager mStagesRecyclerViewLayoutManager;
 
 
     public SequenceFragment() {
@@ -44,11 +46,18 @@ public class SequenceFragment extends Fragment {
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
+        mStagesRecyclerViewAdapter       = new StagesRecyclerViewAdapter(setSeed());
+        mStagesRecyclerViewLayoutManager = new StagesRecyclerViewLayoutManager(this,
+                                                                               mStagesRecyclerViewAdapter,
+                                                                               getContext());
+        mStagesRecyclerViewAdapter.setLayoutManager(mStagesRecyclerViewLayoutManager);
+
         if (view != null) {
-            mStagesRecyclerView        = view.findViewById(R.id.stagesRecyclerView);
-            mStagesRecyclerViewAdapter = new StagesRecyclerViewAdapter(setSeed());
-            mStagesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            mStagesRecyclerView = view.findViewById(R.id.stagesRecyclerView);
+            mStagesRecyclerView.setLayoutManager(mStagesRecyclerViewLayoutManager);
             mStagesRecyclerView.setAdapter(mStagesRecyclerViewAdapter);
+
+            mStagesRecyclerViewLayoutManager.setRecyclerView(mStagesRecyclerView);
         }
 
         return view;
@@ -58,118 +67,49 @@ public class SequenceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        mBPLay = view.findViewById(R.id.actionBtn_play);
-        mBStop = view.findViewById(R.id.actionBtn_stop);
+        View bPlay = view.findViewById(R.id.abPlay);
 
-        mBPLay.setOnClickListener(new View.OnClickListener() {
+        mEditButtonFrame   = view.findViewById(R.id.fabEditFrame);
+        mDeleteButtonFrame = view.findViewById(R.id.fabDeleteFrame);
+
+
+        // region Events
+        // TODO: replace event
+        bPlay.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view_) {
 
-                cancelStyleActive();
+                mStagesRecyclerViewLayoutManager.cancelStyleActive();
 
-                mStagesRecyclerView.smoothScrollToPosition(
-                    mStagesRecyclerViewAdapter.getCurrentPosition()
+                mStagesRecyclerViewAdapter.setActivePosition(
+                    mStagesRecyclerViewAdapter.getActivePosition() + 1
                 );
 
-                applyStyleActive();
+                mStagesRecyclerView.smoothScrollToPosition(
+                    mStagesRecyclerViewAdapter.getActivePosition()
+                );
+
+                mStagesRecyclerViewLayoutManager.applyStyleActive();
             }
         });
+        // endregion
+
 
         super.onViewCreated(view, savedInstanceState);
     }
 
 
-    //region Apply styles
-    public void applyStyleActive() {
+    public boolean isSequenceRunning() {
 
-        /*
-         * This value may be > mStagesRecyclerViewAdapter.getItemCount().
-         * That means a playback has just ended.
-         */
-        int position = mStagesRecyclerViewAdapter.getCurrentPosition();
-        View view = mStagesRecyclerView.getLayoutManager()
-                                       .findViewByPosition(position);
-
-        try {
-            view.findViewById(R.id.sequenceStageBackground)
-                .setBackground(
-                    ResourcesCompat.getDrawable(getResources(),
-                                                R.drawable.shapes_sequence_stage_active,
-                                                getContext().getTheme())
-                );
-            view.findViewById(R.id.sequenceStageDescription)
-                .setVisibility(View.VISIBLE);
-            view.findViewById(R.id.sequenceStageTimeLeft)
-                .setVisibility(View.VISIBLE);
-            view.findViewById(R.id.sequenceStageProgressBar)
-                .setVisibility(View.VISIBLE);
-        }
-        catch (NullPointerException exception) {
-            if (position < 0 ||
-                position >= mStagesRecyclerViewAdapter.getItemCount()) {
-
-                return;
-            }
-            else {
-                mStagesRecyclerView.addOnChildAttachStateChangeListener(
-                    new RecyclerView.OnChildAttachStateChangeListener() {
-
-                        @Override
-                        public void onChildViewAttachedToWindow(@NonNull View view) {
-
-                            applyStyleActive();
-                        }
-
-
-                        @Override
-                        public void onChildViewDetachedFromWindow(@NonNull View view) {}
-                    }
-                );
-            }
-        }
+        return isSequenceRunning;
     }
 
 
-    public void cancelStyleActive() {
+    public View[] getCrudButtonsFrames() {
 
-        /*
-         * This value may be -1.
-         * That means a playback hasn't been started yet.
-         */
-        int position = mStagesRecyclerViewAdapter.getCurrentPosition();
-        View view = mStagesRecyclerView.getLayoutManager()
-                                       .findViewByPosition(position);
-
-        try {
-
-            view.findViewById(R.id.sequenceStageBackground)
-                .setBackground(
-                    ResourcesCompat.getDrawable(getResources(),
-                                                R.drawable.shapes_sequence,
-                                                getContext().getTheme())
-                );
-            view.findViewById(R.id.sequenceStageDescription)
-                .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageTimeLeft)
-                .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageProgressBar)
-                .setVisibility(View.GONE);
-        }
-        catch (NullPointerException exception) {
-            if (position < 0 ||
-                position >= mStagesRecyclerViewAdapter.getItemCount()) {
-
-                return;
-            }
-
-            throw exception;
-        }
-        finally {
-            mStagesRecyclerViewAdapter.setCurrentPosition(position + 1);
-        }
+        return new View[] {mEditButtonFrame, mDeleteButtonFrame};
     }
-    //endregion
 
 
     //    TODO: Remove the method

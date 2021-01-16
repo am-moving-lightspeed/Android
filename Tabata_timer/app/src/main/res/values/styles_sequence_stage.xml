@@ -19,6 +19,10 @@
         <item name="android:background">@drawable/shapes_sequence_stage_active</item>
     </style>
 
+    <style name="sequenceStage.selected">
+        <item name="android:background">@drawable/shapes_sequence_stage_selected</item>
+    </style>
+
     <style name="sequenceStageContent.text.header">
         <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
     </style>
@@ -32,6 +36,8 @@
     <style name="sequenceStageContent.text.description.active">
         <item name="android:visibility">visible</item>
     </style>
+
+    <style name="sequenceStageContent.text.description.selected" parent="sequenceStageContent.text.description.active" />
 
     <style name="sequenceStageContent.duration">
         <item name="android:layout_marginBottom">0dp</item>

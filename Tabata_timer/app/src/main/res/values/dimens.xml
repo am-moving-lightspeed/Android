@@ -3,6 +3,11 @@
     <dimen name="activity_marginHorizontal">16dp</dimen>
     <dimen name="activity_marginVertical">16dp</dimen>
 
+    <!-- Stages RecyclerView -->
+    <dimen name="stagesRecyclerView_paddingHorizontal">12dp</dimen>
+    <dimen name="stagesRecyclerView_paddingTop">8dp</dimen>
+    <dimen name="stagesRecyclerView_paddingBottom">100dp</dimen>
+
     <!-- Navigation menu -->
     <dimen name="navigationMenuHeaderContent_spacing">8dp</dimen>
     <dimen name="navigationMenuHeader_paddingHorizontal">16dp</dimen>
@@ -21,5 +26,11 @@
     <dimen name="sequence_paddingHorizontal">12dp</dimen>
     <dimen name="sequenceContent_marginBottom">12dp</dimen>
     <dimen name="sequenceContent_marginBottomLess">8dp</dimen>
+
+    <!-- Action button -->
+    <dimen name="actionButtonFrame_padding">4dp</dimen>
+    <dimen name="fabFrame_paddingEnd">8dp</dimen>
+    <dimen name="fabFrame_marginBottom">8dp</dimen>
+    <dimen name="fabFrame_marginBottomMore">80dp</dimen>
 
 </resources>
