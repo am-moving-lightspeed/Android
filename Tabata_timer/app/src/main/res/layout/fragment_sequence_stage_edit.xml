@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/sequenceStageEditCard">
+
+    <LinearLayout
+        android:id="@+id/sequenceStageBackground"
+        style="@style/sequenceStageEdit">
+
+        <!-- Header -->
+        <TextView
+            style="@style/sequenceStageEditContent.text.header"
+            android:text="@string/sequenceStageEdit_rename" />
+
+        <EditText
+            android:id="@+id/sequenceStageEditHeader"
+            style="@style/sequenceStageEditContent.edit.text.header"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_headerPlaceholder" />
+
+        <View style="@style/sequenceStageEditContent.separator" />
+
+        <!-- Description -->
+        <TextView
+            style="@style/sequenceStageEditContent.text.header"
+            android:text="@string/sequenceStageEdit_changeDescription" />
+
+        <EditText
+            android:id="@+id/sequenceStageEditDescription"
+            style="@style/sequenceStageEditContent.edit.text.description"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_descriptionPlaceholder" />
+
+        <View style="@style/sequenceStageEditContent.separator" />
+
+        <!-- Timer -->
+        <LinearLayout style="@style/sequenceStageEditContent.duration.container">
+
+            <TextView
+                style="@style/sequenceStageEditContent.duration.label"
+                android:text="@string/sequenceStage_duration" />
+
+            <EditText
+                android:id="@+id/sequenceStageEditMinutes"
+                style="@style/sequenceStageEditContent.duration.time"
+                android:autofillHints=""
+                android:hint="@string/sequenceStageEdit_timePlaceholder" />
+
+            <TextView
+                style="@style/sequenceStageEditContent.duration.time.delimiter"
+                android:text="@string/sequenceStageEdit_colon" />
+
+            <EditText
+                android:id="@+id/sequenceStageEditSeconds"
+                style="@style/sequenceStageEditContent.duration.time"
+                android:autofillHints=""
+                android:hint="@string/sequenceStageEdit_timePlaceholder" />
+
+            <Space style="@style/sequenceStageEditContent.duration.label" />
+
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/sequenceStageEditContent.actionButtonsBar">
+
+            <TextView
+                android:id="@+id/abEditDialogOk"
+                style="@style/sequenceStageEditContent.actionButton.Ok"
+                android:text="@string/actionButtonOk" />
+
+            <TextView
+                android:id="@+id/abEditDialogCancel"
+                style="@style/sequenceStageEditContent.actionButton.Cancel"
+                android:text="@string/actionButtonCancel" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

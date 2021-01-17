@@ -2,12 +2,15 @@ package com.tabatatimer.ui.sequence;
 
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +18,11 @@ import com.tabatatimer.R;
 import com.tabatatimer.adapters.StagesRecyclerViewAdapter;
 import com.tabatatimer.layoutmanagers.StagesRecyclerViewLayoutManager;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
+import com.tabatatimer.ui.sequence.editdialog.EditSequenceStageDialog;
 
 
 
-public class SequenceFragment extends Fragment {
+public class SequenceFragment extends Fragment implements EditSequenceStageDialog.DialogButtonClickListener {
 
     // TODO: implement usage
     private boolean isSequenceRunning;
@@ -36,6 +40,12 @@ public class SequenceFragment extends Fragment {
     public SequenceFragment() {
 
         super(R.layout.fragment_sequence);
+
+        mStagesRecyclerViewAdapter       = new StagesRecyclerViewAdapter(setSeed());
+        mStagesRecyclerViewLayoutManager = new StagesRecyclerViewLayoutManager(this,
+                                                                               mStagesRecyclerViewAdapter,
+                                                                               getContext());
+        mStagesRecyclerViewAdapter.setLayoutManager(mStagesRecyclerViewLayoutManager);
     }
 
 
@@ -45,12 +55,6 @@ public class SequenceFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
-
-        mStagesRecyclerViewAdapter       = new StagesRecyclerViewAdapter(setSeed());
-        mStagesRecyclerViewLayoutManager = new StagesRecyclerViewLayoutManager(this,
-                                                                               mStagesRecyclerViewAdapter,
-                                                                               getContext());
-        mStagesRecyclerViewAdapter.setLayoutManager(mStagesRecyclerViewLayoutManager);
 
         if (view != null) {
             mStagesRecyclerView = view.findViewById(R.id.stagesRecyclerView);
@@ -68,11 +72,13 @@ public class SequenceFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         View bPlay = view.findViewById(R.id.abPlay);
+        View bEdit = view.findViewById(R.id.fabEdit);
 
         mEditButtonFrame   = view.findViewById(R.id.fabEditFrame);
         mDeleteButtonFrame = view.findViewById(R.id.fabDeleteFrame);
 
         setPlayButtonEvents(bPlay);
+        setEditButtonEvents(bEdit);
 
         super.onViewCreated(view, savedInstanceState);
     }
@@ -111,6 +117,24 @@ public class SequenceFragment extends Fragment {
                 );
 
                 mStagesRecyclerViewLayoutManager.applyStyleActive();
+            }
+        });
+    }
+
+
+    private void setEditButtonEvents(View bEdit) {
+
+        bEdit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                DialogFragment editDialog =
+                    new EditSequenceStageDialog(SequenceFragment.this,
+                                                mStagesRecyclerViewLayoutManager.getSelectedView());
+
+                editDialog.show(getActivity().getSupportFragmentManager(),
+                                "EditSequenceDialog");
             }
         });
     }
@@ -171,6 +195,22 @@ public class SequenceFragment extends Fragment {
         arr[7].timeLeft    = new String("00:30");
 
         return arr;
+    }
+
+
+    @Override
+    public void onDialogPositiveClick(EditSequenceStageDialog dialogFragment) {
+
+        // TODO: implement database usage
+        View view = mStagesRecyclerViewLayoutManager.getSelectedView();
+
+        String header      = dialogFragment.getHeaderText();
+        String description = dialogFragment.getDescriptionText();
+        String time        = dialogFragment.getMinutesText() + ":" + dialogFragment.getSecondsText();
+
+        ((TextView) view.findViewById(R.id.sequenceStageHeader)).setText(header);
+        ((TextView) view.findViewById(R.id.sequenceStageDescription)).setText(description);
+        ((TextView) view.findViewById(R.id.sequenceStageTime)).setText(time);
     }
 
 }

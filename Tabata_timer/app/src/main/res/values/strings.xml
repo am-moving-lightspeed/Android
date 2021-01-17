@@ -12,9 +12,20 @@
     <string name="actionButtonPlay_description">Play</string>
     <string name="actionButtonStop_description">Stop</string>
     <string name="actionButtonRestart_description">Restart stage</string>
+    <string name="actionButtonOk">OK</string>
+    <string name="actionButtonCancel">Cancel</string>
 
     <!-- Sequence stage -->
     <string name="sequenceStage_duration">Duration:</string>
+
+    <!-- Sequence stage edit pop-up -->
+    <string name="sequenceStageEdit_rename">Rename:</string>
+    <string name="sequenceStageEdit_changeDescription">Change description:</string>
+    <string name="sequenceStageEdit_alterTimer">Alter timer:</string>
+    <string name="sequenceStageEdit_headerPlaceholder">Header…</string>
+    <string name="sequenceStageEdit_descriptionPlaceholder">Description…</string>
+    <string name="sequenceStageEdit_timePlaceholder">00</string>
+    <string name="sequenceStageEdit_colon">:</string>
 
     <!-- Menu -->
     <string name="navigationMenuHeader_title">Current sequence</string>

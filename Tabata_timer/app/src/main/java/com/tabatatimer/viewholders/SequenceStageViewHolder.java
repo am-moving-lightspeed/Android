@@ -99,12 +99,14 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
                             mLayoutManager.cancelStyleSelected();
                             mAdapter.setSelectedPosition(position);
                             mLayoutManager.applyStyleSelected();
+                            mLayoutManager.setSelectedView(view);
                         }
                         else {
                             mLayoutManager.cancelStyleSelected();
                             mLayoutManager.performFabDisappearingAnimation();
                             mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
                             mLayoutManager.toggleCrudButtons();
+                            mLayoutManager.setSelectedView(null);
                         }
                     }
                 }

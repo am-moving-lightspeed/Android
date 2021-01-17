@@ -36,7 +36,7 @@
 
         </LinearLayout>
 
-
+        <!-- Timer -->
         <TextView
             android:id="@+id/sequenceStageTimeLeft"
             style="@style/sequenceStageContent.timeLeft"

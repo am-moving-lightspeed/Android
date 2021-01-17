@@ -26,7 +26,9 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
     private boolean areCrudButtonsHidden;
 
-    private RecyclerView              mStagesRecyclerView;
+    private RecyclerView mStagesRecyclerView;
+    private View         mSelectedView;
+
     private StagesRecyclerViewAdapter mAdapter;
     private SequenceFragment          mParentFragment;
 
@@ -61,6 +63,18 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
     public boolean areCrudButtonsHidden() {
 
         return areCrudButtonsHidden;
+    }
+
+
+    public void setSelectedView(View view) {
+
+        mSelectedView = view;
+    }
+
+
+    public View getSelectedView() {
+
+        return mSelectedView;
     }
 
 

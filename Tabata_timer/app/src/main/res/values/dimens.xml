@@ -19,6 +19,13 @@
     <dimen name="sequenceStageContentProgressBar_marginBottom">8dp</dimen>
     <dimen name="sequenceStageContentTimeLeft_marginBottom">8dp</dimen>
 
+    <!-- Sequence stage edit pop-up -->
+    <dimen name="sequenceStageEditSeparator_marginTop">12dp</dimen>
+    <dimen name="sequenceStageEditSeparator_marginBottom">18dp</dimen>
+    <dimen name="sequenceStageEditActionButton_marginEnd">18dp</dimen>
+    <dimen name="sequenceStageEditDurationContainer_marginBottom">18dp</dimen>
+    <dimen name="sequenceStageEditInput_padding">4dp</dimen>
+
     <!-- Library -->
     <dimen name="sequence_marginBottom">12dp</dimen>
     <dimen name="sequence_paddingTop">14dp</dimen>

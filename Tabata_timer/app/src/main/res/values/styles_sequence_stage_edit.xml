@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Inherited -->
+    <style name="sequenceStageEditCard" parent="sequenceCard" />
+
+    <style name="sequenceStageEdit" parent="sequence">
+        <item name="android:background">@drawable/shapes_sequence_stage_edit</item>
+    </style>
+
+    <style name="sequenceStageEditContent" parent="sequenceContent" />
+
+    <style name="sequenceStageEditContent.text.header" parent="sequenceContent.text.header">
+        <item name="android:textSize">@dimen/sequenceStageEditHeader_textSize</item>
+    </style>
+
+    <style name="sequenceStageEditContent.duration.container" parent="sequenceStageContent.duration.container">
+        <item name="android:layout_marginBottom">
+            @dimen/sequenceStageEditDurationContainer_marginBottom
+        </item>
+    </style>
+
+    <style name="sequenceStageEditContent.duration.label" parent="sequenceStageContent.duration.label" />
+
+    <style name="sequenceStageEditContent.duration.time" parent="sequenceStageContent.duration.time">
+        <item name="android:padding">@dimen/sequenceStageEditInput_padding</item>
+        <item name="android:background">@drawable/shapes_sequence_stage_edit_edittext</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">2</item>
+    </style>
+
+    <style name="sequenceStageEditContent.separator" parent="sequenceContent.separator">
+        <item name="android:layout_marginTop">
+            @dimen/sequenceStageEditSeparator_marginTop
+        </item>
+        <item name="android:layout_marginBottom">
+            @dimen/sequenceStageEditSeparator_marginBottom
+        </item>
+    </style>
+
+
+    <!-- New -->
+    <style name="sequenceStageEditContent.edit" />
+
+    <style name="sequenceStageEditContent.edit.text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/sequenceStageEditInput_padding</item>
+        <item name="android:gravity">start</item>
+        <item name="android:background">@drawable/shapes_sequence_stage_edit_edittext</item>
+        <item name="android:textSize">@dimen/sequenceStageEditInput_textSize</item>
+        <item name="android:inputType">text</item>
+        <item name="android:contextClickable">false</item>
+    </style>
+
+    <style name="sequenceStageEditContent.edit.text.header">
+        <item name="android:maxLength">30</item>
+    </style>
+
+    <style name="sequenceStageEditContent.edit.text.description">
+        <item name="android:maxLength">100</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:lines">8</item>
+        <item name="android:scrollHorizontally">false</item>
+    </style>
+
+    <style name="sequenceStageEditContent.actionButtonsBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <style name="sequenceStageEditContent.actionButton">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginEnd">@dimen/sequenceStageEditActionButton_marginEnd</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sequenceStageEditActionButton_textSize</item>
+    </style>
+
+    <style name="sequenceStageEditContent.actionButton.Ok">
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="sequenceStageEditContent.actionButton.Cancel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorTerracotta</item>
+    </style>
+
+    <style name="sequenceStageEditContent.duration.time.delimiter">
+        <item name="android:paddingHorizontal">@dimen/sequenceStageEditInput_padding</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+</resources>
