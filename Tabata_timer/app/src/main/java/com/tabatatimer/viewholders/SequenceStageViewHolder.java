@@ -32,38 +32,7 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
         mTvTime        = view.findViewById(R.id.sequenceStageTime);
         mTvTimeLeft    = view.findViewById(R.id.sequenceStageTimeLeft);
 
-
-        // region Events
-        view.setOnClickListener(
-            new View.OnClickListener() {
-
-                @Override
-                public void onClick(View view) {
-
-                    int position = getAdapterPosition();
-
-                    if (position != mAdapter.getActivePosition()) {
-
-                        if (position != mAdapter.getSelectedPosition()) {
-                            if (mLayoutManager.areCrudButtonsHidden()) {
-                                // TODO: add style change
-                                mLayoutManager.performFabAppearingAnimation();
-                                mLayoutManager.toggleCrudButtons();
-                            }
-
-                            mAdapter.setSelectedPosition(position);
-                        }
-                        else {
-                            // TODO: add style change
-                            mLayoutManager.performFabDisappearingAnimation();
-                            mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
-                            mLayoutManager.toggleCrudButtons();
-                        }
-                    }
-                }
-            }
-        );
-        // endregion
+        setViewOnClickEvents(view);
     }
 
 
@@ -106,5 +75,42 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
 
         mLayoutManager = (StagesRecyclerViewLayoutManager) layoutManager;
     }
+
+
+    // region Events
+    private void setViewOnClickEvents(View view) {
+
+        view.setOnClickListener(
+            new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    int position = getAdapterPosition();
+
+                    if (position != mAdapter.getActivePosition()) {
+
+                        if (position != mAdapter.getSelectedPosition()) {
+                            if (mLayoutManager.areCrudButtonsHidden()) {
+                                mLayoutManager.performFabAppearingAnimation();
+                                mLayoutManager.toggleCrudButtons();
+                            }
+
+                            mLayoutManager.cancelStyleSelected();
+                            mAdapter.setSelectedPosition(position);
+                            mLayoutManager.applyStyleSelected();
+                        }
+                        else {
+                            mLayoutManager.cancelStyleSelected();
+                            mLayoutManager.performFabDisappearingAnimation();
+                            mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
+                            mLayoutManager.toggleCrudButtons();
+                        }
+                    }
+                }
+            }
+        );
+    }
+    // endregion
 
 }

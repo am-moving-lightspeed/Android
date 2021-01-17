@@ -69,6 +69,13 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         int position = mAdapter.getActivePosition();
 
+        if (position == mAdapter.getSelectedPosition()) {
+            cancelStyleSelected();
+            mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
+            performFabDisappearingAnimation();
+            toggleCrudButtons();
+        }
+
         View view = findViewByPosition(position);
 
         if (view != null) {
@@ -114,6 +121,80 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
     public void cancelStyleActive() {
 
         int position = mAdapter.getActivePosition();
+
+        View view = findViewByPosition(position);
+
+        if (view != null) {
+
+            view.findViewById(R.id.sequenceStageBackground)
+                .setBackground(
+                    ResourcesCompat.getDrawable(
+                        mParentFragment.getResources(),
+                        R.drawable.shapes_sequence,
+                        mParentFragment.getContext()
+                                       .getTheme()
+                    )
+                );
+
+            view.findViewById(R.id.sequenceStageDescription)
+                .setVisibility(View.GONE);
+            view.findViewById(R.id.sequenceStageTimeLeft)
+                .setVisibility(View.GONE);
+            view.findViewById(R.id.sequenceStageProgressBar)
+                .setVisibility(View.GONE);
+        }
+    }
+
+
+    public void applyStyleSelected() {
+
+        int position = mAdapter.getSelectedPosition();
+
+        View view = findViewByPosition(position);
+
+        if (view != null) {
+
+            view.findViewById(R.id.sequenceStageBackground)
+                .setBackground(
+                    ResourcesCompat.getDrawable(
+                        mParentFragment.getResources(),
+                        R.drawable.shapes_sequence_stage_selected,
+                        mParentFragment.getContext()
+                                       .getTheme()
+                    )
+                );
+
+            view.findViewById(R.id.sequenceStageDescription)
+                .setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    public void cancelStyleSelected() {
+
+        int position = mAdapter.getSelectedPosition();
+
+        View view = findViewByPosition(position);
+
+        if (view != null) {
+
+            view.findViewById(R.id.sequenceStageBackground)
+                .setBackground(
+                    ResourcesCompat.getDrawable(
+                        mParentFragment.getResources(),
+                        R.drawable.shapes_sequence,
+                        mParentFragment.getContext()
+                                       .getTheme()
+                    )
+                );
+
+            view.findViewById(R.id.sequenceStageDescription)
+                .setVisibility(View.GONE);
+        }
+    }
+
+
+    public void applyDefaultStyle(int position) {
 
         View view = findViewByPosition(position);
 

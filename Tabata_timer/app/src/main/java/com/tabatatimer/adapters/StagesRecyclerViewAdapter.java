@@ -64,6 +64,25 @@ public class StagesRecyclerViewAdapter extends RecyclerView.Adapter<SequenceStag
     }
 
 
+    @Override
+    public void onViewAttachedToWindow(@NonNull SequenceStageViewHolder holder) {
+
+        super.onViewAttachedToWindow(holder);
+
+        int position = holder.getAdapterPosition();
+
+        if (mActivePosition == position) {
+            mLayoutManager.applyStyleActive();
+        }
+        else if (mSelectedPosition == position) {
+            mLayoutManager.applyStyleSelected();
+        }
+        else {
+            mLayoutManager.applyDefaultStyle(position);
+        }
+    }
+
+
     public void setActivePosition(int position) {
 
         mActivePosition = (position >= 0) && (position < mSequenceStagesData.length) ?

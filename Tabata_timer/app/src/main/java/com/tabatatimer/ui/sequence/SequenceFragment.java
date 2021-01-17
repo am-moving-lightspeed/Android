@@ -72,29 +72,7 @@ public class SequenceFragment extends Fragment {
         mEditButtonFrame   = view.findViewById(R.id.fabEditFrame);
         mDeleteButtonFrame = view.findViewById(R.id.fabDeleteFrame);
 
-
-        // region Events
-        // TODO: replace event
-        bPlay.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view_) {
-
-                mStagesRecyclerViewLayoutManager.cancelStyleActive();
-
-                mStagesRecyclerViewAdapter.setActivePosition(
-                    mStagesRecyclerViewAdapter.getActivePosition() + 1
-                );
-
-                mStagesRecyclerView.smoothScrollToPosition(
-                    mStagesRecyclerViewAdapter.getActivePosition()
-                );
-
-                mStagesRecyclerViewLayoutManager.applyStyleActive();
-            }
-        });
-        // endregion
-
+        setPlayButtonEvents(bPlay);
 
         super.onViewCreated(view, savedInstanceState);
     }
@@ -112,8 +90,35 @@ public class SequenceFragment extends Fragment {
     }
 
 
+    // region Events
+    private void setPlayButtonEvents(View bPlay) {
+
+        // TODO: replace event
+        bPlay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view_) {
+
+                mStagesRecyclerViewLayoutManager.cancelStyleActive();
+
+                // TODO: create wrapper
+                mStagesRecyclerViewAdapter.setActivePosition(
+                    mStagesRecyclerViewAdapter.getActivePosition() + 1
+                );
+
+                mStagesRecyclerView.smoothScrollToPosition(
+                    mStagesRecyclerViewAdapter.getActivePosition()
+                );
+
+                mStagesRecyclerViewLayoutManager.applyStyleActive();
+            }
+        });
+    }
+    // endregion
+
+
     //    TODO: Remove the method
-    public SequenceStageInfoStructure[] setSeed() {
+    private SequenceStageInfoStructure[] setSeed() {
 
         SequenceStageInfoStructure[] arr = new SequenceStageInfoStructure[8];
 
