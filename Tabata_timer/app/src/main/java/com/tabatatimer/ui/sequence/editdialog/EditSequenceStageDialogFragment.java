@@ -21,17 +21,17 @@ import com.tabatatimer.R;
 
 
 
-public class EditSequenceStageDialog extends DialogFragment {
+public class EditSequenceStageDialogFragment extends DialogFragment {
 
-    public interface DialogButtonClickListener {
+    public interface EditDialogButtonClickListener {
 
-        void onDialogPositiveClick(EditSequenceStageDialog dialogFragment);
+        void onPositiveClick(EditSequenceStageDialogFragment dialogFragment);
 
     }
 
 
 
-    private DialogButtonClickListener mClickListener;
+    private EditDialogButtonClickListener mClickListener;
 
     private View     mSelectedView;
     private TextView mBOk;
@@ -44,10 +44,10 @@ public class EditSequenceStageDialog extends DialogFragment {
     private boolean areSecondsValid = true;
 
 
-    public EditSequenceStageDialog(Fragment parentFragment,
-                                   View selectedView) {
+    public EditSequenceStageDialogFragment(Fragment parentFragment,
+                                           View selectedView) {
 
-        mClickListener = (DialogButtonClickListener) parentFragment;
+        mClickListener = (EditDialogButtonClickListener) parentFragment;
         mSelectedView  = selectedView;
     }
 
@@ -137,9 +137,9 @@ public class EditSequenceStageDialog extends DialogFragment {
             public void onClick(View view) {
 
                 if (mClickListener != null) {
-                    mClickListener.onDialogPositiveClick(EditSequenceStageDialog.this);
+                    mClickListener.onPositiveClick(EditSequenceStageDialogFragment.this);
                 }
-                EditSequenceStageDialog.this.dismiss();
+                EditSequenceStageDialogFragment.this.dismiss();
             }
         });
     }
@@ -153,7 +153,7 @@ public class EditSequenceStageDialog extends DialogFragment {
                 @Override
                 public void onClick(View view) {
 
-                    EditSequenceStageDialog.this.dismiss();
+                    EditSequenceStageDialogFragment.this.dismiss();
                 }
             });
     }

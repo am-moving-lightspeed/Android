@@ -92,7 +92,6 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
 
                         if (position != mAdapter.getSelectedPosition()) {
                             if (mLayoutManager.areCrudButtonsHidden()) {
-                                mLayoutManager.performFabAppearingAnimation();
                                 mLayoutManager.toggleCrudButtons();
                             }
 
@@ -103,7 +102,6 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
                         }
                         else {
                             mLayoutManager.cancelStyleSelected();
-                            mLayoutManager.performFabDisappearingAnimation();
                             mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
                             mLayoutManager.toggleCrudButtons();
                             mLayoutManager.setSelectedView(null);

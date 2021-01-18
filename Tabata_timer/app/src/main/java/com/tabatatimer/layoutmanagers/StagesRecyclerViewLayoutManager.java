@@ -56,6 +56,13 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
     public void toggleCrudButtons() {
 
+        if (areCrudButtonsHidden) {
+            performFabAppearingAnimation();
+        }
+        else {
+            performFabDisappearingAnimation();
+        }
+
         areCrudButtonsHidden = !areCrudButtonsHidden;
     }
 

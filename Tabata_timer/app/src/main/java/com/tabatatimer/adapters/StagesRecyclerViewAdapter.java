@@ -116,4 +116,22 @@ public class StagesRecyclerViewAdapter extends RecyclerView.Adapter<SequenceStag
         mLayoutManager = (StagesRecyclerViewLayoutManager) layoutManager;
     }
 
+
+    public void removeAt(int position) {
+
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+
+        // TODO: implement database usage
+        SequenceStageInfoStructure[] old = mSequenceStagesData;
+        mSequenceStagesData = new SequenceStageInfoStructure[old.length - 1];
+
+
+        System.arraycopy(old, 0, mSequenceStagesData, 0, position);
+        System.arraycopy(old, position + 1, mSequenceStagesData, position, old.length - (position + 1));
+
+        mSelectedPosition = NO_SELECTED;
+        mLayoutManager.toggleCrudButtons();
+    }
+
 }

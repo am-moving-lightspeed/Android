@@ -3,7 +3,7 @@
     style="@style/sequenceStageEditCard">
 
     <LinearLayout
-        android:id="@+id/sequenceStageBackground"
+        android:id="@+id/sequenceStageBackground.a"
         style="@style/sequenceStageEdit">
 
         <!-- Header -->

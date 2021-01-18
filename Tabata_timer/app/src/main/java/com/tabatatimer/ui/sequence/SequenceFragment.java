@@ -2,7 +2,6 @@ package com.tabatatimer.ui.sequence;
 
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +17,14 @@ import com.tabatatimer.R;
 import com.tabatatimer.adapters.StagesRecyclerViewAdapter;
 import com.tabatatimer.layoutmanagers.StagesRecyclerViewLayoutManager;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
-import com.tabatatimer.ui.sequence.editdialog.EditSequenceStageDialog;
+import com.tabatatimer.ui.sequence.deletedialog.DeleteSequenceStageDialogFragment;
+import com.tabatatimer.ui.sequence.editdialog.EditSequenceStageDialogFragment;
 
 
 
-public class SequenceFragment extends Fragment implements EditSequenceStageDialog.DialogButtonClickListener {
-
-    // TODO: implement usage
-    private boolean isSequenceRunning;
-
-    private SequenceViewModel sequenceViewModel;
+public class SequenceFragment extends Fragment implements
+                                               EditSequenceStageDialogFragment.EditDialogButtonClickListener,
+                                               DeleteSequenceStageDialogFragment.DeleteDialogButtonClickListener {
 
     private View mEditButtonFrame;
     private View mDeleteButtonFrame;
@@ -71,22 +68,18 @@ public class SequenceFragment extends Fragment implements EditSequenceStageDialo
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        View bPlay = view.findViewById(R.id.abPlay);
-        View bEdit = view.findViewById(R.id.fabEdit);
+        View bPlay   = view.findViewById(R.id.abPlay);
+        View bEdit   = view.findViewById(R.id.fabEdit);
+        View bDelete = view.findViewById(R.id.fabDelete);
 
         mEditButtonFrame   = view.findViewById(R.id.fabEditFrame);
         mDeleteButtonFrame = view.findViewById(R.id.fabDeleteFrame);
 
         setPlayButtonEvents(bPlay);
         setEditButtonEvents(bEdit);
+        setDeleteButtonEvents(bDelete);
 
         super.onViewCreated(view, savedInstanceState);
-    }
-
-
-    public boolean isSequenceRunning() {
-
-        return isSequenceRunning;
     }
 
 
@@ -97,6 +90,29 @@ public class SequenceFragment extends Fragment implements EditSequenceStageDialo
 
 
     // region Events
+    @Override
+    public void onPositiveClick(EditSequenceStageDialogFragment dialogFragment) {
+
+        // TODO: implement database usage
+        View view = mStagesRecyclerViewLayoutManager.getSelectedView();
+
+        String header      = dialogFragment.getHeaderText();
+        String description = dialogFragment.getDescriptionText();
+        String time        = dialogFragment.getMinutesText() + ":" + dialogFragment.getSecondsText();
+
+        ((TextView) view.findViewById(R.id.sequenceStageHeader)).setText(header);
+        ((TextView) view.findViewById(R.id.sequenceStageDescription)).setText(description);
+        ((TextView) view.findViewById(R.id.sequenceStageTime)).setText(time);
+    }
+
+
+    @Override
+    public void onPositiveClick(DeleteSequenceStageDialogFragment dialogFragment) {
+
+        mStagesRecyclerViewAdapter.removeAt(mStagesRecyclerViewAdapter.getSelectedPosition());
+    }
+
+
     private void setPlayButtonEvents(View bPlay) {
 
         // TODO: replace event
@@ -129,12 +145,31 @@ public class SequenceFragment extends Fragment implements EditSequenceStageDialo
             @Override
             public void onClick(View view) {
 
-                DialogFragment editDialog =
-                    new EditSequenceStageDialog(SequenceFragment.this,
-                                                mStagesRecyclerViewLayoutManager.getSelectedView());
+                assert getActivity() != null;
 
+                DialogFragment editDialog =
+                    new EditSequenceStageDialogFragment(SequenceFragment.this,
+                                                        mStagesRecyclerViewLayoutManager.getSelectedView());
                 editDialog.show(getActivity().getSupportFragmentManager(),
-                                "EditSequenceDialog");
+                                "EditSequenceStageDialog");
+            }
+        });
+    }
+
+
+    private void setDeleteButtonEvents(View bDelete) {
+
+        bDelete.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                assert getActivity() != null;
+
+                DialogFragment deleteDialog =
+                    new DeleteSequenceStageDialogFragment(SequenceFragment.this);
+                deleteDialog.show(getActivity().getSupportFragmentManager(),
+                                  "DeleteSequenceStageDialog");
             }
         });
     }
@@ -195,22 +230,6 @@ public class SequenceFragment extends Fragment implements EditSequenceStageDialo
         arr[7].timeLeft    = new String("00:30");
 
         return arr;
-    }
-
-
-    @Override
-    public void onDialogPositiveClick(EditSequenceStageDialog dialogFragment) {
-
-        // TODO: implement database usage
-        View view = mStagesRecyclerViewLayoutManager.getSelectedView();
-
-        String header      = dialogFragment.getHeaderText();
-        String description = dialogFragment.getDescriptionText();
-        String time        = dialogFragment.getMinutesText() + ":" + dialogFragment.getSecondsText();
-
-        ((TextView) view.findViewById(R.id.sequenceStageHeader)).setText(header);
-        ((TextView) view.findViewById(R.id.sequenceStageDescription)).setText(description);
-        ((TextView) view.findViewById(R.id.sequenceStageTime)).setText(time);
     }
 
 }
