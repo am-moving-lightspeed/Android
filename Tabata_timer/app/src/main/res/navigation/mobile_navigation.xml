@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.tabatatimer.ui.sequence.SequenceFragment"
-        android:label="@string/menuSequence"
+        android:label="@string/menu_sequence"
         tools:layout="@layout/fragment_sequence" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.tabatatimer.ui.gallery.LibraryFragment"
-        android:label="@string/menuLibrary"
+        android:label="@string/menu_library"
         tools:layout="@layout/fragment_library" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.tabatatimer.ui.slideshow.SlideshowFragment"
-        android:label="@string/menuSettings"
+        android:label="@string/menu_settings"
         tools:layout="@layout/fragment_slideshow" />
 
 </navigation>

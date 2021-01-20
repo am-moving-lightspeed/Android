@@ -27,10 +27,10 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
     public SequenceStageViewHolder(@NonNull View view) {
 
         super(view);
-        mTvHeader      = view.findViewById(R.id.sequenceStageHeader);
-        mTvDescription = view.findViewById(R.id.sequenceStageDescription);
-        mTvTime        = view.findViewById(R.id.sequenceStageTime);
-        mTvTimeLeft    = view.findViewById(R.id.sequenceStageTimeLeft);
+        mTvHeader      = view.findViewById(R.id.textView_sequenceStage_header);
+        mTvDescription = view.findViewById(R.id.textView_sequenceStage_description);
+        mTvTime        = view.findViewById(R.id.textView_sequenceStage_time);
+        mTvTimeLeft    = view.findViewById(R.id.textView_sequenceStage_timeLeft);
 
         setViewOnClickEvents(view);
     }

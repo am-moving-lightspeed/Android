@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   style="@style/TabataTimer.Item.SequenceStage.Card">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sequenceStage_background"
+        style="@style/TabataTimer.Item.SequenceStage.Container">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/textView_sequenceStage_header"
+            style="@style/TabataTimer.Item.SequenceStage.Content.Text.Header"
+            android:text="@string/all_headerPlaceholder" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/textView_sequenceStage_description"
+            style="@style/TabataTimer.Item.SequenceStage.Content.Text.Description"
+            android:text="@string/all_descriptionPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.SequenceStage.Content.Separator" />
+
+        <!-- Duration -->
+        <LinearLayout style="@style/TabataTimer.Item.SequenceStage.Content.Duration.Container">
+
+            <TextView
+                style="@style/TabataTimer.Item.SequenceStage.Content.Duration.Label"
+                android:text="@string/sequenceStage_duration" />
+
+            <TextView
+                android:id="@+id/textView_sequenceStage_time"
+                style="@style/TabataTimer.Item.SequenceStage.Content.Duration.Time"
+                android:text="@string/all_timePlaceholder" />
+
+            <Space style="@style/TabataTimer.Item.SequenceStage.Content.Duration.Label" />
+
+
+        </LinearLayout>
+
+        <!-- Timer -->
+        <TextView
+            android:id="@+id/textView_sequenceStage_timeLeft"
+            style="@style/TabataTimer.Item.SequenceStage.Content.Text.TimeLeft"
+            android:text="@string/all_timeLeftPlaceholder" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_sequenceStage_progressBar"
+            style="@style/TabataTimer.Item.SequenceStage.Content.ProgressBar" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:cus="http://schemas.android.com/">
+
+    <style name="TabataTimer" />
+
+    <style name="TabataTimer.Item" />
+
+    <style name="TabataTimer.Item.Default" />
+
+    <style name="TabataTimer.Item.Default.Card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_item_12dp</item>
+        <item name="cardBackgroundColor">?android:colorPrimaryDark</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/item_background_default</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_12dp</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Content.Text">
+        <item name="android:gravity">center</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Content.Text.Header">
+        <item name="android:textSize">@dimen/textSize_large</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Content.Text.Description">
+        <item name="android:maxLines">2</item>
+    </style>
+
+    <style name="TabataTimer.Item.Default.Content.Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@drawable/item_content_separator</item>
+    </style>
+
+</resources>

@@ -5,19 +5,19 @@
 
     <TextView
         style="@style/navigationMenuHeaderContent"
-        android:text="@string/navigationMenuHeader_title" />
+        android:text="@string/all_navigationMenuHeaderTitle" />
 
     <TextView
         style="@style/navigationMenuHeaderContent.sequenceHeader"
-        android:text="@string/navigationMenuHeader_title" />
+        android:text="@string/all_navigationMenuHeaderTitle" />
 
     <TextView
         android:id="@+id/navigationMenuHeader_stage"
         style="@style/navigationMenuHeaderContent.sequenceStage"
-        android:text="@string/navigationMenuHeader_stage" />
+        android:text="@string/all_navigationMenuHeaderStage" />
 
     <TextView
         style="@style/navigationMenuHeaderContent"
-        android:text="@string/navigationMenuHeader_status" />
+        android:text="@string/all_navigationMenuHeaderStatus" />
 
 </LinearLayout>

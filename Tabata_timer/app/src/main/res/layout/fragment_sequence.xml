@@ -1,96 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.sequence.SequenceFragment">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".ui.sequence.SequenceFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stagesRecyclerView"
-        style="@style/stagesRecyclerView"
+        android:id="@+id/recyclerView_sequence_stagesList"
+        style="@style/TabataTimer.List.Sequence"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <!-- Action buttons bar start -->
     <FrameLayout
-        android:id="@+id/actionButtonsBarBase"
-        style="@style/actionButtonBarBase"
+        android:id="@+id/frameLayout_sequence_buttonsBar"
+        style="@style/TabataTimer.BtnBar.Sequence"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints" />
 
     <FrameLayout
-        android:id="@+id/actionBtnContainer_play"
-        style="@style/actionButtonFrame"
+        android:id="@+id/frameLayout_sequence_btnPlayFrame"
+        style="@style/TabataTimer.BtnFrame.Sequence"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/abPlay"
-            style="@style/btn.playSequence"
-            android:contentDescription="@string/actionButtonPlay_description" />
+            android:id="@+id/imageView_sequence_btnPlay"
+            style="@style/TabataTimer.Btn.Sequence.Play"
+            android:contentDescription="@string/sequence_btnPlayDescription" />
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/actionBtnContainer_stop"
-        style="@style/actionButtonFrame"
-        app:layout_constraintBottom_toBottomOf="@id/actionBtnContainer_play"
-        app:layout_constraintStart_toEndOf="@id/actionBtnContainer_play">
+        android:id="@+id/frameLayout_sequence_btnFastForwardFrame"
+        style="@style/TabataTimer.BtnFrame.Sequence.NoMargin"
+        app:layout_constraintBottom_toBottomOf="@id/frameLayout_sequence_btnPlayFrame"
+        app:layout_constraintStart_toEndOf="@id/frameLayout_sequence_btnPlayFrame">
 
         <ImageView
-            android:id="@+id/abStop"
-            style="@style/btn.stopSequence"
-            android:contentDescription="@string/actionButtonStop_description" />
+            android:id="@+id/imageView_sequence_btnFastForward"
+            style="@style/TabataTimer.Btn.Sequence.FastForward"
+            android:contentDescription="@string/sequence_btnFastForwardDescription" />
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/actionBtnContainer_restart"
-        style="@style/actionButtonFrame"
-        app:layout_constraintBottom_toBottomOf="@id/actionBtnContainer_play"
-        app:layout_constraintEnd_toStartOf="@id/actionBtnContainer_play">
+        android:id="@+id/frameLayout_sequence_btnFastRewindFrame"
+        style="@style/TabataTimer.BtnFrame.Sequence.NoMargin"
+        app:layout_constraintBottom_toBottomOf="@id/frameLayout_sequence_btnPlayFrame"
+        app:layout_constraintEnd_toStartOf="@id/frameLayout_sequence_btnPlayFrame">
 
         <ImageView
-            android:id="@+id/abRestart"
-            style="@style/btn.restartSequence"
-            android:contentDescription="@string/actionButtonRestart_description" />
+            android:id="@+id/imageView_sequence_btnFastRewind"
+            style="@style/TabataTimer.Btn.Sequence.FastRewind"
+            android:contentDescription="@string/sequence_btnFastRewindDescription" />
 
     </FrameLayout>
     <!-- Action buttons bar end -->
 
     <!-- CRUD action buttons bar start -->
     <FrameLayout
-        android:id="@+id/fabAddFrame"
-        style="@style/fabFrame"
-        app:layout_constraintBottom_toTopOf="@id/fabEditFrame"
+        android:id="@+id/frameLayout_sequence_btnAddFrame"
+        style="@style/TabataTimer.BtnFrame.Default"
+        app:layout_constraintBottom_toTopOf="@id/frameLayout_sequence_btnEditFrame"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <include layout="@layout/action_button_add" />
+        <ImageView
+            android:id="@+id/imageView_sequence_btnAdd"
+            style="@style/TabataTimer.Btn.Default.Add"
+            android:contentDescription="@string/sequence_btnFastRewindDescription" />
 
     </FrameLayout>
 
 
     <FrameLayout
-        android:id="@+id/fabEditFrame"
-        style="@style/fabFrame"
-        app:layout_constraintBottom_toTopOf="@id/fabDeleteFrame"
+        android:id="@+id/frameLayout_sequence_btnEditFrame"
+        style="@style/TabataTimer.BtnFrame.Default"
+        app:layout_constraintBottom_toTopOf="@id/frameLayout_sequence_btnDeleteFrame"
         app:layout_constraintStart_toEndOf="parent">
 
-        <include layout="@layout/action_button_edit" />
+        <ImageView
+            android:id="@+id/imageView_sequence_btnEdit"
+            style="@style/TabataTimer.Btn.Default.Edit"
+            android:contentDescription="@string/sequence_btnFastRewindDescription" />
 
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/fabDeleteFrame"
-        style="@style/fabFrame"
-        android:layout_marginBottom="@dimen/fabFrame_marginBottomMore"
-        app:layout_constraintBottom_toBottomOf="@id/stagesRecyclerView"
+        android:id="@+id/frameLayout_sequence_btnDeleteFrame"
+        style="@style/TabataTimer.BtnFrame.Default"
+        android:layout_marginBottom="@dimen/margin_all_lastButtonIndent"
+        app:layout_constraintBottom_toBottomOf="@id/recyclerView_sequence_stagesList"
         app:layout_constraintStart_toEndOf="parent">
 
-        <include layout="@layout/action_button_delete" />
+        <ImageView
+            android:id="@+id/imageView_sequence_btnDelete"
+            style="@style/TabataTimer.Btn.Default.Delete"
+            android:contentDescription="@string/sequence_btnFastRewindDescription" />
 
     </FrameLayout>
     <!-- CRUD action buttons bar end -->

@@ -7,15 +7,15 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_sequence"
-            android:title="@string/menuSequence" />
+            android:title="@string/menu_sequence" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_library"
-            android:title="@string/menuLibrary" />
+            android:title="@string/menu_library" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_settings"
-            android:title="@string/menuSettings" />
+            android:title="@string/menu_settings" />
     </group>
 
 </menu>

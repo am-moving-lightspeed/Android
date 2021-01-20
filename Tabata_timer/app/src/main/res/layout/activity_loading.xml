@@ -16,44 +16,44 @@
         <!-- Letters apart -->
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_L" />
+            android:text="@string/loading_letter_L" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_O" />
+            android:text="@string/loading_letter_O" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_A" />
+            android:text="@string/loading_letter_A" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_D" />
+            android:text="@string/loading_letter_D" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_I" />
+            android:text="@string/loading_letter_I" />
 
         <TextView
             style="@style/loadingText"
             android:fontFamily="@font/mexcellent3d"
-            android:text="@string/letter_N" />
+            android:text="@string/loading_letter_N" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/letter_G" />
+            android:text="@string/loading_letter_G" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/dot" />
+            android:text="@string/loading_dot" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/dot" />
+            android:text="@string/loading_dot" />
 
         <TextView
             style="@style/loadingText"
-            android:text="@string/dot" />
+            android:text="@string/loading_dot" />
 
     </LinearLayout>
 

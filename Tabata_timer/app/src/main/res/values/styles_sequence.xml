@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="sequence">
+    <style name="TabataTimer.List.Sequence" parent="TabataTimer.List.Default">
+        <item name="android:paddingBottom">@dimen/padding_all_100dp</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="TabataTimer.BtnBar.Sequence">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/shapes_sequence</item>
+        <item name="android:layout_height">@dimen/height_sequence_buttonsBar_56dp</item>
+        <item name="android:background">@drawable/sequence_buttons_bar</item>
     </style>
 
-    <style name="sequenceCard">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/sequence_marginBottom</item>
-        <item name="cardBackgroundColor">@color/colorPrimaryDark</item>
+    <style name="TabataTimer.BtnFrame.Sequence" parent="TabataTimer.BtnFrame.Default">
+        <item name="android:layout_marginBottom">@dimen/margin_all_4dp</item>
+        <item name="android:paddingEnd">@dimen/padding_all_buttonFrame_4dp</item>
+        <item name="android:background">@drawable/sequence_button_frame</item>
     </style>
 
-    <style name="sequenceContent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/sequenceContent_marginBottom</item>
+    <style name="TabataTimer.BtnFrame.Sequence.NoMargin">
+        <item name="android:layout_margin">@dimen/margin_all_0dp</item>
     </style>
 
-    <style name="sequenceContent.text">
-        <item name="android:gravity">left</item>
-        <item name="android:scrollHorizontally">false</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:fontFamily">@font/droid_sans</item>
+    <style name="TabataTimer.Btn.Sequence" parent="TabataTimer.Btn.Default" />
+
+    <style name="TabataTimer.Btn.Sequence.Play">
+        <item name="android:layout_width">@dimen/width_button_72dp</item>
+        <item name="android:layout_height">@dimen/height_button_72dp</item>
+        <item name="android:background">@drawable/btn_play</item>
+        <item name="srcCompat">@drawable/ic_play</item>
     </style>
 
-    <style name="sequenceContent.text.header">
-        <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
+    <style name="TabataTimer.Btn.Sequence.FastForward">
+        <item name="android:background">@drawable/btn_fast_forward</item>
+        <item name="srcCompat">@drawable/ic_fast_forward</item>
     </style>
 
-    <style name="sequenceContent.text.description">
-        <item name="android:textSize">@dimen/sequenceDescription_textSize</item>
-        <item name="android:maxLines">2</item>
-    </style>
-
-    <style name="sequenceContent.text.additionalInfo">
-        <item name="android:layout_marginBottom">@dimen/sequenceContent_marginBottomLess</item>
-        <item name="android:textSize">@dimen/sequenceAdditionalInfo_textSize</item>
-    </style>
-
-    <style name="sequenceContent.separator">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">2dp</item>
-        <item name="android:background">@drawable/shapes_separator</item>
+    <style name="TabataTimer.Btn.Sequence.FastRewind">
+        <item name="android:background">@drawable/btn_fast_rewind</item>
+        <item name="srcCompat">@drawable/ic_fast_rewind</item>
     </style>
 
 </resources>

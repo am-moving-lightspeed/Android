@@ -61,11 +61,11 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
         View view = inflater.inflate(R.layout.fragment_sequence_stage_edit, null);
 
-        mEtHeader      = view.findViewById(R.id.sequenceStageEditHeader);
-        mEtDescription = view.findViewById(R.id.sequenceStageEditDescription);
-        mEtMinutes     = view.findViewById(R.id.sequenceStageEditMinutes);
-        mEtSeconds     = view.findViewById(R.id.sequenceStageEditSeconds);
-        mBOk           = view.findViewById(R.id.abEditDialogOk);
+        mEtHeader      = view.findViewById(R.id.editText_sequenceStageEdit_header);
+        mEtDescription = view.findViewById(R.id.editText_sequenceStageEdit_description);
+        mEtMinutes     = view.findViewById(R.id.editText_sequenceStageEdit_minutes);
+        mEtSeconds     = view.findViewById(R.id.editText_sequenceStageEdit_seconds);
+        mBOk           = view.findViewById(R.id.textView_sequenceStageEdit_buttonOk);
 
         fillDialogView(view);
 
@@ -111,19 +111,19 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
     private void fillDialogView(View view) {
 
         String[] time = new String[2];
-        time[0] = ((TextView) mSelectedView.findViewById(R.id.sequenceStageTime)).getText()
-                                                                                 .toString();
+        time[0] = ((TextView) mSelectedView.findViewById(R.id.textView_sequenceStage_time)).getText()
+                                                                                           .toString();
         time    = time[0].split(":");
 
         mEtMinutes.setText(time[0]);
         mEtSeconds.setText(time[1]);
 
-        EditText destination = view.findViewById(R.id.sequenceStageEditHeader);
-        TextView source      = mSelectedView.findViewById(R.id.sequenceStageHeader);
+        EditText destination = view.findViewById(R.id.editText_sequenceStageEdit_header);
+        TextView source      = mSelectedView.findViewById(R.id.textView_sequenceStage_header);
         destination.setText(source.getText());
 
-        destination = view.findViewById(R.id.sequenceStageEditDescription);
-        source      = mSelectedView.findViewById(R.id.sequenceStageDescription);
+        destination = view.findViewById(R.id.editText_sequenceStageEdit_description);
+        source      = mSelectedView.findViewById(R.id.textView_sequenceStage_description);
         destination.setText(source.getText());
     }
 
@@ -147,7 +147,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
     private void setButtonCancelEvent(View view) {
 
-        view.findViewById(R.id.abEditDialogCancel)
+        view.findViewById(R.id.textView_sequenceStageEdit_buttonCancel)
             .setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -182,7 +182,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                         mEtMinutes.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
-                                R.drawable.shapes_sequence_stage_edit_edittext,
+                                R.drawable.item_content_edittext,
                                 getActivity().getTheme()
                             )
                         );
@@ -197,7 +197,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                     mEtMinutes.setBackground(
                         ResourcesCompat.getDrawable(
                             getResources(),
-                            R.drawable.shapes_sequence_stage_edit_edittext_incorrect,
+                            R.drawable.item_content_edittext_error,
                             getActivity().getTheme()
                         )
                     );
@@ -231,7 +231,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                         mEtSeconds.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
-                                R.drawable.shapes_sequence_stage_edit_edittext,
+                                R.drawable.item_content_edittext,
                                 getActivity().getTheme()
                             )
                         );
@@ -246,7 +246,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                     mEtSeconds.setBackground(
                         ResourcesCompat.getDrawable(
                             getResources(),
-                            R.drawable.shapes_sequence_stage_edit_edittext_incorrect,
+                            R.drawable.item_content_edittext_error,
                             getActivity().getTheme()
                         )
                     );
@@ -283,7 +283,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
         mBOk.setTextColor(
             ResourcesCompat.getColor(
                 getResources(),
-                R.color.colorStroke,
+                R.color.colour_gunmetal,
                 getActivity().getTheme()
             )
         );
@@ -296,7 +296,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
         mBOk.setTextColor(
             ResourcesCompat.getColor(
                 getResources(),
-                R.color.colorBlue,
+                R.color.colour_cornflowerBlue,
                 getActivity().getTheme()
             )
         );

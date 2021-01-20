@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="oval">
+
+            <solid android:color="@color/colour_cinder" />
+            <stroke
+                android:width="@dimen/width_all_stroke_1dp"
+                android:color="@color/colour_cornflowerBlue" />
+
+        </shape>
+    </item>
+
+    <item>
+        <inset
+            android:drawable="@drawable/ic_edit"
+            android:inset="@dimen/padding_button_20dp" />
+    </item>
+
+</layer-list>

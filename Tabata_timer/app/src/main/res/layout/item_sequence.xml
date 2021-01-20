@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   style="@style/TabataTimer.Item.Sequence.Card">
+
+    <LinearLayout style="@style/TabataTimer.Item.Sequence.Container">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/textView_sequence_header"
+            style="@style/TabataTimer.Item.Sequence.Content.Text.Header"
+            android:text="@string/all_headerPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.Sequence.Content.Separator" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/textView_sequence_description"
+            style="@style/TabataTimer.Item.Sequence.Content.Text.Description"
+            android:text="@string/all_descriptionPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.Sequence.Content.Separator" />
+
+        <!-- Additional info-->
+        <TextView
+            android:id="@+id/textView_sequence_stagesAmount"
+            style="@style/TabataTimer.Item.Sequence.Content.Text.AdditionalInfo"
+            android:text="@string/all_additionalInfoPlaceholder" />
+
+        <TextView
+            android:id="@+id/textView_sequence_totalTime"
+            style="@style/TabataTimer.Item.Sequence.Content.Text.AdditionalInfo"
+            android:text="@string/all_additionalInfoPlaceholder" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -30,7 +30,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
 
         return new SequenceViewHolder(
             LayoutInflater.from(parent.getContext())
-                          .inflate(R.layout.sequence, parent, false)
+                          .inflate(R.layout.item_sequence, parent, false)
         );
     }
 

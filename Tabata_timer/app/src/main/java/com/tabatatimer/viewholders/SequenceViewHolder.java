@@ -22,10 +22,10 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
     public SequenceViewHolder(@NonNull View view) {
 
         super(view);
-        mTvHeader           = view.findViewById(R.id.sequenceHeader);
-        mTvDescription      = view.findViewById(R.id.sequenceDescription);
-        mTvPhasesAmountInfo = view.findViewById(R.id.sequencePhasesAmount);
-        mTvTotalTimeInfo    = view.findViewById(R.id.sequenceTotalTime);
+        mTvHeader           = view.findViewById(R.id.textView_sequence_header);
+        mTvDescription      = view.findViewById(R.id.textView_sequence_description);
+        mTvPhasesAmountInfo = view.findViewById(R.id.textView_sequence_stagesAmount);
+        mTvTotalTimeInfo    = view.findViewById(R.id.textView_sequence_totalTime);
     }
 
 

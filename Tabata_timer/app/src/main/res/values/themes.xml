@@ -1,16 +1,39 @@
 <resources>
 
     <style name="MainTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorTerracotta</item>
-        <item name="android:windowBackground">@color/colorPrimaryDark</item>
 
-        <!-- Text -->
-        <item name="android:textColor">@color/colorPrimaryText</item>
-        <item name="android:textSize">@dimen/default_textSize</item>
+        <!-- Colours -->
+        <item name="colorPrimary">@color/colour_blackPearl</item>
+        <item name="colorPrimaryDark">@color/colour_blackPearlDarker</item>
+        <item name="colorAccent">@color/colour_salmon</item>
+
+        <item name="android:windowBackground">@color/colour_blackPearlDarker</item>
+
+        <item name="android:textColor">@color/colour_heather</item>
+        <item name="android:textSize">@dimen/textSize_default</item>
+        <item name="android:fontFamily">@font/droid_sans</item>
+
     </style>
 
     <style name="MainTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
+
+    <!-- Holders -->
+    <color name="colour_strokeDefault">@color/colour_gunmetal</color>
+    <color name="colour_strokeActive">@color/colour_salmon</color>
+    <color name="colour_strokeSelected">@color/colour_eucalyptus</color>
+    <color name="colour_strokeError">@color/colour_salmon</color>
+
+    <color name="colour_itemBackgroundDefault">@color/colour_blackPearl</color>
+    <color name="colour_itemBackgroundActive">@color/colour_salmonDim</color>
+    <color name="colour_itemBackgroundSelected">@color/colour_eucalyptusDim</color>
+
+    <color name="colour_buttonStroke">@color/colour_lightSlateBlue</color>
+    <color name="colour_buttonBackground">@color/colour_midnightExpress</color>
+    <color name="colour_buttonBarBackground">@color/colour_midnightExpress</color>
+
+    <dimen name="textSize_default">@dimen/textSize_all</dimen>
+    <dimen name="textSize_large">@dimen/textSize_all_large</dimen>
+    <dimen name="textSize_medium">@dimen/textSize_all_medium</dimen>
+    <dimen name="textSize_small">@dimen/textSize_all_small</dimen>
 
 </resources>

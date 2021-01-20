@@ -14,11 +14,10 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
-        style="@style/actionButtonBarBase"
+        style="@style/TabataTimer.BtnBar.Sequence"
         tools:ignore="MissingConstraints">
         <!-- Constraints are defined in the style. -->
 
-        <include layout="@layout/action_button_add" />
 
     </LinearLayout>
 

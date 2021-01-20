@@ -4,7 +4,7 @@
     <style name="loadingBackground">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@drawable/shapes_loading_bg</item>
+        <item name="android:background">@drawable/loading_background</item>
     </style>
 
     <style name="loadingTextContainer">
@@ -18,7 +18,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/mexcellent3d</item>
         <item name="android:textSize">64sp</item>
-        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColor">@color/colour_cornflowerBlue</item>
     </style>
 
 </resources>

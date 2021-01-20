@@ -40,7 +40,7 @@ public class StagesRecyclerViewAdapter extends RecyclerView.Adapter<SequenceStag
 
         return new SequenceStageViewHolder(
             LayoutInflater.from(parent.getContext())
-                          .inflate(R.layout.sequence_stage, parent, false)
+                          .inflate(R.layout.item_sequence_stage, parent, false)
         );
     }
 

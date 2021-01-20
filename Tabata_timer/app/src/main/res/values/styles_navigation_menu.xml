@@ -15,7 +15,7 @@
         <item name="android:paddingTop">@dimen/navigationMenuHeader_paddingTop</item>
         <item name="android:paddingBottom">@dimen/navigationMenuHeader_paddingBottom</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/shapes_navigation_menu_header</item>
+        <item name="android:background">@drawable/main_navmenu_header_background</item>
     </style>
 
     <style name="navigationMenuHeaderContent">
@@ -26,11 +26,11 @@
     </style>
 
     <style name="navigationMenuHeaderContent.sequenceHeader">
-        <item name="android:textSize">@dimen/sequenceHeader_textSize</item>
+        <item name="android:textSize">@dimen/textSize_all_large</item>
     </style>
 
     <style name="navigationMenuHeaderContent.sequenceStage">
-        <item name="android:textSize">@dimen/sequenceAdditionalInfo_textSize</item>
+        <item name="android:textSize">@dimen/textSize_all_medium</item>
     </style>
 
 </resources>

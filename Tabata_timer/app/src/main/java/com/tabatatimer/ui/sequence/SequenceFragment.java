@@ -54,7 +54,7 @@ public class SequenceFragment extends Fragment implements
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
         if (view != null) {
-            mStagesRecyclerView = view.findViewById(R.id.stagesRecyclerView);
+            mStagesRecyclerView = view.findViewById(R.id.recyclerView_sequence_stagesList);
             mStagesRecyclerView.setLayoutManager(mStagesRecyclerViewLayoutManager);
             mStagesRecyclerView.setAdapter(mStagesRecyclerViewAdapter);
 
@@ -68,12 +68,12 @@ public class SequenceFragment extends Fragment implements
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        View bPlay   = view.findViewById(R.id.abPlay);
-        View bEdit   = view.findViewById(R.id.fabEdit);
-        View bDelete = view.findViewById(R.id.fabDelete);
+        View bPlay   = view.findViewById(R.id.imageView_sequence_btnPlay);
+        View bEdit   = view.findViewById(R.id.imageView_sequence_btnEdit);
+        View bDelete = view.findViewById(R.id.imageView_sequence_btnDelete);
 
-        mEditButtonFrame   = view.findViewById(R.id.fabEditFrame);
-        mDeleteButtonFrame = view.findViewById(R.id.fabDeleteFrame);
+        mEditButtonFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
+        mDeleteButtonFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
 
         setPlayButtonEvents(bPlay);
         setEditButtonEvents(bEdit);
@@ -100,9 +100,9 @@ public class SequenceFragment extends Fragment implements
         String description = dialogFragment.getDescriptionText();
         String time        = dialogFragment.getMinutesText() + ":" + dialogFragment.getSecondsText();
 
-        ((TextView) view.findViewById(R.id.sequenceStageHeader)).setText(header);
-        ((TextView) view.findViewById(R.id.sequenceStageDescription)).setText(description);
-        ((TextView) view.findViewById(R.id.sequenceStageTime)).setText(time);
+        ((TextView) view.findViewById(R.id.textView_sequenceStage_header)).setText(header);
+        ((TextView) view.findViewById(R.id.textView_sequenceStage_description)).setText(description);
+        ((TextView) view.findViewById(R.id.textView_sequenceStage_time)).setText(time);
     }
 
 

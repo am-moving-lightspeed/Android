@@ -101,21 +101,21 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         if (view != null) {
 
-            view.findViewById(R.id.sequenceStageBackground)
+            view.findViewById(R.id.linearLayout_sequenceStage_background)
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mParentFragment.getResources(),
-                        R.drawable.shapes_sequence_stage_active,
+                        R.drawable.item_background_active,
                         mParentFragment.getContext()
                                        .getTheme()
                     )
                 );
 
-            view.findViewById(R.id.sequenceStageDescription)
+            view.findViewById(R.id.textView_sequenceStage_description)
                 .setVisibility(View.VISIBLE);
-            view.findViewById(R.id.sequenceStageTimeLeft)
+            view.findViewById(R.id.textView_sequenceStage_timeLeft)
                 .setVisibility(View.VISIBLE);
-            view.findViewById(R.id.sequenceStageProgressBar)
+            view.findViewById(R.id.progressBar_sequenceStage_progressBar)
                 .setVisibility(View.VISIBLE);
         }
         else if (position >= 0 ||
@@ -147,21 +147,21 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         if (view != null) {
 
-            view.findViewById(R.id.sequenceStageBackground)
+            view.findViewById(R.id.linearLayout_sequenceStage_background)
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mParentFragment.getResources(),
-                        R.drawable.shapes_sequence,
+                        R.drawable.item_background_default,
                         mParentFragment.getContext()
                                        .getTheme()
                     )
                 );
 
-            view.findViewById(R.id.sequenceStageDescription)
+            view.findViewById(R.id.textView_sequenceStage_description)
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageTimeLeft)
+            view.findViewById(R.id.textView_sequenceStage_timeLeft)
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageProgressBar)
+            view.findViewById(R.id.progressBar_sequenceStage_progressBar)
                 .setVisibility(View.GONE);
         }
     }
@@ -175,17 +175,17 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         if (view != null) {
 
-            view.findViewById(R.id.sequenceStageBackground)
+            view.findViewById(R.id.linearLayout_sequenceStage_background)
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mParentFragment.getResources(),
-                        R.drawable.shapes_sequence_stage_selected,
+                        R.drawable.item_background_selected,
                         mParentFragment.getContext()
                                        .getTheme()
                     )
                 );
 
-            view.findViewById(R.id.sequenceStageDescription)
+            view.findViewById(R.id.textView_sequenceStage_description)
                 .setVisibility(View.VISIBLE);
         }
     }
@@ -199,17 +199,17 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         if (view != null) {
 
-            view.findViewById(R.id.sequenceStageBackground)
+            view.findViewById(R.id.linearLayout_sequenceStage_background)
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mParentFragment.getResources(),
-                        R.drawable.shapes_sequence,
+                        R.drawable.item_background_default,
                         mParentFragment.getContext()
                                        .getTheme()
                     )
                 );
 
-            view.findViewById(R.id.sequenceStageDescription)
+            view.findViewById(R.id.textView_sequenceStage_description)
                 .setVisibility(View.GONE);
         }
     }
@@ -221,21 +221,21 @@ public class StagesRecyclerViewLayoutManager extends LinearLayoutManager {
 
         if (view != null) {
 
-            view.findViewById(R.id.sequenceStageBackground)
+            view.findViewById(R.id.linearLayout_sequenceStage_background)
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mParentFragment.getResources(),
-                        R.drawable.shapes_sequence,
+                        R.drawable.item_background_default,
                         mParentFragment.getContext()
                                        .getTheme()
                     )
                 );
 
-            view.findViewById(R.id.sequenceStageDescription)
+            view.findViewById(R.id.textView_sequenceStage_description)
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageTimeLeft)
+            view.findViewById(R.id.textView_sequenceStage_timeLeft)
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.sequenceStageProgressBar)
+            view.findViewById(R.id.progressBar_sequenceStage_progressBar)
                 .setVisibility(View.GONE);
         }
     }
