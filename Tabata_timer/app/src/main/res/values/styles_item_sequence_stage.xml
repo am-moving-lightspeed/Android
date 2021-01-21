@@ -54,17 +54,17 @@
         <item name="android:layout_marginRight">@dimen/margin_item_content_8dp</item>
         <item name="android:layout_marginBottom">@dimen/margin_item_content_8dp</item>
         <item name="android:progress">25</item>
-        <item name="android:progressDrawable">@drawable/item_content_progress_bar</item>
+        <item name="android:progressDrawable">@drawable/sequence_progress_bar</item>
         <item name="android:visibility">gone</item>
     </style>
 
     <!-- Active and Selected styles preview -->
     <style name="TabataTimer.Item.SequenceStage.Container.Active">
-        <item name="android:background">@drawable/item_background_active</item>
+        <item name="android:background">@drawable/item_bg_active</item>
     </style>
 
     <style name="TabataTimer.Item.SequenceStage.Container.Selected">
-        <item name="android:background">@drawable/item_background_selected</item>
+        <item name="android:background">@drawable/item_bg_selected</item>
     </style>
 
     <style name="TabataTimer.Item.SequenceStage.Content.Text.Description.Active">

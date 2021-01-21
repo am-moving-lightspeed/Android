@@ -1,4 +1,4 @@
-package com.tabatatimer.handlers;
+package com.tabatatimer.managers;
 
 
 import android.animation.AnimatorSet;
@@ -8,7 +8,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 
 
 
-public class CrudButtonsHandler implements ICrudButtonsHandler {
+public class CrudButtonsManager implements ICrudButtonsManager {
 
     private final int ANIMATION_DELAY    = 100;
     private final int ANIMATION_DURATION = 300;
@@ -20,7 +20,7 @@ public class CrudButtonsHandler implements ICrudButtonsHandler {
     private AnimatorSet mDisappearingAnimatorSet;
 
 
-    public CrudButtonsHandler(View... buttons) {
+    public CrudButtonsManager(View... buttons) {
 
         mButtons = buttons;
     }

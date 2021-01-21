@@ -2,15 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                    style="@style/TabataTimer.Item.Sequence.Card">
 
-    <LinearLayout style="@style/TabataTimer.Item.Sequence.Container">
+    <LinearLayout
+        android:id="@+id/linearLayout_sequence_background"
+        style="@style/TabataTimer.Item.Sequence.Container">
 
         <!-- Header -->
         <TextView
             android:id="@+id/textView_sequence_header"
             style="@style/TabataTimer.Item.Sequence.Content.Text.Header"
             android:text="@string/all_headerPlaceholder" />
-
-        <View style="@style/TabataTimer.Item.Sequence.Content.Separator" />
 
         <!-- Description -->
         <TextView
@@ -24,12 +24,12 @@
         <TextView
             android:id="@+id/textView_sequence_stagesAmount"
             style="@style/TabataTimer.Item.Sequence.Content.Text.AdditionalInfo"
-            android:text="@string/all_additionalInfoPlaceholder" />
+            android:text="@string/all_totalTimePlaceholder" />
 
         <TextView
             android:id="@+id/textView_sequence_totalTime"
             style="@style/TabataTimer.Item.Sequence.Content.Text.AdditionalInfo"
-            android:text="@string/all_additionalInfoPlaceholder" />
+            android:text="@string/all_stagesAmountPlaceholder" />
 
     </LinearLayout>
 

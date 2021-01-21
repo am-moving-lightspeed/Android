@@ -9,10 +9,11 @@
     </string>
     <string name="all_timePlaceholder">01:30</string>
     <string name="all_timeLeftPlaceholder">-00:17</string>
-    <string name="all_additionalInfoPlaceholder">Additional info: …</string>
+    <string name="all_totalTimePlaceholder">Total time: %s</string>
+    <string name="all_stagesAmountPlaceholder">Stages amount: %s</string>
     <string name="all_navigationMenuHeaderTitle">Current sequence</string>
-    <string name="all_navigationMenuHeaderStage">Stage:</string>
-    <string name="all_navigationMenuHeaderStatus">Status:</string>
+    <string name="all_navigationMenuHeaderStage">Stage: %s</string>
+    <string name="all_navigationMenuHeaderStatus">Status: %s</string>
 
     <string name="menu_sequence">Sequence</string>
     <string name="menu_library">Library</string>
@@ -22,7 +23,6 @@
     <string name="button_ok">OK</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_yes">Yes</string>
-
 
     <string name="sequence_btnPlayDescription">Play</string>
     <string name="sequence_btnFastForwardDescription">Fast forward</string>
@@ -37,6 +37,8 @@
     <string name="sequenceStageEdit_descriptionPlaceholder">Description…</string>
     <string name="sequenceStageEdit_timePlaceholder">00</string>
     <string name="sequenceStageEdit_colon">:</string>
+
+    <string name="library_colour">Sequence colour</string>
 
     <string name="loading_letter_L">L</string>
     <string name="loading_letter_O">O</string>

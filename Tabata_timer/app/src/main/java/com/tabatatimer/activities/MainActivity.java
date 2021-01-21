@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        mSequencesList = findViewById(R.id.librarySequencesList);
-//        mSequencesList.setAdapter(new LibraryAdapter());
+//        mSequencesList.setAdapter(new LibraryRecyclerViewAdapter());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

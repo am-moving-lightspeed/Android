@@ -1,31 +1,57 @@
-package com.tabatatimer.ui.sequence.handlers;
+package com.tabatatimer.ui.sequence.managers;
 
 
 import android.content.Context;
 import android.view.View;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
+import com.tabatatimer.managers.ICrudButtonsManager;
+import com.tabatatimer.managers.RecyclerViewItemManager;
 
 
 
-public final class SequenceHandler extends SequenceHandlerAbstract {
+public class SequenceManager extends
+                             RecyclerViewItemManager implements
+                                                     ISequenceRecyclerViewManager {
 
-    private Context                    mContext;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private RecyclerView               mRecyclerView;
+    protected int mActiveIndex;
+
+    protected RecyclerView mRecyclerView;
+
+    protected ICrudButtonsManager mCrudButtonsManager;
 
 
-    public SequenceHandler(Context context,
+    public SequenceManager(Context context,
                            RecyclerView recyclerView,
-                           RecyclerView.LayoutManager layoutManager) {
+                           RecyclerView.LayoutManager layoutManager,
+                           ICrudButtonsManager crudButtonsManager) {
 
-        mContext       = context;
-        mRecyclerView  = recyclerView;
-        mLayoutManager = layoutManager;
+        super(context, layoutManager);
+
+        mActiveIndex        = NO_ACTIVE;
+        mRecyclerView       = recyclerView;
+        mCrudButtonsManager = crudButtonsManager;
+    }
+
+
+    @Override
+    public int getActiveIndex() {
+
+        return mActiveIndex;
+    }
+
+
+    @Override
+    public void setActiveIndex(int index) {
+
+        mActiveIndex = (index >= 0) && (index < mCollectionLength) ?
+                       index :
+                       NO_ACTIVE;
     }
 
 
@@ -33,10 +59,11 @@ public final class SequenceHandler extends SequenceHandlerAbstract {
     public void applyStyleActive() {
 
         if (mActiveIndex == mSelectedIndex &&
-            !mCrudButtonsHandler.areCrudButtonsHidden()) {
+            !mCrudButtonsManager.areCrudButtonsHidden()) {
 
-            cancelStyleSelected();
-            mCrudButtonsHandler.toggleCrudButtonsVisibility();
+            cancelStyleSelected(R.id.linearLayout_sequenceStage_background,
+                                R.id.textView_sequenceStage_description);
+            mCrudButtonsManager.toggleCrudButtonsVisibility();
             mSelectedIndex = NO_SELECTED;
         }
 
@@ -48,7 +75,7 @@ public final class SequenceHandler extends SequenceHandlerAbstract {
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mContext.getResources(),
-                        R.drawable.item_background_active,
+                        R.drawable.item_bg_active,
                         mContext.getTheme()
                     )
                 );
@@ -92,7 +119,7 @@ public final class SequenceHandler extends SequenceHandlerAbstract {
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mContext.getResources(),
-                        R.drawable.item_background_default,
+                        R.drawable.item_bg_default,
                         mContext.getTheme()
                     )
                 );
@@ -108,82 +135,32 @@ public final class SequenceHandler extends SequenceHandlerAbstract {
 
 
     @Override
-    public void applyStyleSelected() {
-
-        View view = mLayoutManager.findViewByPosition(mSelectedIndex);
-
-        if (view != null) {
-
-            view.findViewById(R.id.linearLayout_sequenceStage_background)
-                .setBackground(
-                    ResourcesCompat.getDrawable(
-                        mContext.getResources(),
-                        R.drawable.item_background_selected,
-                        mContext.getTheme()
-                    )
-                );
-
-            view.findViewById(R.id.textView_sequenceStage_description)
-                .setVisibility(View.VISIBLE);
-        }
-    }
-
-
-    @Override
-    public void cancelStyleSelected() {
-
-        View view = mLayoutManager.findViewByPosition(mSelectedIndex);
-
-        if (view != null) {
-
-            view.findViewById(R.id.linearLayout_sequenceStage_background)
-                .setBackground(
-                    ResourcesCompat.getDrawable(
-                        mContext.getResources(),
-                        R.drawable.item_background_default,
-                        mContext.getTheme()
-                    )
-                );
-
-            view.findViewById(R.id.textView_sequenceStage_description)
-                .setVisibility(View.GONE);
-        }
-    }
-
-
-    @Override
-    public void applyStyleDefault(int position) {
+    public void applyStyleDefault(int position, @IdRes int... idRes) {
 
         View view = mLayoutManager.findViewByPosition(position);
 
         if (view != null) {
 
-            view.findViewById(R.id.linearLayout_sequenceStage_background)
+            view.findViewById(idRes[0])
                 .setBackground(
                     ResourcesCompat.getDrawable(
                         mContext.getResources(),
-                        R.drawable.item_background_default,
+                        R.drawable.item_bg_default,
                         mContext.getTheme()
                     )
                 );
 
-            view.findViewById(R.id.textView_sequenceStage_description)
+            view.findViewById(idRes[1])
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.textView_sequenceStage_timeLeft)
+            view.findViewById(idRes[2])
                 .setVisibility(View.GONE);
-            view.findViewById(R.id.progressBar_sequenceStage_progressBar)
+            view.findViewById(idRes[3])
                 .setVisibility(View.GONE);
         }
     }
 
 
     @Override
-    public void setSelectedView() {
-
-        mSelectedView = mLayoutManager.findViewByPosition(mSelectedIndex);
-    }
-
-
     public void smoothScrollToActivePosition() {
 
         if (mActiveIndex < 0 || mActiveIndex >= mCollectionLength) {

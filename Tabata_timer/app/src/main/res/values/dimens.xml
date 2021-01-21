@@ -7,10 +7,12 @@
     <dimen name="textSize_all_36sp">36sp</dimen>
 
     <dimen name="width_all_0dp">0dp</dimen>
+    <dimen name="width_all_stroke_4dp">4dp</dimen>
     <dimen name="width_all_stroke_1dp">1dp</dimen>
     <dimen name="width_button_72dp">72dp</dimen>
     <dimen name="width_button_56dp">56dp</dimen>
 
+    <dimen name="height_all_100dp">100dp</dimen>
     <dimen name="height_all_0dp">0dp</dimen>
     <dimen name="height_button_72dp">72dp</dimen>
     <dimen name="height_button_56dp">56dp</dimen>

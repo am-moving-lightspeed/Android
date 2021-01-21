@@ -9,13 +9,13 @@
     <style name="TabataTimer.BtnBar.Sequence">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/height_sequence_buttonsBar_56dp</item>
-        <item name="android:background">@drawable/sequence_buttons_bar</item>
+        <item name="android:background">@drawable/sequence_btn_bar</item>
     </style>
 
     <style name="TabataTimer.BtnFrame.Sequence" parent="TabataTimer.BtnFrame.Default">
         <item name="android:layout_marginBottom">@dimen/margin_all_4dp</item>
         <item name="android:paddingEnd">@dimen/padding_all_buttonFrame_4dp</item>
-        <item name="android:background">@drawable/sequence_button_frame</item>
+        <item name="android:background">@drawable/sequence_btn_frame</item>
     </style>
 
     <style name="TabataTimer.BtnFrame.Sequence.NoMargin">

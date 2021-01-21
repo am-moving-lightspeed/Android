@@ -5,27 +5,40 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
-import com.tabatatimer.handlers.ICrudButtonsHandler;
+import com.tabatatimer.adapters.RecyclerViewAdapterAbstract;
+import com.tabatatimer.managers.ICrudButtonsManager;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
-import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
-import com.tabatatimer.viewholders.SequenceStageViewHolder;
+import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
+import com.tabatatimer.ui.sequence.viewholders.SequenceStageViewHolder;
 
 
 
-public class SequenceRecyclerViewAdapter extends RecyclerView.Adapter<SequenceStageViewHolder> {
+public class SequenceRecyclerViewAdapter extends RecyclerViewAdapterAbstract<SequenceStageViewHolder> {
 
     private SequenceStageInfoStructure[] mSequenceStagesData;
 
-    private ICrudButtonsHandler     mCrudButtonsHandler;
-    private SequenceHandlerAbstract mSequenceHandler;
+    private ICrudButtonsManager          mCrudButtonsManager;
+    private ISequenceRecyclerViewManager mSequenceManager;
 
 
     public SequenceRecyclerViewAdapter(SequenceStageInfoStructure[] data) {
 
         mSequenceStagesData = data;
+    }
+
+
+    public void setItemManager(ISequenceRecyclerViewManager manager) {
+
+        mSequenceManager = manager;
+        mSequenceManager.updateCollectionLength(mSequenceStagesData.length);
+    }
+
+
+    public void setCrudButtonsManager(ICrudButtonsManager manager) {
+
+        mCrudButtonsManager = manager;
     }
 
 
@@ -65,54 +78,24 @@ public class SequenceRecyclerViewAdapter extends RecyclerView.Adapter<SequenceSt
 
         int position = holder.getAdapterPosition();
 
-        if (mSequenceHandler.getActiveIndex() == position) {
-            mSequenceHandler.applyStyleActive();
+        if (mSequenceManager.getActiveIndex() == position) {
+            mSequenceManager.applyStyleActive();
         }
-        else if (mSequenceHandler.getSelectedIndex() == position) {
-            mSequenceHandler.applyStyleSelected();
+        else if (mSequenceManager.getSelectedIndex() == position) {
+            mSequenceManager.applyStyleSelected(R.id.linearLayout_sequenceStage_background,
+                                                R.id.textView_sequenceStage_description);
         }
         else {
-            mSequenceHandler.applyStyleDefault(position);
+            mSequenceManager.applyStyleDefault(position,
+                                               R.id.linearLayout_sequenceStage_background,
+                                               R.id.textView_sequenceStage_description,
+                                               R.id.textView_sequenceStage_timeLeft,
+                                               R.id.progressBar_sequenceStage_progressBar);
         }
     }
 
 
-    public void setSequenceHandler(SequenceHandlerAbstract handler) {
-
-        mSequenceHandler = handler;
-        mSequenceHandler.updateCollectionLength(mSequenceStagesData.length);
-    }
-
-
-    public void setCrudButtonsHandler(ICrudButtonsHandler handler) {
-
-        mCrudButtonsHandler = handler;
-    }
-
-
-    public void resolveViewHolderClickEvent(int position) {
-
-        if (position != mSequenceHandler.getActiveIndex()) {
-
-            if (position != mSequenceHandler.getSelectedIndex()) {
-                if (mCrudButtonsHandler.areCrudButtonsHidden()) {
-                    mCrudButtonsHandler.toggleCrudButtonsVisibility();
-                }
-
-                mSequenceHandler.cancelStyleSelected();
-                mSequenceHandler.setSelectedIndex(position);
-                mSequenceHandler.applyStyleSelected();
-            }
-            else {
-                mSequenceHandler.cancelStyleSelected();
-                mSequenceHandler.setSelectedIndex(mSequenceHandler.NO_SELECTED);
-                mCrudButtonsHandler.toggleCrudButtonsVisibility();
-            }
-        }
-
-    }
-
-
+    @Override
     public void deleteItem(int position) {
 
         SequenceStageInfoStructure[] old = mSequenceStagesData;
@@ -122,13 +105,39 @@ public class SequenceRecyclerViewAdapter extends RecyclerView.Adapter<SequenceSt
         System.arraycopy(old, 0, mSequenceStagesData, 0, position);
         System.arraycopy(old, position + 1, mSequenceStagesData, position, old.length - (position + 1));
 
-        if (position < mSequenceHandler.getActiveIndex()) {
-            mSequenceHandler.setActiveIndex(
-                mSequenceHandler.getActiveIndex() - 1
+        if (position < mSequenceManager.getActiveIndex()) {
+            mSequenceManager.setActiveIndex(
+                mSequenceManager.getActiveIndex() - 1
             );
         }
 
-        mSequenceHandler.updateCollectionLength(mSequenceStagesData.length);
+        mSequenceManager.updateCollectionLength(mSequenceStagesData.length);
+    }
+
+
+    @Override
+    public void resolveItemClickEvent(int position) {
+
+        if (position != mSequenceManager.getActiveIndex()) {
+
+            if (position != mSequenceManager.getSelectedIndex()) {
+                if (mCrudButtonsManager.areCrudButtonsHidden()) {
+                    mCrudButtonsManager.toggleCrudButtonsVisibility();
+                }
+
+                mSequenceManager.cancelStyleSelected(R.id.linearLayout_sequenceStage_background,
+                                                     R.id.textView_sequenceStage_description);
+                mSequenceManager.setSelectedIndex(position);
+                mSequenceManager.applyStyleSelected(R.id.linearLayout_sequenceStage_background,
+                                                    R.id.textView_sequenceStage_description);
+            }
+            else {
+                mSequenceManager.cancelStyleSelected(R.id.linearLayout_sequenceStage_background,
+                                                     R.id.textView_sequenceStage_description);
+                mSequenceManager.setSelectedIndex(mSequenceManager.NO_SELECTED);
+                mCrudButtonsManager.toggleCrudButtonsVisibility();
+            }
+        }
     }
 
 }

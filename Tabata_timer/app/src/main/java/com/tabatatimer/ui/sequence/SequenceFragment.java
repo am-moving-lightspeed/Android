@@ -15,20 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
 import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
-import com.tabatatimer.handlers.CrudButtonsHandler;
-import com.tabatatimer.handlers.ICrudButtonsHandler;
+import com.tabatatimer.managers.CrudButtonsManager;
+import com.tabatatimer.managers.ICrudButtonsManager;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
-import com.tabatatimer.ui.sequence.dialogs.DeleteSequenceStageDialogFragment;
+import com.tabatatimer.dialogs.DeleteDialogFragment;
 import com.tabatatimer.ui.sequence.dialogs.EditSequenceStageDialogFragment;
-import com.tabatatimer.ui.sequence.handlers.SequenceHandler;
-import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
+import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
+import com.tabatatimer.ui.sequence.managers.SequenceManager;
 
 
 
 public class SequenceFragment extends Fragment {
 
-    private SequenceHandlerAbstract mSequenceHandler;
-    private ICrudButtonsHandler     mCrudButtonsHandler;
+    private ISequenceRecyclerViewManager mSequenceManager;
+    private ICrudButtonsManager          mCrudButtonsManager;
 
     private RecyclerView                mRecyclerView;
     private SequenceRecyclerViewAdapter mAdapter;
@@ -69,14 +69,14 @@ public class SequenceFragment extends Fragment {
         View editBtnFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
         View deleteBtnFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
 
-        mCrudButtonsHandler = new CrudButtonsHandler(editBtnFrame, deleteBtnFrame);
-        mSequenceHandler    = new SequenceHandler(getContext(),
+        mCrudButtonsManager = new CrudButtonsManager(editBtnFrame, deleteBtnFrame);
+        mSequenceManager    = new SequenceManager(getContext(),
                                                   mRecyclerView,
-                                                  mRecyclerView.getLayoutManager());
-        mSequenceHandler.setCrudButtonsHandler(mCrudButtonsHandler);
+                                                  mRecyclerView.getLayoutManager(),
+                                                  mCrudButtonsManager);
 
-        mAdapter.setSequenceHandler(mSequenceHandler);
-        mAdapter.setCrudButtonsHandler(mCrudButtonsHandler);
+        mAdapter.setItemManager(mSequenceManager);
+        mAdapter.setCrudButtonsManager(mCrudButtonsManager);
 
         setPlayButtonEvents(bPlay);
         setEditButtonEvents(bEdit);
@@ -95,16 +95,15 @@ public class SequenceFragment extends Fragment {
             @Override
             public void onClick(View view_) {
 
-                mSequenceHandler.cancelStyleActive();
+                mSequenceManager.cancelStyleActive();
 
-                // TODO: create wrapper
-                mSequenceHandler.setActiveIndex(
-                    mSequenceHandler.getActiveIndex() + 1
+                mSequenceManager.setActiveIndex(
+                    mSequenceManager.getActiveIndex() + 1
                 );
 
-                mSequenceHandler.smoothScrollToActivePosition();
+                mSequenceManager.smoothScrollToActivePosition();
 
-                mSequenceHandler.applyStyleActive();
+                mSequenceManager.applyStyleActive();
             }
         });
     }
@@ -120,8 +119,8 @@ public class SequenceFragment extends Fragment {
                 assert getActivity() != null;
 
                 DialogFragment editDialog =
-                    new EditSequenceStageDialogFragment(mSequenceHandler.getSelectedView(),
-                                                        mSequenceHandler);
+                    new EditSequenceStageDialogFragment(mSequenceManager.getSelectedView(),
+                                                        mSequenceManager);
                 editDialog.show(getActivity().getSupportFragmentManager(),
                                 "dialog_editSequenceStage");
             }
@@ -139,9 +138,9 @@ public class SequenceFragment extends Fragment {
                 assert getActivity() != null;
 
                 DialogFragment deleteDialog =
-                    new DeleteSequenceStageDialogFragment(mSequenceHandler,
-                                                          mCrudButtonsHandler,
-                                                          mAdapter);
+                    new DeleteDialogFragment(mSequenceManager,
+                                             mCrudButtonsManager,
+                                             mAdapter);
                 deleteDialog.show(getActivity().getSupportFragmentManager(),
                                   "dialog_deleteSequenceStage");
             }

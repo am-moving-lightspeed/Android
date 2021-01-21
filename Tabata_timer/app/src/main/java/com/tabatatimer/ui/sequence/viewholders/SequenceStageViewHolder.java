@@ -1,4 +1,4 @@
-package com.tabatatimer.viewholders;
+package com.tabatatimer.ui.sequence.viewholders;
 
 
 import android.view.View;
@@ -75,7 +75,7 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View view) {
 
-                    mAdapter.resolveViewHolderClickEvent(getAdapterPosition());
+                    mAdapter.resolveItemClickEvent(getAdapterPosition());
                 }
             }
         );

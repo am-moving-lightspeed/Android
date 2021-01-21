@@ -1,4 +1,4 @@
-package com.tabatatimer.ui.sequence.dialogs;
+package com.tabatatimer.dialogs;
 
 
 import android.app.AlertDialog;
@@ -9,27 +9,28 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
-import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
-import com.tabatatimer.handlers.ICrudButtonsHandler;
-import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
+import com.tabatatimer.adapters.RecyclerViewAdapterAbstract;
+import com.tabatatimer.managers.IRecyclerViewItemManager;
+import com.tabatatimer.managers.ICrudButtonsManager;
 
 
 
-public class DeleteSequenceStageDialogFragment extends DialogFragment {
+public class DeleteDialogFragment extends DialogFragment {
 
-    private SequenceHandlerAbstract     mSequenceHandler;
-    private ICrudButtonsHandler         mCrudButtonsHandler;
-    private SequenceRecyclerViewAdapter mAdapter;
+    private IRecyclerViewItemManager                                       mItemManager;
+    private ICrudButtonsManager                                            mCrudButtonsManager;
+    private RecyclerViewAdapterAbstract<? extends RecyclerView.ViewHolder> mAdapter;
 
 
-    public DeleteSequenceStageDialogFragment(SequenceHandlerAbstract sequenceHandler,
-                                             ICrudButtonsHandler crudButtonsHandler,
-                                             SequenceRecyclerViewAdapter adapter) {
+    public DeleteDialogFragment(IRecyclerViewItemManager sequenceHandler,
+                                ICrudButtonsManager crudButtonsHandler,
+                                RecyclerViewAdapterAbstract<? extends RecyclerView.ViewHolder> adapter) {
 
-        mSequenceHandler    = sequenceHandler;
-        mCrudButtonsHandler = crudButtonsHandler;
+        mItemManager        = sequenceHandler;
+        mCrudButtonsManager = crudButtonsHandler;
         mAdapter            = adapter;
     }
 
@@ -46,13 +47,13 @@ public class DeleteSequenceStageDialogFragment extends DialogFragment {
                    public void onClick(DialogInterface dialog, int which) {
 
                        // TODO: implement database usage
-                       mAdapter.deleteItem(mSequenceHandler.getSelectedIndex());
+                       mAdapter.deleteItem(mItemManager.getSelectedIndex());
 
-                       mAdapter.notifyItemRemoved(mSequenceHandler.getSelectedIndex());
+                       mAdapter.notifyItemRemoved(mItemManager.getSelectedIndex());
                        mAdapter.notifyDataSetChanged();
 
-                       mSequenceHandler.setSelectedIndex(mSequenceHandler.NO_SELECTED);
-                       mCrudButtonsHandler.toggleCrudButtonsVisibility();
+                       mItemManager.setSelectedIndex(mItemManager.NO_SELECTED);
+                       mCrudButtonsManager.toggleCrudButtonsVisibility();
 
                        dismiss();
                    }

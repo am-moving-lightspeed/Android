@@ -1,7 +1,7 @@
-package com.tabatatimer.handlers;
+package com.tabatatimer.managers;
 
 
-public interface ICrudButtonsHandler {
+public interface ICrudButtonsManager {
 
     void toggleCrudButtonsVisibility();
     void performAppearingAnimation();

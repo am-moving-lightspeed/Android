@@ -25,7 +25,7 @@
     <style name="TabataTimer.Item.SequenceStageEdit.Content.Duration.Time"
            parent="TabataTimer.Item.SequenceStage.Content.Duration.Time">
         <item name="android:padding">@dimen/padding_item_content_4dp</item>
-        <item name="android:background">@drawable/item_content_edittext</item>
+        <item name="android:background">@drawable/all_edittext_bg</item>
         <item name="android:inputType">numberDecimal</item>
         <item name="android:maxLength">2</item>
     </style>
@@ -48,7 +48,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/padding_item_content_4dp</item>
         <item name="android:gravity">start</item>
-        <item name="android:background">@drawable/item_content_edittext</item>
+        <item name="android:background">@drawable/all_edittext_bg</item>
         <item name="android:inputType">text</item>
     </style>
 

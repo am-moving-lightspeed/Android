@@ -15,12 +15,12 @@
 
     <style name="TabataTimer.Item.Sequence.Content.Text.Header"
            parent="TabataTimer.Item.Default.Content.Text.Header">
-        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TabataTimer.Item.Sequence.Content.Text.Description"
            parent="TabataTimer.Item.Default.Content.Text.Description">
-        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="TabataTimer.Item.Sequence.Content.Text.AdditionalInfo">

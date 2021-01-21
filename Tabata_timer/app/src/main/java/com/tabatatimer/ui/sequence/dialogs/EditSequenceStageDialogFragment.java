@@ -17,13 +17,14 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.tabatatimer.R;
-import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
+import com.tabatatimer.managers.IRecyclerViewItemManager;
+import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
 
 
 
 public class EditSequenceStageDialogFragment extends DialogFragment {
 
-    private SequenceHandlerAbstract mSequenceHandler;
+    private IRecyclerViewItemManager mItemManager;
 
     private View     mSelectedView;
     private TextView mBOk;
@@ -37,10 +38,10 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
 
     public EditSequenceStageDialogFragment(View selectedView,
-                                           SequenceHandlerAbstract handler) {
+                                           ISequenceRecyclerViewManager handler) {
 
-        mSequenceHandler = handler;
-        mSelectedView    = selectedView;
+        mItemManager  = handler;
+        mSelectedView = selectedView;
     }
 
 
@@ -101,7 +102,8 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
 
-                view = mSequenceHandler.getSelectedView();
+                // TODO: implement db usage
+                view = mItemManager.getSelectedView();
 
                 String header      = mEtHeader.toString();
                 String description = mEtDescription.toString();
@@ -155,7 +157,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                         mEtMinutes.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
-                                R.drawable.item_content_edittext,
+                                R.drawable.all_edittext_bg,
                                 getActivity().getTheme()
                             )
                         );
@@ -170,7 +172,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                     mEtMinutes.setBackground(
                         ResourcesCompat.getDrawable(
                             getResources(),
-                            R.drawable.item_content_edittext_error,
+                            R.drawable.all_edittext_bg_error,
                             getActivity().getTheme()
                         )
                     );
@@ -206,7 +208,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                         mEtSeconds.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
-                                R.drawable.item_content_edittext,
+                                R.drawable.all_edittext_bg,
                                 getActivity().getTheme()
                             )
                         );
@@ -221,7 +223,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                     mEtSeconds.setBackground(
                         ResourcesCompat.getDrawable(
                             getResources(),
-                            R.drawable.item_content_edittext_error,
+                            R.drawable.all_edittext_bg_error,
                             getActivity().getTheme()
                         )
                     );
