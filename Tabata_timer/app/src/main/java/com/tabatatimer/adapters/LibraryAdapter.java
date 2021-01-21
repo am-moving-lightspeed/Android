@@ -28,10 +28,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<SequenceViewHolder> {
     @Override
     public SequenceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new SequenceViewHolder(
-            LayoutInflater.from(parent.getContext())
-                          .inflate(R.layout.item_sequence, parent, false)
-        );
+        return null;
     }
 
 

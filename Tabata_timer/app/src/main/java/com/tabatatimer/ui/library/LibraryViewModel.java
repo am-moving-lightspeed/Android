@@ -1,4 +1,4 @@
-package com.tabatatimer.ui.gallery;
+package com.tabatatimer.ui.library;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

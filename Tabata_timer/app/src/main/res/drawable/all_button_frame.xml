@@ -6,8 +6,8 @@
 
             <solid android:color="?colorPrimary" />
             <corners
-                android:bottomLeftRadius="@dimen/radius_all_buttonFrame_30dp"
-                android:topLeftRadius="@dimen/radius_all_buttonFrame_30dp" />
+                android:bottomLeftRadius="@dimen/radius_all_buttonFrame_32dp"
+                android:topLeftRadius="@dimen/radius_all_buttonFrame_32dp" />
 
         </shape>
     </item>
@@ -22,8 +22,8 @@
 
                 <solid android:color="?colorPrimaryDark" />
                 <corners
-                    android:bottomLeftRadius="@dimen/radius_all_buttonFrame_30dp"
-                    android:topLeftRadius="@dimen/radius_all_buttonFrame_30dp" />
+                    android:bottomLeftRadius="@dimen/radius_all_buttonFrame_32dp"
+                    android:topLeftRadius="@dimen/radius_all_buttonFrame_32dp" />
 
             </shape>
 

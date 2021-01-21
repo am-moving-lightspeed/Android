@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
+import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
 
 
 
@@ -19,7 +20,8 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
     private final TextView mTvTotalTimeInfo;
 
 
-    public SequenceViewHolder(@NonNull View view) {
+    public SequenceViewHolder(@NonNull View view,
+                              SequenceRecyclerViewAdapter adapter) {
 
         super(view);
         mTvHeader           = view.findViewById(R.id.textView_sequence_header);
@@ -50,10 +52,25 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    @SuppressWarnings("UnusedReturnValue")
     public SequenceViewHolder setTotalTimeInfo(String totalTimeInfo) {
 
         mTvTotalTimeInfo.setText(totalTimeInfo);
         return this;
     }
+
+
+    // region Events
+    private void setViewOnClickEvent(View view) {
+
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+    // endregion
 
 }

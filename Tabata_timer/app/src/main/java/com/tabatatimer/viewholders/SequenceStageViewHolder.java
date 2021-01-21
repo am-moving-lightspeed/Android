@@ -8,8 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
-import com.tabatatimer.adapters.StagesRecyclerViewAdapter;
-import com.tabatatimer.layoutmanagers.StagesRecyclerViewLayoutManager;
+import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
 
 
 
@@ -20,17 +19,19 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
     private final TextView mTvTime;
     private final TextView mTvTimeLeft;
 
-    private StagesRecyclerViewAdapter       mAdapter;
-    private StagesRecyclerViewLayoutManager mLayoutManager;
+    private SequenceRecyclerViewAdapter mAdapter;
 
 
-    public SequenceStageViewHolder(@NonNull View view) {
+    public SequenceStageViewHolder(@NonNull View view,
+                                   SequenceRecyclerViewAdapter adapter) {
 
         super(view);
         mTvHeader      = view.findViewById(R.id.textView_sequenceStage_header);
         mTvDescription = view.findViewById(R.id.textView_sequenceStage_description);
         mTvTime        = view.findViewById(R.id.textView_sequenceStage_time);
         mTvTimeLeft    = view.findViewById(R.id.textView_sequenceStage_timeLeft);
+
+        mAdapter = adapter;
 
         setViewOnClickEvents(view);
     }
@@ -57,23 +58,11 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    @SuppressWarnings("UnusedReturnValue")
     public SequenceStageViewHolder setTimeLeft(String timeLeft) {
 
         mTvTimeLeft.setText(timeLeft);
         return this;
-    }
-
-
-    public SequenceStageViewHolder setAdapter(RecyclerView.Adapter<SequenceStageViewHolder> adapter) {
-
-        mAdapter = (StagesRecyclerViewAdapter) adapter;
-        return this;
-    }
-
-
-    public void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
-
-        mLayoutManager = (StagesRecyclerViewLayoutManager) layoutManager;
     }
 
 
@@ -86,27 +75,7 @@ public class SequenceStageViewHolder extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View view) {
 
-                    int position = getAdapterPosition();
-
-                    if (position != mAdapter.getActivePosition()) {
-
-                        if (position != mAdapter.getSelectedPosition()) {
-                            if (mLayoutManager.areCrudButtonsHidden()) {
-                                mLayoutManager.toggleCrudButtons();
-                            }
-
-                            mLayoutManager.cancelStyleSelected();
-                            mAdapter.setSelectedPosition(position);
-                            mLayoutManager.applyStyleSelected();
-                            mLayoutManager.setSelectedView(view);
-                        }
-                        else {
-                            mLayoutManager.cancelStyleSelected();
-                            mAdapter.setSelectedPosition(mAdapter.NO_SELECTED);
-                            mLayoutManager.toggleCrudButtons();
-                            mLayoutManager.setSelectedView(null);
-                        }
-                    }
+                    mAdapter.resolveViewHolderClickEvent(getAdapterPosition());
                 }
             }
         );

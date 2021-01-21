@@ -1,4 +1,4 @@
-package com.tabatatimer.ui.sequence.editdialog;
+package com.tabatatimer.ui.sequence.dialogs;
 
 
 import android.app.AlertDialog;
@@ -15,23 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import com.tabatatimer.R;
+import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
 
 
 
 public class EditSequenceStageDialogFragment extends DialogFragment {
 
-    public interface EditDialogButtonClickListener {
-
-        void onPositiveClick(EditSequenceStageDialogFragment dialogFragment);
-
-    }
-
-
-
-    private EditDialogButtonClickListener mClickListener;
+    private SequenceHandlerAbstract mSequenceHandler;
 
     private View     mSelectedView;
     private TextView mBOk;
@@ -40,15 +32,15 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
     private EditText mEtMinutes;
     private EditText mEtSeconds;
 
-    private boolean areMinutesValid = true;
-    private boolean areSecondsValid = true;
+    private boolean mAreMinutesValid = true;
+    private boolean mAreSecondsValid = true;
 
 
-    public EditSequenceStageDialogFragment(Fragment parentFragment,
-                                           View selectedView) {
+    public EditSequenceStageDialogFragment(View selectedView,
+                                           SequenceHandlerAbstract handler) {
 
-        mClickListener = (EditDialogButtonClickListener) parentFragment;
-        mSelectedView  = selectedView;
+        mSequenceHandler = handler;
+        mSelectedView    = selectedView;
     }
 
 
@@ -66,45 +58,18 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
         mEtMinutes     = view.findViewById(R.id.editText_sequenceStageEdit_minutes);
         mEtSeconds     = view.findViewById(R.id.editText_sequenceStageEdit_seconds);
         mBOk           = view.findViewById(R.id.textView_sequenceStageEdit_buttonOk);
+        TextView mBCancel = view.findViewById(R.id.textView_sequenceStageEdit_buttonCancel);
 
         fillDialogView(view);
 
         builder.setView(view);
 
-        setButtonOkEvent(view);
-        setButtonCancelEvent(view);
-        setEditTextMinutesEvent();
-        setEditTextSecondsEvent();
+        setButtonOkEvent(mBOk);
+        setButtonCancelEvent(mBCancel);
+        setEditTextMinutesEvent(mEtMinutes);
+        setEditTextSecondsEvent(mEtSeconds);
 
         return builder.create();
-    }
-
-
-    public String getHeaderText() {
-
-        return mEtHeader.getText()
-                        .toString();
-    }
-
-
-    public String getDescriptionText() {
-
-        return mEtDescription.getText()
-                             .toString();
-    }
-
-
-    public String getMinutesText() {
-
-        return mEtMinutes.getText()
-                         .toString();
-    }
-
-
-    public String getSecondsText() {
-
-        return mEtSeconds.getText()
-                         .toString();
     }
 
 
@@ -129,39 +94,45 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
 
     // region Events
-    private void setButtonOkEvent(View view) {
+    private void setButtonOkEvent(View bOk) {
 
-        mBOk.setOnClickListener(new View.OnClickListener() {
+        bOk.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if (mClickListener != null) {
-                    mClickListener.onPositiveClick(EditSequenceStageDialogFragment.this);
-                }
+                view = mSequenceHandler.getSelectedView();
+
+                String header      = mEtHeader.toString();
+                String description = mEtDescription.toString();
+                String time        = mEtMinutes.toString() + ":" + mEtSeconds.toString();
+
+                ((TextView) view.findViewById(R.id.textView_sequenceStage_header)).setText(header);
+                ((TextView) view.findViewById(R.id.textView_sequenceStage_description)).setText(description);
+                ((TextView) view.findViewById(R.id.textView_sequenceStage_time)).setText(time);
+
                 EditSequenceStageDialogFragment.this.dismiss();
             }
         });
     }
 
 
-    private void setButtonCancelEvent(View view) {
+    private void setButtonCancelEvent(View bCancel) {
 
-        view.findViewById(R.id.textView_sequenceStageEdit_buttonCancel)
-            .setOnClickListener(new View.OnClickListener() {
+        bCancel.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-                    EditSequenceStageDialogFragment.this.dismiss();
-                }
-            });
+                EditSequenceStageDialogFragment.this.dismiss();
+            }
+        });
     }
 
 
-    private void setEditTextMinutesEvent() {
+    private void setEditTextMinutesEvent(EditText etMinutes) {
 
-        mEtMinutes.addTextChangedListener(new TextWatcher() {
+        etMinutes.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -174,11 +145,13 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                assert getActivity() != null;
+
                 char[] string = s.toString()
                                  .toCharArray();
 
                 if (isTextValid(string)) {
-                    if (!areMinutesValid) {
+                    if (!mAreMinutesValid) {
                         mEtMinutes.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
@@ -186,8 +159,8 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                                 getActivity().getTheme()
                             )
                         );
-                        areMinutesValid = true;
-                        if (areSecondsValid) {
+                        mAreMinutesValid = true;
+                        if (mAreSecondsValid) {
                             enableButtonOk();
                         }
                     }
@@ -201,16 +174,16 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                             getActivity().getTheme()
                         )
                     );
-                    areMinutesValid = false;
+                    mAreMinutesValid = false;
                 }
             }
         });
     }
 
 
-    private void setEditTextSecondsEvent() {
+    private void setEditTextSecondsEvent(EditText etSeconds) {
 
-        mEtSeconds.addTextChangedListener(new TextWatcher() {
+        etSeconds.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -223,11 +196,13 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+                assert getActivity() != null;
+
                 char[] string = s.toString()
                                  .toCharArray();
 
                 if (isTextValid(string)) {
-                    if (!areSecondsValid) {
+                    if (!mAreSecondsValid) {
                         mEtSeconds.setBackground(
                             ResourcesCompat.getDrawable(
                                 getResources(),
@@ -235,8 +210,8 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                                 getActivity().getTheme()
                             )
                         );
-                        areSecondsValid = true;
-                        if (areMinutesValid) {
+                        mAreSecondsValid = true;
+                        if (mAreMinutesValid) {
                             enableButtonOk();
                         }
                     }
@@ -250,7 +225,7 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
                             getActivity().getTheme()
                         )
                     );
-                    areSecondsValid = false;
+                    mAreSecondsValid = false;
                 }
             }
         });
@@ -279,6 +254,8 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
     private void disableButtonOk() {
 
+        assert getActivity() != null;
+
         mBOk.setClickable(false);
         mBOk.setTextColor(
             ResourcesCompat.getColor(
@@ -291,6 +268,8 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
 
     private void enableButtonOk() {
+
+        assert getActivity() != null;
 
         mBOk.setClickable(true);
         mBOk.setTextColor(

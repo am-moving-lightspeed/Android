@@ -5,44 +5,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
-import com.tabatatimer.adapters.StagesRecyclerViewAdapter;
-import com.tabatatimer.layoutmanagers.StagesRecyclerViewLayoutManager;
+import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
+import com.tabatatimer.handlers.CrudButtonsHandler;
+import com.tabatatimer.handlers.ICrudButtonsHandler;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
-import com.tabatatimer.ui.sequence.deletedialog.DeleteSequenceStageDialogFragment;
-import com.tabatatimer.ui.sequence.editdialog.EditSequenceStageDialogFragment;
+import com.tabatatimer.ui.sequence.dialogs.DeleteSequenceStageDialogFragment;
+import com.tabatatimer.ui.sequence.dialogs.EditSequenceStageDialogFragment;
+import com.tabatatimer.ui.sequence.handlers.SequenceHandler;
+import com.tabatatimer.ui.sequence.handlers.SequenceHandlerAbstract;
 
 
 
-public class SequenceFragment extends Fragment implements
-                                               EditSequenceStageDialogFragment.EditDialogButtonClickListener,
-                                               DeleteSequenceStageDialogFragment.DeleteDialogButtonClickListener {
+public class SequenceFragment extends Fragment {
 
-    private View mEditButtonFrame;
-    private View mDeleteButtonFrame;
+    private SequenceHandlerAbstract mSequenceHandler;
+    private ICrudButtonsHandler     mCrudButtonsHandler;
 
-    private RecyclerView                    mStagesRecyclerView;
-    private StagesRecyclerViewAdapter       mStagesRecyclerViewAdapter;
-    private StagesRecyclerViewLayoutManager mStagesRecyclerViewLayoutManager;
+    private RecyclerView                mRecyclerView;
+    private SequenceRecyclerViewAdapter mAdapter;
 
 
     public SequenceFragment() {
 
         super(R.layout.fragment_sequence);
 
-        mStagesRecyclerViewAdapter       = new StagesRecyclerViewAdapter(setSeed());
-        mStagesRecyclerViewLayoutManager = new StagesRecyclerViewLayoutManager(this,
-                                                                               mStagesRecyclerViewAdapter,
-                                                                               getContext());
-        mStagesRecyclerViewAdapter.setLayoutManager(mStagesRecyclerViewLayoutManager);
+        mAdapter = new SequenceRecyclerViewAdapter(setSeed());
     }
 
 
@@ -54,11 +50,9 @@ public class SequenceFragment extends Fragment implements
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
         if (view != null) {
-            mStagesRecyclerView = view.findViewById(R.id.recyclerView_sequence_stagesList);
-            mStagesRecyclerView.setLayoutManager(mStagesRecyclerViewLayoutManager);
-            mStagesRecyclerView.setAdapter(mStagesRecyclerViewAdapter);
-
-            mStagesRecyclerViewLayoutManager.setRecyclerView(mStagesRecyclerView);
+            mRecyclerView = view.findViewById(R.id.recyclerView_sequence_stagesList);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            mRecyclerView.setAdapter(mAdapter);
         }
 
         return view;
@@ -72,8 +66,17 @@ public class SequenceFragment extends Fragment implements
         View bEdit   = view.findViewById(R.id.imageView_sequence_btnEdit);
         View bDelete = view.findViewById(R.id.imageView_sequence_btnDelete);
 
-        mEditButtonFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
-        mDeleteButtonFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
+        View editBtnFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
+        View deleteBtnFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
+
+        mCrudButtonsHandler = new CrudButtonsHandler(editBtnFrame, deleteBtnFrame);
+        mSequenceHandler    = new SequenceHandler(getContext(),
+                                                  mRecyclerView,
+                                                  mRecyclerView.getLayoutManager());
+        mSequenceHandler.setCrudButtonsHandler(mCrudButtonsHandler);
+
+        mAdapter.setSequenceHandler(mSequenceHandler);
+        mAdapter.setCrudButtonsHandler(mCrudButtonsHandler);
 
         setPlayButtonEvents(bPlay);
         setEditButtonEvents(bEdit);
@@ -83,36 +86,7 @@ public class SequenceFragment extends Fragment implements
     }
 
 
-    public View[] getCrudButtonsFrames() {
-
-        return new View[] {mEditButtonFrame, mDeleteButtonFrame};
-    }
-
-
     // region Events
-    @Override
-    public void onPositiveClick(EditSequenceStageDialogFragment dialogFragment) {
-
-        // TODO: implement database usage
-        View view = mStagesRecyclerViewLayoutManager.getSelectedView();
-
-        String header      = dialogFragment.getHeaderText();
-        String description = dialogFragment.getDescriptionText();
-        String time        = dialogFragment.getMinutesText() + ":" + dialogFragment.getSecondsText();
-
-        ((TextView) view.findViewById(R.id.textView_sequenceStage_header)).setText(header);
-        ((TextView) view.findViewById(R.id.textView_sequenceStage_description)).setText(description);
-        ((TextView) view.findViewById(R.id.textView_sequenceStage_time)).setText(time);
-    }
-
-
-    @Override
-    public void onPositiveClick(DeleteSequenceStageDialogFragment dialogFragment) {
-
-        mStagesRecyclerViewAdapter.removeAt(mStagesRecyclerViewAdapter.getSelectedPosition());
-    }
-
-
     private void setPlayButtonEvents(View bPlay) {
 
         // TODO: replace event
@@ -121,18 +95,16 @@ public class SequenceFragment extends Fragment implements
             @Override
             public void onClick(View view_) {
 
-                mStagesRecyclerViewLayoutManager.cancelStyleActive();
+                mSequenceHandler.cancelStyleActive();
 
                 // TODO: create wrapper
-                mStagesRecyclerViewAdapter.setActivePosition(
-                    mStagesRecyclerViewAdapter.getActivePosition() + 1
+                mSequenceHandler.setActiveIndex(
+                    mSequenceHandler.getActiveIndex() + 1
                 );
 
-                mStagesRecyclerView.smoothScrollToPosition(
-                    mStagesRecyclerViewAdapter.getActivePosition()
-                );
+                mSequenceHandler.smoothScrollToActivePosition();
 
-                mStagesRecyclerViewLayoutManager.applyStyleActive();
+                mSequenceHandler.applyStyleActive();
             }
         });
     }
@@ -148,10 +120,10 @@ public class SequenceFragment extends Fragment implements
                 assert getActivity() != null;
 
                 DialogFragment editDialog =
-                    new EditSequenceStageDialogFragment(SequenceFragment.this,
-                                                        mStagesRecyclerViewLayoutManager.getSelectedView());
+                    new EditSequenceStageDialogFragment(mSequenceHandler.getSelectedView(),
+                                                        mSequenceHandler);
                 editDialog.show(getActivity().getSupportFragmentManager(),
-                                "EditSequenceStageDialog");
+                                "dialog_editSequenceStage");
             }
         });
     }
@@ -167,9 +139,11 @@ public class SequenceFragment extends Fragment implements
                 assert getActivity() != null;
 
                 DialogFragment deleteDialog =
-                    new DeleteSequenceStageDialogFragment(SequenceFragment.this);
+                    new DeleteSequenceStageDialogFragment(mSequenceHandler,
+                                                          mCrudButtonsHandler,
+                                                          mAdapter);
                 deleteDialog.show(getActivity().getSupportFragmentManager(),
-                                  "DeleteSequenceStageDialog");
+                                  "dialog_deleteSequenceStage");
             }
         });
     }
