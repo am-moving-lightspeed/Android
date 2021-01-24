@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   style="@style/TabataTimer.Loading.Background">
+
+    <!-- "Jumping" text -->
+    <LinearLayout
+        style="@style/TabataTimer.Loading.TextContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <!-- Letters apart -->
+        <TextView
+            android:id="@+id/textView_loading_L"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_L" />
+
+        <TextView
+            android:id="@+id/textView_loading_O"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_O" />
+
+        <TextView
+            android:id="@+id/textView_loading_A"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_A" />
+
+        <TextView
+            android:id="@+id/textView_loading_D"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_D" />
+
+        <TextView
+            android:id="@+id/textView_loading_I"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_I" />
+
+        <TextView
+            android:id="@+id/textView_loading_N"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_N" />
+
+        <TextView
+            android:id="@+id/textView_loading_G"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_letter_G" />
+
+        <TextView
+            android:id="@+id/textView_loading_dot0"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_dot" />
+
+        <TextView
+            android:id="@+id/textView_loading_dot1"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_dot" />
+
+        <TextView
+            android:id="@+id/textView_loading_dot2"
+            style="@style/TabataTimer.Loading.Text"
+            android:text="@string/loading_dot" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
