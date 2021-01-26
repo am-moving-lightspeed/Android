@@ -9,6 +9,7 @@
         <item name="android:paddingHorizontal">@dimen/padding_all_12dp</item>
         <item name="android:paddingTop">@dimen/padding_all_8dp</item>
         <item name="android:paddingBottom">@dimen/padding_all_8dp</item>
+<!--        <item name="android:background">?android:colorPrimary</item>-->
     </style>
 
 </resources>

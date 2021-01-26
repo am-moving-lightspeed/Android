@@ -4,7 +4,7 @@
     <item>
         <shape android:shape="oval">
 
-            <solid android:color="@color/colour_salmonDim" />
+            <solid android:color="@color/colour_buttonBackgroundRedHue" />
             <stroke
                 android:width="@dimen/width_all_stroke_1dp"
                 android:color="@color/colour_salmon" />

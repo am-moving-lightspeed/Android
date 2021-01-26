@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main_navigationGraph"
+            app:startDestination="@+id/fragment_empty">
+
+    <fragment
+        android:id="@+id/fragment_sequence"
+        android:name="com.tabatatimer.ui.sequence.SequenceFragment"
+        android:label="@string/label_sequence"
+        tools:layout="@layout/fragment_sequence" />
+
+    <fragment
+        android:id="@+id/fragment_library"
+        android:name="com.tabatatimer.ui.library.LibraryFragment"
+        android:label="@string/label_library"
+        tools:layout="@layout/fragment_library" />
+
+    <fragment
+        android:id="@+id/fragment_settings"
+        android:name="com.tabatatimer.ui.settings.SettingsFragment"
+        android:label="@string/label_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/fragment_empty"
+        android:name="com.tabatatimer.ui.empty.EmptyFragment"
+        android:label="@string/label_empty"
+        tools:layout="@layout/fragment_empty" />
+
+</navigation>

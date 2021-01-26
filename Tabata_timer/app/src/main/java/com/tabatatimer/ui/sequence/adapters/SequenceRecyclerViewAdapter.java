@@ -23,9 +23,9 @@ public class SequenceRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Seq
     private ISequenceRecyclerViewManager mSequenceManager;
 
 
-    public SequenceRecyclerViewAdapter(SequenceStageInfoStructure[] data) {
+    public SequenceRecyclerViewAdapter(SequenceStageInfoStructure[] content) {
 
-        mSequenceStagesData = data;
+        mSequenceStagesData = content;
     }
 
 
@@ -60,7 +60,7 @@ public class SequenceRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Seq
         holder.setHeader(mSequenceStagesData[position].header)
               .setDescription(mSequenceStagesData[position].description)
               .setTime(mSequenceStagesData[position].time)
-              .setTimeLeft(mSequenceStagesData[position].timeLeft);
+              .setTimeLeft(mSequenceStagesData[position].time);
     }
 
 
@@ -139,5 +139,9 @@ public class SequenceRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Seq
             }
         }
     }
+
+
+    @Override
+    public void resolveItemLongClickEvent(int position) {}
 
 }

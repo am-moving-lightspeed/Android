@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
@@ -15,14 +16,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tabatatimer.R;
-import com.tabatatimer.misc.LoadingHelperThread;
+import com.tabatatimer.misc.LoadingAnimationThread;
 
 import java.util.ArrayList;
 
 
 
 @SuppressWarnings("FieldCanBeLocal")
-public class LoadingFragment extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity {
 
     private final float AMPLITUDE = 25.0f;
     private final int   DURATION  = 200;
@@ -30,26 +31,17 @@ public class LoadingFragment extends AppCompatActivity {
 
     private AnimatorSet mJumpingAnimation;
 
-    private LoadingHelperThread mHelperThread;
+    private LoadingAnimationThread mAnimationThread;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-    }
 
-
-    @Override
-    protected void onStart() {
-
-        super.onStart();
-
-        reinitializeVariables();
-
-        Handler handler = new Handler(getMainLooper());
-        mHelperThread = new LoadingHelperThread(
+        Handler handler = new Handler(Looper.getMainLooper());
+        mAnimationThread = new LoadingAnimationThread(
             handler,
             new Runnable() {
 
@@ -60,15 +52,29 @@ public class LoadingFragment extends AppCompatActivity {
                 }
             }
         );
-        mHelperThread.start();
     }
 
 
     @Override
-    protected void onStop() {
+    public void onStart() {
+
+        super.onStart();
+
+        reinitializeVariables();
+        mAnimationThread.start();
+    }
+
+
+    @Override
+    public void onStop() {
 
         super.onStop();
-        mHelperThread.stop();
+        try {
+            mAnimationThread.stop();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tabatatimer">
+          package="com.tabatatimer">
 
     <application
         android:allowBackup="false"
@@ -17,7 +17,6 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -25,10 +24,10 @@
 
         <activity
             android:name=".activities.LoadingActivity"
-            android:label="@string/all_appName"
-            android:screenOrientation="portrait">
+            android:label="@string/loading_title"
+            android:screenOrientation="portrait" />
 
-        </activity>
+        <service android:name=".services.TimerService" />
 
     </application>
 

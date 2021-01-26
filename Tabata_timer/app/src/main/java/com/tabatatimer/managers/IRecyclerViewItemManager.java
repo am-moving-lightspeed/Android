@@ -16,7 +16,7 @@ public interface IRecyclerViewItemManager {
     void setSelectedIndex(int index);
 
     View getSelectedView();
-    void setSelectedView(View view);
+//    void setSelectedView(View view);
 
     void updateCollectionLength(int length);
 

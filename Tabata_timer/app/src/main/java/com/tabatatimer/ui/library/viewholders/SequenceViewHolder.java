@@ -37,6 +37,7 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
         mContext        = context;
 
         setViewOnClickEvents(view);
+        setViewOnLongClickEvents(view);
     }
 
 
@@ -76,7 +77,7 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
 
 
     // region Events
-    public void setViewOnClickEvents(View view) {
+    private void setViewOnClickEvents(View view) {
 
         view.setOnClickListener(new View.OnClickListener() {
 
@@ -84,6 +85,20 @@ public class SequenceViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
 
                 mAdapter.resolveItemClickEvent(getAdapterPosition());
+            }
+        });
+    }
+
+
+    private void setViewOnLongClickEvents(View view) {
+
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View view) {
+
+                mAdapter.resolveItemLongClickEvent(getAdapterPosition());
+                return true;
             }
         });
     }

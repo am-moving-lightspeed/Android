@@ -1,6 +1,10 @@
 package com.tabatatimer.ui.library;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +19,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
+import com.tabatatimer.activities.MainActivity;
 import com.tabatatimer.dialogs.DeleteDialogFragment;
 import com.tabatatimer.managers.CrudButtonsManager;
 import com.tabatatimer.managers.ICrudButtonsManager;
 import com.tabatatimer.managers.IRecyclerViewItemManager;
 import com.tabatatimer.misc.SequenceInfoStructure;
+import com.tabatatimer.sqlite.DbHelper;
+import com.tabatatimer.sqlite.DbManager;
+import com.tabatatimer.sqlite.IDbManager;
+import com.tabatatimer.sqlite.IFetching;
 import com.tabatatimer.ui.library.adapters.LibraryRecyclerViewAdapter;
 import com.tabatatimer.ui.library.dialogs.EditLibraryDialogFragment;
 import com.tabatatimer.ui.library.managers.LibraryManager;
+import com.tabatatimer.ui.sequence.SequenceFragment;
+import com.tabatatimer.viewmodels.SharedDbViewModel;
+
+import java.util.ArrayList;
 
 
 
@@ -31,13 +44,18 @@ public class LibraryFragment extends Fragment {
     private LibraryRecyclerViewAdapter mAdapter;
     private ICrudButtonsManager        mCrudButtonsManager;
     private IRecyclerViewItemManager   mLibraryManager;
+    private SharedDbViewModel          mSharedDbVM;
+
+    private Context mContext;
 
     private RecyclerView mRecyclerView;
 
 
-    public LibraryFragment() {
+    public LibraryFragment(Context context, SharedDbViewModel viewModel) {
 
         super(R.layout.fragment_library);
+        mContext    = context;
+        mSharedDbVM = viewModel;
     }
 
 
@@ -48,12 +66,12 @@ public class LibraryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_library, container, false);
 
-        mAdapter = new LibraryRecyclerViewAdapter(setSeed(), getContext());
+        mAdapter = new LibraryRecyclerViewAdapter(setContent(), this);
 
         if (view != null) {
             mRecyclerView = view.findViewById(R.id.recyclerView_library_sequencesList);
             mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         }
 
         return view;
@@ -72,7 +90,7 @@ public class LibraryFragment extends Fragment {
         View editBtnFrame   = view.findViewById(R.id.frameLayout_library_btnDeleteFrame);
         View deleteBtnFrame = view.findViewById(R.id.frameLayout_library_btnEditFrame);
 
-        mLibraryManager     = new LibraryManager(getContext(),
+        mLibraryManager     = new LibraryManager(mContext,
                                                  mRecyclerView.getLayoutManager());
         mCrudButtonsManager = new CrudButtonsManager(deleteBtnFrame, editBtnFrame);
 
@@ -127,61 +145,51 @@ public class LibraryFragment extends Fragment {
     // endregion
 
 
-    // TODO: remove method
-    private SequenceInfoStructure[] setSeed() {
+    public void onSequenceChosen(Integer position) {
 
-        SequenceInfoStructure[] data = new SequenceInfoStructure[8];
+        mSharedDbVM.setLastFK(position);
 
-        data[0]                  = new SequenceInfoStructure();
-        data[0].header           = "Light training";
-        data[0].description      = "Super light training with jazz just for soul.";
-        data[0].totalTimeInfo    = "13:07";
-        data[0].phasesAmountInfo = "4";
+        assert DbManager.getInstance() != null;
 
-        data[1]                  = new SequenceInfoStructure();
-        data[1].header           = "Medium training";
-        data[1].description      = "Super medium training with no jazz just for souuuuuuuuul.";
-        data[1].totalTimeInfo    = "14:52";
-        data[1].phasesAmountInfo = "7";
+        DbManager.getInstance()
+                 .fetchSequenceStages(position);
 
-        data[2]                  = new SequenceInfoStructure();
-        data[2].header           = "Hard training";
-        data[2].description      = "Super hard training to kill the one who does exercises/";
-        data[2].totalTimeInfo    = "26:14";
-        data[2].phasesAmountInfo = "13";
+        // Let fetcher do it's job.
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        data[3]                  = new SequenceInfoStructure();
-        data[3].header           = "Super super light training";
-        data[3].description      = "Super super super  training with jazz just for soul or maybe not yours.";
-        data[3].totalTimeInfo    = "5:34";
-        data[3].phasesAmountInfo = "3";
+        getParentFragmentManager().beginTransaction()
+                                  .setReorderingAllowed(true)
+                                  .replace(R.id.main_navigationHostFragment, SequenceFragment.class, null)
+                                  .commit();
 
-        data[4]                  = new SequenceInfoStructure();
-        data[4].header           = "Light training x2";
-        data[4].description      = "Super light training with jazz just for soul (twice).";
-        data[4].totalTimeInfo    = "22:43";
-        data[4].phasesAmountInfo = "8";
+//        ((MainActivity) requireActivity()).getNavController()
+//                                          .navigate(R.id.fragment_sequence);
+    }
 
-        data[5]                  = new SequenceInfoStructure();
-        data[5].header           = "Light training x3";
-        data[5].description      = "Super light training with jazz just for soul (twice).";
-        data[5].totalTimeInfo    = "14:45";
-        data[5].phasesAmountInfo = "12";
 
-        data[6]                  = new SequenceInfoStructure();
-        data[6].header           = "Training";
-        data[6].description      = "Super light training with jazz just for soul (twice) (twice) (twice) (twice)." +
-                                   " (twice) (twice) (twice) (twice) (twice) (twice) (twice)";
-        data[6].totalTimeInfo    = "14:45";
-        data[6].phasesAmountInfo = "12";
+    // TODO: fix bug
+    private SequenceInfoStructure[] setContent() {
 
-        data[7]                  = new SequenceInfoStructure();
-        data[7].header           = "Training Training Training Training Training ";
-        data[7].description      = "Super light training with jazz just for soul (twice) (twice) (twice) (twice).";
-        data[7].totalTimeInfo    = "14:45";
-        data[7].phasesAmountInfo = "12";
+        ArrayList<SequenceInfoStructure> list   = new ArrayList<>();
+        Cursor                           cursor = mSharedDbVM.getSequenceCursor();
 
-        return data;
+        while (cursor.moveToNext()) {
+            SequenceInfoStructure data = new SequenceInfoStructure();
+
+            data.header       = cursor.getString(1);
+            data.description  = cursor.getString(2);
+            data.totalTime    = cursor.getString(3);
+            data.stagesAmount = cursor.getString(4);
+
+            list.add(data);
+        }
+
+        return list.toArray(new SequenceInfoStructure[0]);
     }
 
 }

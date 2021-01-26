@@ -5,7 +5,7 @@ import android.os.Handler;
 
 
 
-public class LoadingHelperThread implements Runnable {
+public class LoadingAnimationThread implements Runnable {
 
     @SuppressWarnings("FieldCanBeLocal")
     private final int SLEEP_TIME = 1500;
@@ -16,10 +16,10 @@ public class LoadingHelperThread implements Runnable {
     private Runnable mRunnable;
 
 
-    public LoadingHelperThread(Handler handler, Runnable runnable) {
+    public LoadingAnimationThread(Handler handler, Runnable runnable) {
 
         super();
-        mThread     = new Thread(this, "LoadingHelperThread");
+        mThread     = new Thread(this, "LoadingAnimationThread");
         mHandler    = handler;
         mRunnable   = runnable;
         mStopThread = false;
@@ -30,14 +30,14 @@ public class LoadingHelperThread implements Runnable {
     public void run() {
 
         do {
+            mHandler.post(mRunnable);
+
             try {
                 Thread.sleep(SLEEP_TIME);
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            mHandler.post(mRunnable);
         }
         while (!mStopThread);
     }
@@ -49,9 +49,11 @@ public class LoadingHelperThread implements Runnable {
     }
 
 
-    public void stop() {
+    public void stop() throws
+                       InterruptedException {
 
         mStopThread = true;
+        mThread.join();
     }
 
 }

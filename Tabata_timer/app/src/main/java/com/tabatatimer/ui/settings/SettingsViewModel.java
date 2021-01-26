@@ -1,19 +1,27 @@
-package com.tabatatimer.ui.library;
+package com.tabatatimer.ui.settings;
+
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class LibraryViewModel extends ViewModel {
+
+
+public class SettingsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public LibraryViewModel() {
+
+    public SettingsViewModel() {
+
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is slideshow fragment");
     }
 
+
     public LiveData<String> getText() {
+
         return mText;
     }
+
 }

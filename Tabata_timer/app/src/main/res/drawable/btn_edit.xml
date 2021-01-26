@@ -4,7 +4,7 @@
     <item>
         <shape android:shape="oval">
 
-            <solid android:color="@color/colour_cinder" />
+            <solid android:color="@color/colour_buttonBackgroundBlueHue" />
             <stroke
                 android:width="@dimen/width_all_stroke_1dp"
                 android:color="@color/colour_cornflowerBlue" />

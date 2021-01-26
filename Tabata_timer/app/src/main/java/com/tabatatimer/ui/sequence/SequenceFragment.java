@@ -1,10 +1,18 @@
 package com.tabatatimer.ui.sequence;
 
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,31 +22,83 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
+import com.tabatatimer.misc.SequenceStageInfoStructure;
+import com.tabatatimer.services.ServiceDataProvider;
+import com.tabatatimer.services.TimerService;
 import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
 import com.tabatatimer.managers.CrudButtonsManager;
 import com.tabatatimer.managers.ICrudButtonsManager;
-import com.tabatatimer.misc.SequenceStageInfoStructure;
 import com.tabatatimer.dialogs.DeleteDialogFragment;
 import com.tabatatimer.ui.sequence.dialogs.EditSequenceStageDialogFragment;
 import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
 import com.tabatatimer.ui.sequence.managers.SequenceManager;
+import com.tabatatimer.viewmodels.SharedDbViewModel;
+
+import java.util.ArrayList;
 
 
 
 public class SequenceFragment extends Fragment {
 
+    private SequenceStageInfoStructure[] mSequenceStagesData;
+
     private ISequenceRecyclerViewManager mSequenceManager;
     private ICrudButtonsManager          mCrudButtonsManager;
+    private SharedDbViewModel            mSharedDbVM;
+
+    private Context mContext;
 
     private RecyclerView                mRecyclerView;
     private SequenceRecyclerViewAdapter mAdapter;
 
+    private Intent            mServiceIntent;
+    private TimerService      mTimerService;
+    private ServiceConnection mServiceConnection;
 
-    public SequenceFragment() {
+
+    public SequenceFragment(Context context,
+                            SharedDbViewModel viewModel) {
 
         super(R.layout.fragment_sequence);
 
-        mAdapter = new SequenceRecyclerViewAdapter(setSeed());
+        mContext            = context;
+        mSharedDbVM         = viewModel;
+        mSequenceStagesData = setContent();
+        mAdapter            = new SequenceRecyclerViewAdapter(mSequenceStagesData);
+
+        ServiceDataProvider.instantiate(mSequenceStagesData);
+
+        mServiceIntent     = new Intent(mContext, TimerService.class);
+        mServiceConnection = new ServiceConnection() {
+
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder binder) {
+
+                mTimerService = ((TimerService.TimeServiceBinder) binder).getService();
+
+                setOnTimerTickRunnable();
+                setOnTimerFinishRunnable();
+                setOnTimerRewindRunnable();
+                setOnTimerForwardRunnable();
+                setOnTimerStopRunnable();
+            }
+
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+                mTimerService.pauseTimer();
+            }
+        };
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        requireActivity().startService(mServiceIntent);
+        requireActivity().bindService(mServiceIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
     }
 
 
@@ -51,7 +111,7 @@ public class SequenceFragment extends Fragment {
 
         if (view != null) {
             mRecyclerView = view.findViewById(R.id.recyclerView_sequence_stagesList);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
             mRecyclerView.setAdapter(mAdapter);
         }
 
@@ -62,15 +122,17 @@ public class SequenceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        View bPlay   = view.findViewById(R.id.imageView_sequence_btnPlay);
-        View bEdit   = view.findViewById(R.id.imageView_sequence_btnEdit);
-        View bDelete = view.findViewById(R.id.imageView_sequence_btnDelete);
+        View bPlay    = view.findViewById(R.id.imageView_sequence_btnPlay);
+        View bRewind  = view.findViewById(R.id.imageView_sequence_btnFastRewind);
+        View bForward = view.findViewById(R.id.imageView_sequence_btnFastForward);
+        View bEdit    = view.findViewById(R.id.imageView_sequence_btnEdit);
+        View bDelete  = view.findViewById(R.id.imageView_sequence_btnDelete);
 
         View editBtnFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
         View deleteBtnFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
 
         mCrudButtonsManager = new CrudButtonsManager(editBtnFrame, deleteBtnFrame);
-        mSequenceManager    = new SequenceManager(getContext(),
+        mSequenceManager    = new SequenceManager(mContext,
                                                   mRecyclerView,
                                                   mRecyclerView.getLayoutManager(),
                                                   mCrudButtonsManager);
@@ -79,6 +141,8 @@ public class SequenceFragment extends Fragment {
         mAdapter.setCrudButtonsManager(mCrudButtonsManager);
 
         setPlayButtonEvents(bPlay);
+        setRewindButtonEvents(bRewind);
+        setForwardButtonEvents(bForward);
         setEditButtonEvents(bEdit);
         setDeleteButtonEvents(bDelete);
 
@@ -86,14 +150,45 @@ public class SequenceFragment extends Fragment {
     }
 
 
-    // region Events
-    private void setPlayButtonEvents(View bPlay) {
+    @Override
+    public void onDestroy() {
 
-        // TODO: replace event
-        bPlay.setOnClickListener(new View.OnClickListener() {
+        super.onDestroy();
+        requireActivity().unbindService(mServiceConnection);
+        requireActivity().stopService(mServiceIntent);
+    }
+
+
+    // region Events
+    private void setOnTimerTickRunnable() {
+
+        mTimerService.setOnTimerTickRunnable(new Runnable() {
 
             @Override
-            public void onClick(View view_) {
+            public void run() {
+
+                ServiceDataProvider data = ServiceDataProvider.getInstance();
+                TextView timeLeft = mSequenceManager.getActiveView()
+                                                    .findViewById(R.id.textView_sequenceStage_timeLeft);
+                ProgressBar bar = mSequenceManager.getActiveView()
+                                                  .findViewById(R.id.progressBar_sequenceStage_progressBar);
+
+                timeLeft.setText(
+                    ServiceDataProvider.parseTime(data.getMillisecondsLeft(), true)
+                );
+
+                bar.setProgress(data.getPercentage());
+            }
+        });
+    }
+
+
+    private void setOnTimerFinishRunnable() {
+
+        mTimerService.setOnTimerFinishedRunnable(new Runnable() {
+
+            @Override
+            public void run() {
 
                 mSequenceManager.cancelStyleActive();
 
@@ -104,6 +199,158 @@ public class SequenceFragment extends Fragment {
                 mSequenceManager.smoothScrollToActivePosition();
 
                 mSequenceManager.applyStyleActive();
+            }
+        });
+    }
+
+
+    private void setOnTimerRewindRunnable() {
+
+        mTimerService.setOnTimerRewindRunnable(new Runnable() {
+
+            @Override
+            public void run() {
+
+                ServiceDataProvider data = ServiceDataProvider.getInstance();
+
+                if (mSequenceManager.getActiveIndex() != -1) {
+
+                    int secondsPassed = ServiceDataProvider.parseTime(data.getFullTime(),
+                                                                      data.getMillisecondsLeft());
+                    TextView timeLeft = mSequenceManager.getActiveView()
+                                                        .findViewById(R.id.textView_sequenceStage_timeLeft);
+                    ProgressBar bar = mSequenceManager.getActiveView()
+                                                      .findViewById(R.id.progressBar_sequenceStage_progressBar);
+
+                    timeLeft.setText(data.getFullTime());
+                    bar.setProgress(0);
+                    data.resetStage();
+
+                    if (data.getCurrentStageIndex() != 0 && secondsPassed <= 10) {
+                        mSequenceManager.cancelStyleActive();
+                        mSequenceManager.setActiveIndex(
+                            mSequenceManager.getActiveIndex() - 1
+                        );
+                        mSequenceManager.smoothScrollToActivePosition();
+                        mSequenceManager.applyStyleActive();
+
+                        data.decrementCurrentStageIndex();
+                    }
+                }
+            }
+        });
+    }
+
+
+    private void setOnTimerForwardRunnable() {
+
+        mTimerService.setOnTimerForwardRunnable(new Runnable() {
+
+            @Override
+            public void run() {
+
+                ServiceDataProvider data = ServiceDataProvider.getInstance();
+
+                if (mSequenceManager.getActiveIndex() != -1) {
+
+                    TextView timeLeft = mSequenceManager.getActiveView()
+                                                        .findViewById(R.id.textView_sequenceStage_timeLeft);
+                    ProgressBar bar = mSequenceManager.getActiveView()
+                                                      .findViewById(R.id.progressBar_sequenceStage_progressBar);
+
+                    timeLeft.setText(data.getFullTime());
+                    bar.setProgress(0);
+                    data.incrementCurrentStageIndex();
+
+                    if (data.getCurrentStageIndex() == data.getAmount()) {
+                        mTimerService.stopTimer();
+                    }
+
+                    mSequenceManager.cancelStyleActive();
+                    mSequenceManager.setActiveIndex(
+                        mSequenceManager.getActiveIndex() + 1
+                    );
+                    mSequenceManager.smoothScrollToActivePosition();
+                    mSequenceManager.applyStyleActive();
+                }
+            }
+        });
+    }
+
+
+    private void setOnTimerStopRunnable() {
+
+        mTimerService.setOnTimerStopRunnable(new Runnable() {
+
+            @Override
+            public void run() {
+
+                mSequenceManager.cancelStyleActive();
+                mSequenceManager.setActiveIndex(-1);
+
+                ServiceDataProvider.getInstance()
+                                   .resetSequence();
+            }
+        });
+    }
+
+
+    private void setPlayButtonEvents(View bPlay) {
+
+        bPlay.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                if (!mTimerService.isRunning()) {
+                    if (mSequenceManager.getActiveIndex() == -1) {
+                        mSequenceManager.setActiveIndex(
+                            mSequenceManager.getActiveIndex() + 1
+                        );
+                        mSequenceManager.applyStyleActive();
+                    }
+
+                    mTimerService.startTimer();
+                }
+                else {
+                    mTimerService.pauseTimer();
+                }
+            }
+        });
+    }
+
+
+    private void setRewindButtonEvents(View bRewind) {
+
+        bRewind.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                mTimerService.rewindTimer();
+            }
+        });
+
+        bRewind.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+
+                mTimerService.stopTimer();
+                return true;
+            }
+        });
+    }
+
+
+    private void setForwardButtonEvents(View bForward) {
+
+        bForward.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                mTimerService.forwardTimer();
             }
         });
     }
@@ -149,60 +396,23 @@ public class SequenceFragment extends Fragment {
     // endregion
 
 
-    //    TODO: Remove the method
-    private SequenceStageInfoStructure[] setSeed() {
+    private SequenceStageInfoStructure[] setContent() {
 
-        SequenceStageInfoStructure[] arr = new SequenceStageInfoStructure[8];
+        ArrayList<SequenceStageInfoStructure> list   = new ArrayList<>();
+        Cursor                                cursor = mSharedDbVM.getSequenceStageCursor();
 
-        arr[0]             = new SequenceStageInfoStructure();
-        arr[0].header      = new String("Warm up");
-        arr[0].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[0].time        = new String("00:30");
-        arr[0].timeLeft    = new String("00:30");
+        while (cursor.moveToNext()) {
+            SequenceStageInfoStructure data = new SequenceStageInfoStructure();
 
-        arr[1]             = new SequenceStageInfoStructure();
-        arr[1].header      = new String("Warm up1");
-        arr[1].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[1].time        = "00:30";
-        arr[1].timeLeft    = new String("00:30");
+            data.header      = cursor.getString(1);
+            data.description = cursor.getString(2);
+            data.time        = cursor.getString(3);
+            data.foreignKey  = cursor.getInt(4);
 
-        arr[2]             = new SequenceStageInfoStructure();
-        arr[2].header      = new String("Warm up2");
-        arr[2].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[2].time        = new String("00:30");
-        arr[2].timeLeft    = new String("00:30");
+            list.add(data);
+        }
 
-        arr[3]             = new SequenceStageInfoStructure();
-        arr[3].header      = new String("Warm up3");
-        arr[3].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[3].time        = new String("00:30");
-        arr[3].timeLeft    = new String("00:30");
-
-        arr[4]             = new SequenceStageInfoStructure();
-        arr[4].header      = new String("Warm up4");
-        arr[4].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[4].time        = new String("00:30");
-        arr[4].timeLeft    = new String("00:30");
-
-        arr[5]             = new SequenceStageInfoStructure();
-        arr[5].header      = new String("Warm up5");
-        arr[5].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[5].time        = new String("00:30");
-        arr[5].timeLeft    = new String("00:30");
-
-        arr[6]             = new SequenceStageInfoStructure();
-        arr[6].header      = new String("Warm up6");
-        arr[6].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[6].time        = new String("00:30");
-        arr[6].timeLeft    = new String("00:30");
-
-        arr[7]             = new SequenceStageInfoStructure();
-        arr[7].header      = new String("Warm up7");
-        arr[7].description = new String("Warm upWarm upWarm upWarm upWarm upWarm upWWarm upWarm upWarm up");
-        arr[7].time        = new String("00:30");
-        arr[7].timeLeft    = new String("00:30");
-
-        return arr;
+        return list.toArray(new SequenceStageInfoStructure[0]);
     }
 
 }

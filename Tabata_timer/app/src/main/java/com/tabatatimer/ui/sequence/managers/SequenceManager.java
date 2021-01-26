@@ -22,6 +22,7 @@ public class SequenceManager extends
     protected int mActiveIndex;
 
     protected RecyclerView mRecyclerView;
+    protected View         mActiveView;
 
     protected ICrudButtonsManager mCrudButtonsManager;
 
@@ -52,6 +53,15 @@ public class SequenceManager extends
         mActiveIndex = (index >= 0) && (index < mCollectionLength) ?
                        index :
                        NO_ACTIVE;
+
+        mActiveView = mLayoutManager.findViewByPosition(mActiveIndex);
+    }
+
+
+    @Override
+    public View getActiveView() {
+
+        return mActiveView;
     }
 
 

@@ -17,5 +17,6 @@ public abstract class RecyclerViewAdapterAbstract<VH extends RecyclerView.ViewHo
     public abstract void onBindViewHolder(@NonNull VH holder, int position);
     public abstract void deleteItem(int position);
     public abstract void resolveItemClickEvent(int position);
+    public abstract void resolveItemLongClickEvent(int position);
 
 }

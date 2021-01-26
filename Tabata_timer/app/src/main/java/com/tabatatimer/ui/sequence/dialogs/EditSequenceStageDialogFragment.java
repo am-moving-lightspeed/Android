@@ -3,6 +3,7 @@ package com.tabatatimer.ui.sequence.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,6 +25,8 @@ import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
 
 public class EditSequenceStageDialogFragment extends DialogFragment {
 
+    private SQLiteDatabase mDb;
+
     private IRecyclerViewItemManager mItemManager;
 
     private View     mSelectedView;
@@ -38,9 +41,9 @@ public class EditSequenceStageDialogFragment extends DialogFragment {
 
 
     public EditSequenceStageDialogFragment(View selectedView,
-                                           ISequenceRecyclerViewManager handler) {
+                                           ISequenceRecyclerViewManager manager) {
 
-        mItemManager  = handler;
+        mItemManager  = manager;
         mSelectedView = selectedView;
     }
 

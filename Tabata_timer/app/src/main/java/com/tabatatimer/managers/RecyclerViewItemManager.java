@@ -51,7 +51,7 @@ public abstract class RecyclerViewItemManager implements IRecyclerViewItemManage
                          index :
                          NO_SELECTED;
 
-        setSelectedView(mLayoutManager.findViewByPosition(mSelectedIndex));
+        mSelectedView = mLayoutManager.findViewByPosition(mSelectedIndex);
     }
 
 
@@ -62,11 +62,11 @@ public abstract class RecyclerViewItemManager implements IRecyclerViewItemManage
     }
 
 
-    @Override
-    public void setSelectedView(View view) {
-
-        mSelectedView = view;
-    }
+//    @Override
+//    public void setSelectedView(View view) {
+//
+//        mSelectedView = view;
+//    }
 
 
     @Override

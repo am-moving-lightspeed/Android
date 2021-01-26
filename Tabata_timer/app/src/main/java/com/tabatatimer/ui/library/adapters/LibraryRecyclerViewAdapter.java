@@ -1,17 +1,18 @@
 package com.tabatatimer.ui.library.adapters;
 
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.tabatatimer.R;
 import com.tabatatimer.adapters.RecyclerViewAdapterAbstract;
 import com.tabatatimer.managers.ICrudButtonsManager;
 import com.tabatatimer.managers.IRecyclerViewItemManager;
 import com.tabatatimer.misc.SequenceInfoStructure;
+import com.tabatatimer.ui.library.LibraryFragment;
 import com.tabatatimer.ui.library.viewholders.SequenceViewHolder;
 
 
@@ -23,14 +24,14 @@ public class LibraryRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Sequ
     private IRecyclerViewItemManager mItemManager;
     private ICrudButtonsManager      mCrudButtonsManager;
 
-    private Context mContext;
+    private LibraryFragment mParentFragment;
 
 
     public LibraryRecyclerViewAdapter(SequenceInfoStructure[] data,
-                                      Context context) {
+                                      Fragment parent) {
 
-        mSequencesData = data;
-        mContext       = context;
+        mSequencesData  = data;
+        mParentFragment = (LibraryFragment) parent;
     }
 
 
@@ -54,7 +55,7 @@ public class LibraryRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Sequ
         return new SequenceViewHolder(
             LayoutInflater.from(parent.getContext())
                           .inflate(R.layout.item_sequence, parent, false),
-            mContext,
+            mParentFragment.getContext(),
             this
         );
     }
@@ -65,8 +66,8 @@ public class LibraryRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Sequ
 
         holder.setHeader(mSequencesData[position].header)
               .setDescription(mSequencesData[position].description)
-              .setTotalTime(mSequencesData[position].totalTimeInfo)
-              .setStagesAmount(mSequencesData[position].phasesAmountInfo);
+              .setTotalTime(mSequencesData[position].totalTime)
+              .setStagesAmount(mSequencesData[position].stagesAmount);
     }
 
 
@@ -131,6 +132,12 @@ public class LibraryRecyclerViewAdapter extends RecyclerViewAdapterAbstract<Sequ
             mItemManager.setSelectedIndex(mItemManager.NO_SELECTED);
             mCrudButtonsManager.toggleCrudButtonsVisibility();
         }
+    }
+
+
+    public void resolveItemLongClickEvent(int position) {
+
+        mParentFragment.onSequenceChosen(position);
     }
 
 }

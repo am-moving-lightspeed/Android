@@ -1,6 +1,8 @@
 package com.tabatatimer.ui.sequence.managers;
 
 
+import android.view.View;
+
 import com.tabatatimer.managers.IRecyclerViewItemManager;
 
 
@@ -12,6 +14,8 @@ public interface ISequenceRecyclerViewManager extends IRecyclerViewItemManager {
 
     int getActiveIndex();
     void setActiveIndex(int index);
+
+    View getActiveView();
 
     void applyStyleActive();
     void cancelStyleActive();
