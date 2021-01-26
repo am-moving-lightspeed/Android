@@ -9,10 +9,10 @@
 
     <style name="navigationMenuHeader">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">200dp</item>
         <item name="android:paddingLeft">@dimen/navigationMenuHeader_paddingHorizontal</item>
         <item name="android:paddingRight">@dimen/navigationMenuHeader_paddingHorizontal</item>
-        <item name="android:paddingTop">@dimen/navigationMenuHeader_paddingTop</item>
+        <item name="android:paddingTop">35dp</item>
         <item name="android:paddingBottom">@dimen/navigationMenuHeader_paddingBottom</item>
         <item name="android:orientation">vertical</item>
         <item name="android:background">@drawable/main_navmenu_header_background</item>

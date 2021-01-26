@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
                                    style="@style/TabataTimer.Item.SequenceStageEdit.Card">
 
     <LinearLayout
@@ -29,6 +30,29 @@
             style="@style/TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Description"
             android:autofillHints=""
             android:hint="@string/sequenceStageEdit_descriptionPlaceholder" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colour_black"
+            android:padding="3dp">
+
+            <FrameLayout
+                android:id="@+id/frameLayout_sequence_colourPicker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colour_strokeDefault" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sequenceStageAdd_colour"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Bar">
 

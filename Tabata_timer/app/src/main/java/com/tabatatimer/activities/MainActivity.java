@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.google.android.material.navigation.NavigationView;
+import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
 import com.tabatatimer.R;
 import com.tabatatimer.factories.CustomFragmentFactory;
 import com.tabatatimer.factories.CustomViewModelFactory;
+import com.tabatatimer.misc.IColourPickerListener;
 import com.tabatatimer.sqlite.DbManager;
 import com.tabatatimer.sqlite.IDbManager;
 import com.tabatatimer.sqlite.IFetching;
@@ -26,11 +28,13 @@ import androidx.appcompat.widget.Toolbar;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ColorPickerDialogListener {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     private IDbManager mDbManager;
+
+    private IColourPickerListener mColourPickerListener;
 
 
     @Override
@@ -113,6 +117,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mDbManager.fetchSequences(3000);
+    }
+
+
+    @Override
+    public void onColorSelected(int dialogId, int color) {
+
+        if (mColourPickerListener != null) {
+            mColourPickerListener.onColourPicked(color);
+        }
+    }
+
+
+    @Override
+    public void onDialogDismissed(int dialogId) {}
+
+
+    public void setColourPickerListener(IColourPickerListener listener) {
+
+        mColourPickerListener = listener;
     }
 
 }

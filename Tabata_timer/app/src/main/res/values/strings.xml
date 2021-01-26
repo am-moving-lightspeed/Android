@@ -11,9 +11,9 @@
     <string name="all_timeLeftPlaceholder">-00:17</string>
     <string name="all_totalTimePlaceholder">Total time: %s</string>
     <string name="all_stagesAmountPlaceholder">Stages amount: %s</string>
-    <string name="all_navigationMenuHeaderTitle">Current sequence</string>
-    <string name="all_navigationMenuHeaderStage">Stage: %s</string>
-    <string name="all_navigationMenuHeaderStatus">Status: %s</string>
+    <string name="all_navigationMenuHeaderTitle" translatable="false">Current sequence</string>
+    <string name="all_navigationMenuHeaderStage" translatable="false">Stage:</string>
+    <string name="all_navigationMenuHeaderStatus" translatable="false">Status:</string>
 
     <string name="label_sequence">Sequence</string>
     <string name="label_library">Library</string>
@@ -34,6 +34,7 @@
 
     <string name="sequenceStageAdd_name">Name:</string>
     <string name="sequenceStageAdd_description">Description:</string>
+    <string name="sequenceStageAdd_colour" translatable="false">Tap here to choose colour</string>
     <string name="sequenceStageEdit_rename">Rename:</string>
     <string name="sequenceStageEdit_changeDescription">Change description:</string>
     <string name="sequenceStageEdit_alterTimer">Alter timer:</string>
