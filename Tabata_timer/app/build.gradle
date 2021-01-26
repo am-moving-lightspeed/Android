@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+apply from: "../ver.gradle"
+
+
+def version = extractVer()
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -8,8 +13,8 @@ android {
         applicationId "com.example.tabatatimer"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode generateVersionCode(version)
+        versionName "${version[0]}.${version[1]}.${version[2]}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
