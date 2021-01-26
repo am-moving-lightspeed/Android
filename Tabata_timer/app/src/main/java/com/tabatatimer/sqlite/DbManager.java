@@ -140,6 +140,14 @@ public class DbManager implements IDbManager {
 
 
     @Override
+    public void dropDatabase() {
+
+        mDb.execSQL(String.format("DROP TABLE IF EXISTS %s;", DbHelper.TABLE_NAME_SEQUENCE_STAGE));
+        mDb.execSQL(String.format("DROP TABLE IF EXISTS %s;", DbHelper.TABLE_NAME_SEQUENCE));
+    }
+
+
+    @Override
     public synchronized void closeConnection() {
 
         if (!mSequenceCursor.isClosed()) {

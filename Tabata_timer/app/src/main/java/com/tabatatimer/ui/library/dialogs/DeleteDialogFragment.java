@@ -1,9 +1,10 @@
-package com.tabatatimer.dialogs;
+package com.tabatatimer.ui.library.dialogs;
 
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,12 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
 import com.tabatatimer.adapters.RecyclerViewAdapterAbstract;
-import com.tabatatimer.managers.IRecyclerViewItemManager;
 import com.tabatatimer.managers.ICrudButtonsManager;
+import com.tabatatimer.managers.IRecyclerViewItemManager;
+import com.tabatatimer.misc.SequenceInfoStructure;
+import com.tabatatimer.sqlite.DbHelper;
+
+import java.util.Locale;
 
 
 
 public class DeleteDialogFragment extends DialogFragment {
+
+    SequenceInfoStructure[] mModels;
 
     private IRecyclerViewItemManager                                       mItemManager;
     private ICrudButtonsManager                                            mCrudButtonsManager;
@@ -27,11 +34,13 @@ public class DeleteDialogFragment extends DialogFragment {
 
     public DeleteDialogFragment(IRecyclerViewItemManager sequenceHandler,
                                 ICrudButtonsManager crudButtonsHandler,
-                                RecyclerViewAdapterAbstract<? extends RecyclerView.ViewHolder> adapter) {
+                                RecyclerViewAdapterAbstract<? extends RecyclerView.ViewHolder> adapter,
+                                SequenceInfoStructure[] models) {
 
         mItemManager        = sequenceHandler;
         mCrudButtonsManager = crudButtonsHandler;
         mAdapter            = adapter;
+        mModels             = models;
     }
 
 
@@ -46,7 +55,15 @@ public class DeleteDialogFragment extends DialogFragment {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
 
-                       // TODO: implement database usage
+                       SQLiteDatabase db = new DbHelper(getContext()).getWritableDatabase();
+                       db.delete(DbHelper.TABLE_NAME_SEQUENCE,
+                                 String.format(Locale.US,
+                                               "%s = %d",
+                                               DbHelper.ID_COLUMN,
+                                               mModels[mItemManager.getSelectedIndex()].id),
+                                 null);
+                       db.close();
+
                        mAdapter.deleteItem(mItemManager.getSelectedIndex());
 
                        mAdapter.notifyItemRemoved(mItemManager.getSelectedIndex());

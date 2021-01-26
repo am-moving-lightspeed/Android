@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String STAGES_AMOUNT_COLUMN = "stages_amount";
     public static final String COLOUR_COLUMN        = "color_hex";
 
-    public static final int VERSION = 4;
+    public static final int VERSION = 9;
 
 
     public DbHelper(@Nullable Context context) {

@@ -1,4 +1,4 @@
-package com.tabatatimer.ui.sequence.dialogs;
+package com.tabatatimer.ui.library.dialogs;
 
 
 import android.app.AlertDialog;

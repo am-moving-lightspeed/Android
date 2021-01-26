@@ -147,14 +147,6 @@ public class TimerService extends Service {
     }
 
 
-    @Override
-    public void onDestroy() {
-
-        stopTimer();
-        super.onDestroy();
-    }
-
-
     public boolean isRunning() {
 
         return isRunning;

@@ -1,4 +1,4 @@
-package com.tabatatimer.ui.library.dialogs;
+package com.tabatatimer.ui.sequence.dialogs;
 
 
 import android.app.AlertDialog;
@@ -17,16 +17,11 @@ import androidx.fragment.app.DialogFragment;
 
 import com.tabatatimer.R;
 import com.tabatatimer.managers.IRecyclerViewItemManager;
-import com.tabatatimer.misc.SequenceInfoStructure;
 import com.tabatatimer.sqlite.DbHelper;
 
-import java.util.Locale;
 
 
-
-public class EditLibraryDialogFragment extends DialogFragment {
-
-    private SequenceInfoStructure[] mModels;
+public class AddSequenceStageDialogFragment extends DialogFragment {
 
     private IRecyclerViewItemManager mItemManager;
 
@@ -35,13 +30,11 @@ public class EditLibraryDialogFragment extends DialogFragment {
     private EditText mEtDescription;
 
 
-    public EditLibraryDialogFragment(View selectedView,
-                                     IRecyclerViewItemManager manager,
-                                     SequenceInfoStructure[] models) {
+    public AddSequenceStageDialogFragment(View selectedView,
+                                          IRecyclerViewItemManager manager) {
 
         mItemManager  = manager;
         mSelectedView = selectedView;
-        mModels       = models;
     }
 
 
@@ -52,14 +45,12 @@ public class EditLibraryDialogFragment extends DialogFragment {
         AlertDialog.Builder builder  = new AlertDialog.Builder(getContext());
         LayoutInflater      inflater = LayoutInflater.from(getContext());
 
-        View view = inflater.inflate(R.layout.fragment_sequence_stage_edit, null);
+        View view = inflater.inflate(R.layout.fragment_sequence_stage_add, null);
 
         mEtHeader      = view.findViewById(R.id.editText_sequenceStageEdit_header);
         mEtDescription = view.findViewById(R.id.editText_sequenceStageEdit_description);
         TextView mBOk     = view.findViewById(R.id.textView_sequenceStageEdit_buttonOk);
         TextView mBCancel = view.findViewById(R.id.textView_sequenceStageEdit_buttonCancel);
-
-        fillDialogView(view);
 
         builder.setView(view);
 
@@ -67,18 +58,6 @@ public class EditLibraryDialogFragment extends DialogFragment {
         setButtonCancelEvent(mBCancel);
 
         return builder.create();
-    }
-
-
-    private void fillDialogView(View view) {
-
-        EditText destination = view.findViewById(R.id.editText_sequenceStageEdit_header);
-        TextView source      = mSelectedView.findViewById(R.id.textView_sequenceStage_header);
-        destination.setText(source.getText());
-
-        destination = view.findViewById(R.id.editText_sequenceStageEdit_description);
-        source      = mSelectedView.findViewById(R.id.textView_sequenceStage_description);
-        destination.setText(source.getText());
     }
 
 
@@ -100,19 +79,15 @@ public class EditLibraryDialogFragment extends DialogFragment {
                 contentValues.put(DbHelper.HEADER_COLUMN, header);
                 contentValues.put(DbHelper.DESCRIPTION_COLUMN, description);
 
-                db.update(DbHelper.TABLE_NAME_SEQUENCE_STAGE,
-                          contentValues,
-                          String.format(Locale.US,
-                                        "%s = %d",
-                                        DbHelper.ID_COLUMN,
-                                        mModels[mItemManager.getSelectedIndex()].id),
-                          null);
+                db.insert(DbHelper.TABLE_NAME_SEQUENCE_STAGE,
+                          null,
+                          contentValues);
 
                 ((TextView) view.findViewById(R.id.textView_sequenceStage_header)).setText(header);
                 ((TextView) view.findViewById(R.id.textView_sequenceStage_description)).setText(description);
 
                 db.close();
-                EditLibraryDialogFragment.this.dismiss();
+                AddSequenceStageDialogFragment.this.dismiss();
             }
         });
     }
@@ -125,7 +100,7 @@ public class EditLibraryDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
 
-                EditLibraryDialogFragment.this.dismiss();
+                AddSequenceStageDialogFragment.this.dismiss();
             }
         });
     }

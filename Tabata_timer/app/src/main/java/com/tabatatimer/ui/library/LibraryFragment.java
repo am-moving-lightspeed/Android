@@ -2,9 +2,7 @@ package com.tabatatimer.ui.library;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,24 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tabatatimer.R;
-import com.tabatatimer.activities.MainActivity;
-import com.tabatatimer.dialogs.DeleteDialogFragment;
 import com.tabatatimer.managers.CrudButtonsManager;
 import com.tabatatimer.managers.ICrudButtonsManager;
 import com.tabatatimer.managers.IRecyclerViewItemManager;
 import com.tabatatimer.misc.SequenceInfoStructure;
-import com.tabatatimer.sqlite.DbHelper;
 import com.tabatatimer.sqlite.DbManager;
-import com.tabatatimer.sqlite.IDbManager;
-import com.tabatatimer.sqlite.IFetching;
 import com.tabatatimer.ui.library.adapters.LibraryRecyclerViewAdapter;
+import com.tabatatimer.ui.library.dialogs.AddDialogFragment;
+import com.tabatatimer.ui.library.dialogs.DeleteDialogFragment;
 import com.tabatatimer.ui.library.dialogs.EditLibraryDialogFragment;
 import com.tabatatimer.ui.library.managers.LibraryManager;
-import com.tabatatimer.ui.sequence.SequenceFragment;
 import com.tabatatimer.viewmodels.SharedDbViewModel;
 
 import java.util.ArrayList;
@@ -40,6 +35,8 @@ import java.util.ArrayList;
 
 
 public class LibraryFragment extends Fragment {
+
+    private SequenceInfoStructure[] mSequences;
 
     private LibraryRecyclerViewAdapter mAdapter;
     private ICrudButtonsManager        mCrudButtonsManager;
@@ -56,6 +53,19 @@ public class LibraryFragment extends Fragment {
         super(R.layout.fragment_library);
         mContext    = context;
         mSharedDbVM = viewModel;
+
+        assert DbManager.getInstance() != null;
+
+        DbManager.getInstance()
+                 .fetchSequences(0);
+
+        // Let fetcher do it's job.
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -66,7 +76,8 @@ public class LibraryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_library, container, false);
 
-        mAdapter = new LibraryRecyclerViewAdapter(setContent(), this);
+        mSequences = setContent();
+        mAdapter   = new LibraryRecyclerViewAdapter(mSequences, this);
 
         if (view != null) {
             mRecyclerView = view.findViewById(R.id.recyclerView_library_sequencesList);
@@ -97,12 +108,34 @@ public class LibraryFragment extends Fragment {
         mAdapter.setItemManager(mLibraryManager);
         mAdapter.setCrudButtonsManager(mCrudButtonsManager);
 
+        setAddButtonEvents(bAdd);
         setEditButtonEvents(bEdit);
         setDeleteButtonEvents(bDelete);
     }
 
 
     // region Events
+    private void setAddButtonEvents(View bAdd) {
+
+        assert getActivity() != null;
+
+        bAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                DialogFragment addDialogFragment =
+                    new AddDialogFragment(mLibraryManager.getSelectedView(),
+                                          mLibraryManager);
+
+                //noinspection ConstantConditions
+                addDialogFragment.show(getActivity().getSupportFragmentManager(),
+                                       "library_addSequence");
+            }
+        });
+    }
+
+
     private void setEditButtonEvents(View bEdit) {
 
         assert getActivity() != null;
@@ -114,7 +147,8 @@ public class LibraryFragment extends Fragment {
 
                 DialogFragment editDialogFragment =
                     new EditLibraryDialogFragment(mLibraryManager.getSelectedView(),
-                                                  mLibraryManager);
+                                                  mLibraryManager,
+                                                  mSequences);
 
                 //noinspection ConstantConditions
                 editDialogFragment.show(getActivity().getSupportFragmentManager(),
@@ -134,7 +168,8 @@ public class LibraryFragment extends Fragment {
                 DialogFragment deleteDialogFragment =
                     new DeleteDialogFragment(mLibraryManager,
                                              mCrudButtonsManager,
-                                             mAdapter);
+                                             mAdapter,
+                                             mSequences);
 
                 //noinspection ConstantConditions
                 deleteDialogFragment.show(getActivity().getSupportFragmentManager(),
@@ -149,31 +184,25 @@ public class LibraryFragment extends Fragment {
 
         mSharedDbVM.setLastFK(position);
 
-        assert DbManager.getInstance() != null;
+//        getParentFragmentManager().beginTransaction()
+//                                  .setReorderingAllowed(true)
+//                                  .replace(R.id.main_navigationHostFragment, SequenceFragment.class, null)
+//                                  .commit();
 
-        DbManager.getInstance()
-                 .fetchSequenceStages(position);
-
-        // Let fetcher do it's job.
-        try {
-            Thread.sleep(100);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        getParentFragmentManager().beginTransaction()
-                                  .setReorderingAllowed(true)
-                                  .replace(R.id.main_navigationHostFragment, SequenceFragment.class, null)
-                                  .commit();
-
-//        ((MainActivity) requireActivity()).getNavController()
-//                                          .navigate(R.id.fragment_sequence);
+        Navigation.findNavController(requireActivity(), R.id.main_navigationHostFragment)
+                  .navigate(R.id.fragment_sequence);
     }
 
 
     // TODO: fix bug
     private SequenceInfoStructure[] setContent() {
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ArrayList<SequenceInfoStructure> list   = new ArrayList<>();
         Cursor                           cursor = mSharedDbVM.getSequenceCursor();

@@ -32,6 +32,8 @@
 
     <string name="sequenceStage_duration">Duration:</string>
 
+    <string name="sequenceStageAdd_name">Name:</string>
+    <string name="sequenceStageAdd_description">Description:</string>
     <string name="sequenceStageEdit_rename">Rename:</string>
     <string name="sequenceStageEdit_changeDescription">Change description:</string>
     <string name="sequenceStageEdit_alterTimer">Alter timer:</string>
@@ -51,5 +53,38 @@
     <string name="loading_letter_N">N</string>
     <string name="loading_letter_G">G</string>
     <string name="loading_dot">.</string>
+
+    <string name="preferences_fontSize">Font size</string>
+    <string name="preferences_setsFontSize">Select font size</string>
+    <string name="preferences_selectLanguage">Select language</string>
+    <string name="preferences_appLanguage">App language</string>
+    <string name="preferences_language">Language</string>
+    <string name="preferences_darkTheme">Dark theme</string>
+    <string name="preferences_turnOn">Turn on</string>
+    <string name="preferences_turnOff">Turn off</string>
+    <string name="preferences_delete">Delete</string>
+    <string name="preferences_deleteAll">Delete all</string>
+
+    <string-array name="preferences_languageArray">
+        <item>Russian</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="preferences_languageAliasArray">
+        <item>ru</item>
+        <item>en</item>
+    </string-array>
+
+    <string-array name="preferences_textScaleArray">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="preferences_textScaleAliasArray">
+        <item>0.85</item>
+        <item>1.0</item>
+        <item>1.15</item>
+    </string-array>
 
 </resources>

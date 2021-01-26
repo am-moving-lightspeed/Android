@@ -26,6 +26,7 @@ public class SharedDbViewModel extends ViewModel {
         mSequenceStageCursor = new MutableLiveData<>();
         mSequenceCursor      = new MutableLiveData<>();
         mFK                  = new MutableLiveData<>();
+        mFK.setValue(-1);
     }
 
 

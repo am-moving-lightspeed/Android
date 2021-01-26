@@ -1,104 +1,198 @@
 package com.tabatatimer.ui.settings;
 
 
-import android.content.ContentProviderClient;
+
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.ListPreference;
+
+import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.SwitchPreference;
 
 import com.tabatatimer.R;
+import com.tabatatimer.sqlite.DbManager;
+
+import java.util.Arrays;
+import java.util.Locale;
 
 
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    private SettingsViewModel                                  settingsViewModel;
-    private SharedPreferences                                  sharedPreferences;
-    private SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
+    private SharedPreferences preferences;
+    private int               fontScaleIndex;
+    private int               languageIndex;
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(requireActivity());
+
+        if (preferences.getBoolean("theme", true)) {
+            //TODO replace
+            requireActivity().setTheme(R.style.MainTheme);
+        }
+        Configuration configuration = new Configuration();
+        configuration.locale    = initLanguage();
+        configuration.fontScale = initFontSize();
+
+        requireActivity().getBaseContext()
+                         .getResources()
+                         .updateConfiguration(configuration, null);
+//        getFragmentManager().beginTransaction()
+//                            .replace(android.R.id.content, new ChangeSettingsFragment())
+//                            .commit();
+
+        super.onCreate(savedInstanceState);
+
+//        addPreferencesFromResource(R.xml.preferences);
+
+        SwitchPreference theme = findPreference("theme");
+        if (theme != null) {
+            theme.setOnPreferenceChangeListener(onThemeChange);
+        }
+
+        ListPreference font = findPreference("font_size");
+        if (font != null) {
+            font.setOnPreferenceChangeListener(onFontChange);
+            font.setValueIndex(fontScaleIndex);
+        }
+
+        ListPreference language = findPreference("lang");
+        if (language != null) {
+            language.setOnPreferenceChangeListener(onLanguageChange);
+            language.setValueIndex(languageIndex);
+        }
+
+        Preference button = findPreference("DeleteAll");
+        if (button != null) {
+            button.setOnPreferenceClickListener(onDeleteClick);
+        }
+
+        super.onCreate(savedInstanceState);
+    }
 
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        setPreferencesFromResource(R.xml.preferences, rootKey);
-
-        assert getContext() != null;
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-        SharedPreferences.OnSharedPreferenceChangeListener sharedPreferenceChangeListener =
-            providePreferenceChangeListener();
-
-        sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
-
+        addPreferencesFromResource(R.xml.preferences);
     }
 
 
-    @Override
-    public void onDestroy() {
+    private Locale initLanguage() {
 
-        super.onDestroy();
-        sharedPreferences.unregisterOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+        String value = preferences.getString("lang", "en");
+        String asd = preferences.getString("font_size", "5.0");
+
+        assert value != null;
+        Locale locale = new Locale(value);
+        Locale.setDefault(locale);
+
+        languageIndex = Arrays.asList((getResources().getStringArray(R.array.preferences_languageAliasArray)))
+                              .indexOf(value);
+
+        return locale;
     }
 
 
-    private SharedPreferences.OnSharedPreferenceChangeListener providePreferenceChangeListener() {
+    private float initFontSize() {
 
-        return new SharedPreferences.OnSharedPreferenceChangeListener() {
+        String font = preferences.getString("font_size", "1.0");
+        fontScaleIndex = Arrays.asList((getResources().getStringArray(R.array.preferences_textScaleAliasArray)))
+                               .indexOf(font);
 
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-
-                assert getActivity() != null;
-
-                switch (key) {
-                    case "theme":
-                        String value = sharedPreferences.getString(key, "2");
-
-                        assert value != null;
-
-                        resolveTheme(value);
-
-                        break;
-
-                    default:
-                        break;
-
-                }
-            }
-        };
+        assert font != null;
+        return Float.parseFloat(font);
     }
 
 
-    private void resolveTheme(String value) {
+    OnPreferenceChangeListener onLanguageChange = new OnPreferenceChangeListener() {
 
-        switch (value) {
-            case "0":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-            case "1":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            case "2":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
+        @Override
+        public boolean onPreferenceChange(androidx.preference.Preference preference, Object newValue) {
+
+            Locale locale = new Locale(newValue.toString());
+
+            Locale.setDefault(locale);
+            Configuration configuration = new Configuration();
+            configuration.locale = locale;
+            getActivity().getResources()
+                         .updateConfiguration(configuration, null);
+            getActivity().recreate();
+
+            return true;
         }
-    }
+    };
+
+
+    OnPreferenceChangeListener onFontChange = new OnPreferenceChangeListener() {
+
+        @Override
+        public boolean onPreferenceChange(androidx.preference.Preference preference, Object newValue) {
+
+            Configuration configuration = getResources().getConfiguration();
+
+            configuration.fontScale = Float.parseFloat(newValue.toString());
+
+            DisplayMetrics metrics = new DisplayMetrics();
+            getActivity().getWindowManager()
+                         .getDefaultDisplay()
+                         .getMetrics(metrics);
+            metrics.scaledDensity = configuration.fontScale * metrics.density;
+            getActivity().getBaseContext()
+                         .getResources()
+                         .updateConfiguration(configuration, metrics);
+            getActivity().recreate();
+
+            return true;
+        }
+    };
+
+
+    OnPreferenceChangeListener onThemeChange = new OnPreferenceChangeListener() {
+
+        @Override
+        public boolean onPreferenceChange(androidx.preference.Preference preference, Object newValue) {
+
+            if ((boolean) newValue) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+            else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+            getActivity().recreate();
+
+            return true;
+        }
+    };
+
+
+    OnPreferenceClickListener onDeleteClick = new OnPreferenceClickListener() {
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+
+            if (DbManager.getInstance() != null) {
+                DbManager.getInstance()
+                         .dropDatabase();
+            }
+
+            return false;
+        }
+    };
 
 }

@@ -15,6 +15,8 @@ public interface IDbManager {
     void setFetchingListener(IFetching listener);
     void removeFetchingListener();
 
+    void dropDatabase();
+
     void closeConnection();
 
 }

@@ -13,7 +13,6 @@ import com.tabatatimer.factories.CustomViewModelFactory;
 import com.tabatatimer.sqlite.DbManager;
 import com.tabatatimer.sqlite.IDbManager;
 import com.tabatatimer.sqlite.IFetching;
-import com.tabatatimer.ui.library.LibraryFragment;
 import com.tabatatimer.viewmodels.SharedDbViewModel;
 
 import androidx.lifecycle.ViewModelProvider;
@@ -30,21 +29,8 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private NavController       mNavController;
-    private NavigationView      mNavView;
 
     private IDbManager mDbManager;
-
-
-    public NavController getNavController() {
-
-        return mNavController;
-    }
-
-    public NavigationView getNavView() {
-
-        return mNavView;
-    }
 
 
     @Override
@@ -62,22 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            preloadLibrary();
-        }
-        else {
-            getSupportFragmentManager().beginTransaction()
-                                       .setReorderingAllowed(true)
-                                       .add(R.id.main_navigationHostFragment, LibraryFragment.class, null)
-                                       .commit();
-        }
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout   drawer         = findViewById(R.id.drawer_layout);
-        mNavView = findViewById(R.id.nav_view);
+        DrawerLayout   drawer  = findViewById(R.id.drawer_layout);
+        NavigationView navView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.fragment_sequence,
                                                                R.id.fragment_library,
@@ -86,9 +61,21 @@ public class MainActivity extends AppCompatActivity {
                                    .setOpenableLayout(drawer)
                                    .build();
 
-        mNavController = Navigation.findNavController(this, R.id.main_navigationHostFragment);
-        NavigationUI.setupActionBarWithNavController(this, mNavController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(mNavView, mNavController);
+        NavController navController = Navigation.findNavController(this, R.id.main_navigationHostFragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle == null) {
+            preloadLibrary();
+        }
+        else {
+//            getSupportFragmentManager().beginTransaction()
+//                                       .setReorderingAllowed(true)
+//                                       .add(R.id.main_navigationHostFragment, LibraryFragment.class, null)
+//                                       .commit();
+            navController.navigate(R.id.fragment_library);
+        }
     }
 
 

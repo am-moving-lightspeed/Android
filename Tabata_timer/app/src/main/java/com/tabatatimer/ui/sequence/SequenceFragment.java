@@ -25,10 +25,13 @@ import com.tabatatimer.R;
 import com.tabatatimer.misc.SequenceStageInfoStructure;
 import com.tabatatimer.services.ServiceDataProvider;
 import com.tabatatimer.services.TimerService;
+import com.tabatatimer.sqlite.DbManager;
+import com.tabatatimer.ui.library.dialogs.AddDialogFragment;
 import com.tabatatimer.ui.sequence.adapters.SequenceRecyclerViewAdapter;
 import com.tabatatimer.managers.CrudButtonsManager;
 import com.tabatatimer.managers.ICrudButtonsManager;
-import com.tabatatimer.dialogs.DeleteDialogFragment;
+import com.tabatatimer.ui.sequence.dialogs.AddSequenceStageDialogFragment;
+import com.tabatatimer.ui.sequence.dialogs.DeleteDialogFragment;
 import com.tabatatimer.ui.sequence.dialogs.EditSequenceStageDialogFragment;
 import com.tabatatimer.ui.sequence.managers.ISequenceRecyclerViewManager;
 import com.tabatatimer.ui.sequence.managers.SequenceManager;
@@ -38,6 +41,7 @@ import java.util.ArrayList;
 
 
 
+@SuppressWarnings("Convert2Lambda")
 public class SequenceFragment extends Fragment {
 
     private SequenceStageInfoStructure[] mSequenceStagesData;
@@ -61,12 +65,8 @@ public class SequenceFragment extends Fragment {
 
         super(R.layout.fragment_sequence);
 
-        mContext            = context;
-        mSharedDbVM         = viewModel;
-        mSequenceStagesData = setContent();
-        mAdapter            = new SequenceRecyclerViewAdapter(mSequenceStagesData);
-
-        ServiceDataProvider.instantiate(mSequenceStagesData);
+        mContext    = context;
+        mSharedDbVM = viewModel;
 
         mServiceIntent     = new Intent(mContext, TimerService.class);
         mServiceConnection = new ServiceConnection() {
@@ -90,6 +90,26 @@ public class SequenceFragment extends Fragment {
                 mTimerService.pauseTimer();
             }
         };
+
+        assert DbManager.getInstance() != null;
+
+        DbManager.getInstance()
+                 .fetchSequenceStages(mSharedDbVM.getLastFK());
+
+        // Let fetcher do it's job.
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        mSequenceStagesData = setContent();
+        mAdapter            = new SequenceRecyclerViewAdapter(mSequenceStagesData);
+
+        if (mSequenceStagesData.length != 0) {
+            ServiceDataProvider.instantiate(mSequenceStagesData);
+        }
     }
 
 
@@ -122,14 +142,26 @@ public class SequenceFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        View bPlay    = view.findViewById(R.id.imageView_sequence_btnPlay);
-        View bRewind  = view.findViewById(R.id.imageView_sequence_btnFastRewind);
-        View bForward = view.findViewById(R.id.imageView_sequence_btnFastForward);
-        View bEdit    = view.findViewById(R.id.imageView_sequence_btnEdit);
-        View bDelete  = view.findViewById(R.id.imageView_sequence_btnDelete);
+        if (mSequenceStagesData.length != 0) {
+            View bPlay    = view.findViewById(R.id.imageView_sequence_btnPlay);
+            View bRewind  = view.findViewById(R.id.imageView_sequence_btnFastRewind);
+            View bForward = view.findViewById(R.id.imageView_sequence_btnFastForward);
+
+            setPlayButtonEvents(bPlay);
+            setRewindButtonEvents(bRewind);
+            setForwardButtonEvents(bForward);
+        }
+
+        View bAdd    = view.findViewById(R.id.imageView_sequence_btnAdd);
+        View bEdit   = view.findViewById(R.id.imageView_sequence_btnEdit);
+        View bDelete = view.findViewById(R.id.imageView_sequence_btnDelete);
 
         View editBtnFrame   = view.findViewById(R.id.frameLayout_sequence_btnEditFrame);
         View deleteBtnFrame = view.findViewById(R.id.frameLayout_sequence_btnDeleteFrame);
+
+        setAddButtonEvents(bAdd);
+        setEditButtonEvents(bEdit);
+        setDeleteButtonEvents(bDelete);
 
         mCrudButtonsManager = new CrudButtonsManager(editBtnFrame, deleteBtnFrame);
         mSequenceManager    = new SequenceManager(mContext,
@@ -140,12 +172,6 @@ public class SequenceFragment extends Fragment {
         mAdapter.setItemManager(mSequenceManager);
         mAdapter.setCrudButtonsManager(mCrudButtonsManager);
 
-        setPlayButtonEvents(bPlay);
-        setRewindButtonEvents(bRewind);
-        setForwardButtonEvents(bForward);
-        setEditButtonEvents(bEdit);
-        setDeleteButtonEvents(bDelete);
-
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -154,6 +180,7 @@ public class SequenceFragment extends Fragment {
     public void onDestroy() {
 
         super.onDestroy();
+
         requireActivity().unbindService(mServiceConnection);
         requireActivity().stopService(mServiceIntent);
     }
@@ -356,6 +383,27 @@ public class SequenceFragment extends Fragment {
     }
 
 
+    private void setAddButtonEvents(View bAdd) {
+
+        assert getActivity() != null;
+
+        bAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                DialogFragment addDialogFragment =
+                    new AddSequenceStageDialogFragment(mSequenceManager.getSelectedView(),
+                                                       mSequenceManager);
+
+                //noinspection ConstantConditions
+                addDialogFragment.show(getActivity().getSupportFragmentManager(),
+                                       "library_addSequence");
+            }
+        });
+    }
+
+
     private void setEditButtonEvents(View bEdit) {
 
         bEdit.setOnClickListener(new View.OnClickListener() {
@@ -367,7 +415,8 @@ public class SequenceFragment extends Fragment {
 
                 DialogFragment editDialog =
                     new EditSequenceStageDialogFragment(mSequenceManager.getSelectedView(),
-                                                        mSequenceManager);
+                                                        mSequenceManager,
+                                                        mSequenceStagesData);
                 editDialog.show(getActivity().getSupportFragmentManager(),
                                 "dialog_editSequenceStage");
             }
@@ -387,7 +436,8 @@ public class SequenceFragment extends Fragment {
                 DialogFragment deleteDialog =
                     new DeleteDialogFragment(mSequenceManager,
                                              mCrudButtonsManager,
-                                             mAdapter);
+                                             mAdapter,
+                                             mSequenceStagesData);
                 deleteDialog.show(getActivity().getSupportFragmentManager(),
                                   "dialog_deleteSequenceStage");
             }
@@ -404,6 +454,7 @@ public class SequenceFragment extends Fragment {
         while (cursor.moveToNext()) {
             SequenceStageInfoStructure data = new SequenceStageInfoStructure();
 
+            data.id          = cursor.getInt(0);
             data.header      = cursor.getString(1);
             data.description = cursor.getString(2);
             data.time        = cursor.getString(3);
