@@ -1,0 +1,88 @@
+<resources>
+
+    <string name="all_appName">Tabata timer</string>
+    <string name="all_headerPlaceholder">Заголовок</string>
+    <string name="all_descriptionPlaceholder">
+        Часто бывает так, что смысл текста не имеет большого значения,
+        а важен только его объем или структура. Генератор текста онлайн
+        позволит задать необходимое количество слов, из которых будут
+        сформировано указанное Вами число абзацев.
+    </string>
+    <string name="all_timePlaceholder">01:30</string>
+    <string name="all_timeLeftPlaceholder">-00:17</string>
+    <string name="all_totalTimePlaceholder">Общее время: %s</string>
+    <string name="all_stagesAmountPlaceholder">Кол-во стадий: %s</string>
+
+    <string name="label_sequence">Набор</string>
+    <string name="label_library">Библиотека</string>
+    <string name="label_settings">Настройки</string>
+    <string name="label_empty" />
+
+    <string name="menu_actionSettings">Настройки</string>
+
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Отмена</string>
+    <string name="button_yes">Да</string>
+
+    <string name="sequence_btnPlayDescription">Воспроизвести</string>
+    <string name="sequence_btnFastForwardDescription">Вперёд</string>
+    <string name="sequence_btnFastRewindDescription">Назад</string>
+
+    <string name="sequenceStage_duration">Время:</string>
+
+    <string name="sequenceStageAdd_name">Название:</string>
+    <string name="sequenceStageAdd_description">Описание:</string>
+    <string name="sequenceStageEdit_rename">Новое название:</string>
+    <string name="sequenceStageEdit_changeDescription">Новое описание:</string>
+    <string name="sequenceStageEdit_alterTimer">Время:</string>
+    <string name="sequenceStageEdit_headerPlaceholder">Заголовок…</string>
+    <string name="sequenceStageEdit_descriptionPlaceholder">Описание…</string>
+    <string name="sequenceStageEdit_timePlaceholder">00</string>
+    <string name="sequenceStageEdit_colon">:</string>
+
+    <string name="library_colour">Цвет набора</string>
+
+    <string name="loading_title">Loading</string>
+    <string name="loading_letter_L">L</string>
+    <string name="loading_letter_O">O</string>
+    <string name="loading_letter_A">A</string>
+    <string name="loading_letter_D">D</string>
+    <string name="loading_letter_I">I</string>
+    <string name="loading_letter_N">N</string>
+    <string name="loading_letter_G">G</string>
+    <string name="loading_dot">.</string>
+
+    <string name="preferences_fontSize">Размер текста</string>
+    <string name="preferences_setsFontSize">Выбрать размер текста</string>
+    <string name="preferences_selectLanguage">Выбрать язык</string>
+    <string name="preferences_appLanguage">Язык приложения</string>
+    <string name="preferences_language">Язык</string>
+    <string name="preferences_darkTheme">Тёмная тема</string>
+    <string name="preferences_turnOn">Вкл.</string>
+    <string name="preferences_turnOff">Выкл.</string>
+    <string name="preferences_delete">Удалить</string>
+    <string name="preferences_deleteAll">Удалить все</string>
+
+    <string-array name="preferences_languageArray">
+        <item>Русский</item>
+        <item>Английский</item>
+    </string-array>
+
+    <string-array name="preferences_languageAliasArray">
+        <item>ru</item>
+        <item>en</item>
+    </string-array>
+
+    <string-array name="preferences_textScaleArray">
+        <item>Малый</item>
+        <item>Средний</item>
+        <item>Большой</item>
+    </string-array>
+
+    <string-array name="preferences_textScaleAliasArray">
+        <item>0.85</item>
+        <item>1.0</item>
+        <item>1.15</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabataTimer.Item.SequenceStageEdit" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Card" parent="TabataTimer.Item.Default.Card" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Container" parent="TabataTimer.Item.Default.Container" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content" parent="TabataTimer.Item.Default.Content" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Text" parent="TabataTimer.Item.Default.Content.Text" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+           parent="TabataTimer.Item.Default.Content.Text.Header" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Duration.Container"
+           parent="TabataTimer.Item.SequenceStage.Content.Duration.Container">
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_18dp</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Duration.Label"
+           parent="TabataTimer.Item.SequenceStage.Content.Duration.Label" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Duration.Time"
+           parent="TabataTimer.Item.SequenceStage.Content.Duration.Time">
+        <item name="android:padding">@dimen/padding_item_content_4dp</item>
+        <item name="android:background">@drawable/all_edittext_bg</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">2</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Duration.Time.Delimiter">
+        <item name="android:paddingHorizontal">@dimen/padding_item_content_4dp</item>
+        <item name="android:background">@color/colour_blackPearl</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.Separator"
+           parent="TabataTimer.Item.Default.Content.Separator">
+        <item name="android:layout_marginTop">@dimen/margin_item_content_12dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_12dp</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.EditText" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.EditText.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_item_content_4dp</item>
+        <item name="android:gravity">start</item>
+        <item name="android:background">@drawable/all_edittext_bg</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Header">
+        <item name="android:maxLength">30</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Description">
+        <item name="android:maxLength">100</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:lines">8</item>
+        <item name="android:scrollHorizontally">false</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.ActionButtons" />
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Bar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_all_0dp</item>
+        <item name="android:gravity">end</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button">
+        <item name="android:layout_width">@dimen/width_button_56dp</item>
+        <item name="android:layout_height">@dimen/height_button_56dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_item_content_18dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_all_0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textSize_medium</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Ok">
+        <item name="android:textColor">@color/colour_cornflowerBlue</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Cancel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colour_salmon</item>
+    </style>
+
+</resources>

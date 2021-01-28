@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   style="@style/TabataTimer.Item.SequenceStageEdit.Card">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sequenceStageEdit_background"
+        style="@style/TabataTimer.Item.SequenceStageEdit.Container">
+
+        <!-- Header -->
+        <TextView
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+            android:text="@string/sequenceStageAdd_name" />
+
+        <EditText
+            android:id="@+id/editText_sequenceStageEdit_header"
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Header"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_headerPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.SequenceStageEdit.Content.Separator" />
+
+        <!-- Description -->
+        <TextView
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+            android:text="@string/sequenceStageAdd_description" />
+
+        <EditText
+            android:id="@+id/editText_sequenceStageEdit_description"
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Description"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_descriptionPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.SequenceStageEdit.Content.Separator" />
+
+        <!-- Timer -->
+        <LinearLayout style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Container">
+
+            <TextView
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Label"
+                android:text="@string/sequenceStage_duration" />
+
+            <EditText
+                android:id="@+id/editText_sequenceStageEdit_minutes"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Time"
+                android:autofillHints=""
+                android:hint="@string/sequenceStageEdit_timePlaceholder" />
+
+            <TextView
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Time.Delimiter"
+                android:text="@string/sequenceStageEdit_colon" />
+
+            <EditText
+                android:id="@+id/editText_sequenceStageEdit_seconds"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Time"
+                android:autofillHints=""
+                android:hint="@string/sequenceStageEdit_timePlaceholder" />
+
+            <Space style="@style/TabataTimer.Item.SequenceStageEdit.Content.Duration.Label" />
+
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Bar">
+
+            <TextView
+                android:id="@+id/textView_sequenceStageEdit_buttonOk"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Ok"
+                android:text="@string/button_ok" />
+
+            <TextView
+                android:id="@+id/textView_sequenceStageEdit_buttonCancel"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Cancel"
+                android:text="@string/button_cancel" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

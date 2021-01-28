@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="navigationMenuBodyContent" />
+
+    <style name="navigationMenuBodyContent.text" parent="android:Widget.TextView">
+        <item name="fontFamily">@font/droid_sans</item>
+    </style>
+
+    <style name="navigationMenuHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:paddingLeft">@dimen/navigationMenuHeader_paddingHorizontal</item>
+        <item name="android:paddingRight">@dimen/navigationMenuHeader_paddingHorizontal</item>
+        <item name="android:paddingTop">35dp</item>
+        <item name="android:paddingBottom">@dimen/navigationMenuHeader_paddingBottom</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/main_navmenu_header_background</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/navigationMenuHeaderContent_spacing</item>
+        <item name="fontFamily">@font/droid_sans</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent.sequenceHeader">
+        <item name="android:textSize">@dimen/textSize_all_large</item>
+    </style>
+
+    <style name="navigationMenuHeaderContent.sequenceStage">
+        <item name="android:textSize">@dimen/textSize_all_medium</item>
+    </style>
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   style="@style/TabataTimer.Item.SequenceStageEdit.Card">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sequenceStageEdit_background"
+        style="@style/TabataTimer.Item.SequenceStageEdit.Container">
+
+        <!-- Header -->
+        <TextView
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+            android:text="@string/sequenceStageEdit_rename" />
+
+        <EditText
+            android:id="@+id/editText_sequenceStageEdit_header"
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Header"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_headerPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.SequenceStageEdit.Content.Separator" />
+
+        <!-- Description -->
+        <TextView
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+            android:text="@string/sequenceStageEdit_changeDescription" />
+
+        <EditText
+            android:id="@+id/editText_sequenceStageEdit_description"
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.EditText.Text.Description"
+            android:autofillHints=""
+            android:hint="@string/sequenceStageEdit_descriptionPlaceholder" />
+
+        <View style="@style/TabataTimer.Item.SequenceStageEdit.Content.Separator" />
+
+        <!-- Color -->
+        <TextView
+            style="@style/TabataTimer.Item.SequenceStageEdit.Content.Text.Header"
+            android:text="@string/sequenceStageEdit_changeDescription" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/library_colour"
+            android:src="@drawable/library_colorpicker_bar" />
+
+        <LinearLayout style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Bar">
+
+            <TextView
+                android:id="@+id/textView_sequenceStageEdit_buttonOk"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Ok"
+                android:text="@string/button_ok" />
+
+            <TextView
+                android:id="@+id/textView_sequenceStageEdit_buttonCancel"
+                style="@style/TabataTimer.Item.SequenceStageEdit.Content.ActionButtons.Button.Cancel"
+                android:text="@string/button_cancel" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

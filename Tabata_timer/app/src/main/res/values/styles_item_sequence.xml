@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabataTimer.Item.Sequence" />
+
+    <style name="TabataTimer.Item.Sequence.Card" parent="TabataTimer.Item.Default.Card" />
+
+    <style name="TabataTimer.Item.Sequence.Container" parent="TabataTimer.Item.Default.Container" />
+
+    <style name="TabataTimer.Item.Sequence.Content" parent="TabataTimer.Item.Default.Content" />
+
+    <style name="TabataTimer.Item.Sequence.Content.Text" parent="TabataTimer.Item.Default.Content.Text">
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="TabataTimer.Item.Sequence.Content.Text.Header"
+           parent="TabataTimer.Item.Default.Content.Text.Header">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TabataTimer.Item.Sequence.Content.Text.Description"
+           parent="TabataTimer.Item.Default.Content.Text.Description">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TabataTimer.Item.Sequence.Content.Text.AdditionalInfo">
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_8dp</item>
+        <item name="android:textSize">@dimen/textSize_medium</item>
+    </style>
+
+    <style name="TabataTimer.Item.Sequence.Content.Separator" parent="TabataTimer.Item.Default.Content.Separator" />
+
+</resources>

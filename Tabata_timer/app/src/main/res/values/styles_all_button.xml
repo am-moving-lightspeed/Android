@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabataTimer.BtnBar" />
+
+    <style name="TabataTimer.BtnBar.Default" />
+
+    <style name="TabataTimer.BtnFrame" />
+
+    <style name="TabataTimer.BtnFrame.Default">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_all_8dp</item>
+        <item name="android:padding">@dimen/padding_all_buttonFrame_4dp</item>
+        <item name="android:paddingEnd">@dimen/padding_all_buttonFrame_8dp</item>
+        <item name="android:background">@drawable/all_button_frame</item>
+    </style>
+
+    <style name="TabataTimer.Btn" />
+
+    <style name="TabataTimer.Btn.Default">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+    </style>
+
+    <style name="TabataTimer.Btn.Default.Add">
+        <item name="android:background">@drawable/btn_add</item>
+        <item name="srcCompat">@drawable/ic_add</item>
+    </style>
+
+    <style name="TabataTimer.Btn.Default.Delete">
+        <item name="android:background">@drawable/btn_delete</item>
+        <item name="srcCompat">@drawable/ic_delete</item>
+    </style>
+
+    <style name="TabataTimer.Btn.Default.Edit">
+        <item name="android:background">@drawable/btn_edit</item>
+        <item name="srcCompat">@drawable/ic_edit</item>
+    </style>
+
+</resources>

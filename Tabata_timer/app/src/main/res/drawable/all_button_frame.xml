@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+
+            <solid android:color="?colorPrimary" />
+            <corners
+                android:bottomLeftRadius="@dimen/radius_all_buttonFrame_32dp"
+                android:topLeftRadius="@dimen/radius_all_buttonFrame_32dp" />
+
+        </shape>
+    </item>
+
+    <item>
+        <inset
+            android:insetLeft="@dimen/width_all_stroke_1dp"
+            android:insetTop="@dimen/width_all_stroke_1dp"
+            android:insetBottom="@dimen/width_all_stroke_1dp">
+
+            <shape android:shape="rectangle">
+
+                <solid android:color="?colorPrimaryDark" />
+                <corners
+                    android:bottomLeftRadius="@dimen/radius_all_buttonFrame_32dp"
+                    android:topLeftRadius="@dimen/radius_all_buttonFrame_32dp" />
+
+            </shape>
+
+        </inset>
+    </item>
+
+</layer-list>

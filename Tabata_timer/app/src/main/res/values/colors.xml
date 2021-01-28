@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Light -->
+    <color name="colour_solitude">#f6f8fa</color>
+    <color name="colour_white">#FFFFFF</color>
+    <color name="colour_solitudeDarker">#E1E4E8</color>
+    <color name="colour_black">#000000</color>
+    <color name="colour_quartz">#DFD2F4</color>
+    <color name="colour_pattensBlue">#D0E0EF</color>
+    <color name="colour_remy">#F7E0DC</color>
+
+    <!-- Dark -->
+    <color name="colour_blackPearl">#161B21</color>
+    <color name="colour_blackPearlDarker">#0D1117</color>
+    <color name="colour_gunmetal">#30363D</color>
+    <color name="colour_heather">#A5B0C0</color>
+    <color name="colour_midnightExpress">#1F1D2F</color>
+    <color name="colour_cinder">#21262D</color>
+    <color name="colour_salmonDim">#1AF9826C</color>
+
+    <!-- Shared -->
+    <color name="colour_lightSlateBlue">#A371F7</color>
+    <color name="colour_eucalyptus">#2EA043</color>
+    <color name="colour_eucalyptusDim">#1A2EA043</color>
+    <color name="colour_cornflowerBlue">#55A2F2</color>
+    <color name="colour_salmon">#F9826C</color>
+
+</resources>

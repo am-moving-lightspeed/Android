@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabataTimer.Item.SequenceStage.Card" parent="TabataTimer.Item.Default.Card" />
+
+    <style name="TabataTimer.Item.SequenceStage.Container" parent="TabataTimer.Item.Default.Container" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content" parent="TabataTimer.Item.Default.Content" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Separator"
+           parent="TabataTimer.Item.Default.Content.Separator" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text" parent="TabataTimer.Item.Default.Content.Text" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.Header"
+           parent="TabataTimer.Item.Default.Content.Text.Header" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.Description"
+           parent="TabataTimer.Item.Default.Content.Text.Description">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Duration">
+        <item name="android:layout_marginBottom">@dimen/margin_all_0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Duration.Container">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Duration.Label">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Duration.Time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/textSize_all_36sp</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.TimeLeft">
+        <item name="android:layout_marginEnd">@dimen/margin_item_content_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_8dp</item>
+        <item name="android:gravity">end</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.ProgressBar"
+           parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_item_content_8dp</item>
+        <item name="android:layout_marginRight">@dimen/margin_item_content_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_item_content_8dp</item>
+        <item name="android:progress">0</item>
+        <item name="android:progressDrawable">@drawable/sequence_progress_bar</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- Active and Selected styles preview -->
+    <style name="TabataTimer.Item.SequenceStage.Container.Active">
+        <item name="android:background">@drawable/item_bg_active</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Container.Selected">
+        <item name="android:background">@drawable/item_bg_selected</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.Description.Active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.Description.Selected"
+           parent="TabataTimer.Item.SequenceStage.Content.Text.Description.Active" />
+
+    <style name="TabataTimer.Item.SequenceStage.Content.Text.TimeLeft.Active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="TabataTimer.Item.SequenceStage.Content.ProgressBar.Active">
+        <item name="android:visibility">visible</item>
+    </style>
+
+</resources>

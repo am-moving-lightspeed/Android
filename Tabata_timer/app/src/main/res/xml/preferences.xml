@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListPreference
+        android:dialogTitle="@string/preferences_fontSize"
+        android:entries="@array/preferences_textScaleArray"
+        android:entryValues="@array/preferences_textScaleAliasArray"
+        android:key="font_size"
+        android:summary="@string/preferences_setsFontSize"
+        android:title="@string/preferences_fontSize" />
+
+    <ListPreference
+        android:dialogTitle="@string/preferences_selectLanguage"
+        android:entries="@array/preferences_languageArray"
+        android:entryValues="@array/preferences_languageAliasArray"
+        android:key="lang"
+        android:summary="@string/preferences_appLanguage"
+        android:title="@string/preferences_language" />
+
+    <SwitchPreference
+        android:key="theme"
+        android:summaryOff="@string/preferences_darkTheme"
+        android:summaryOn="@string/preferences_darkTheme"
+        android:switchTextOff="@string/preferences_turnOn"
+        android:switchTextOn="@string/preferences_turnOff" />
+
+    <Preference
+        android:key="DeleteAll"
+        android:summary="@string/preferences_deleteAll"
+        android:title="@string/preferences_delete" />
+
+</PreferenceScreen>

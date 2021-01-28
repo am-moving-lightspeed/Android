@@ -1,0 +1,55 @@
+<resources>
+
+    <dimen name="textSize_all">16sp</dimen>
+    <dimen name="textSize_all_large">28sp</dimen>
+    <dimen name="textSize_all_medium">20sp</dimen>
+    <dimen name="textSize_all_small">12sp</dimen>
+    <dimen name="textSize_all_36sp">36sp</dimen>
+
+    <dimen name="width_all_0dp">0dp</dimen>
+    <dimen name="width_all_stroke_4dp">4dp</dimen>
+    <dimen name="width_all_stroke_1dp">1dp</dimen>
+    <dimen name="width_button_72dp">72dp</dimen>
+    <dimen name="width_button_56dp">56dp</dimen>
+
+    <dimen name="height_all_100dp">100dp</dimen>
+    <dimen name="height_all_0dp">0dp</dimen>
+    <dimen name="height_button_72dp">72dp</dimen>
+    <dimen name="height_button_56dp">56dp</dimen>
+    <dimen name="height_sequence_buttonsBar_56dp">56dp</dimen>
+
+    <dimen name="padding_all_100dp">100dp</dimen>
+    <dimen name="padding_all_12dp">12dp</dimen>
+    <dimen name="padding_all_8dp">8dp</dimen>
+    <dimen name="padding_all_buttonFrame_8dp">8dp</dimen>
+    <dimen name="padding_all_buttonFrame_4dp">4dp</dimen>
+    <dimen name="padding_item_16dp">16dp</dimen>
+    <dimen name="padding_item_14dp">14dp</dimen>
+    <dimen name="padding_item_12dp">12dp</dimen>
+    <dimen name="padding_item_content_4dp">4dp</dimen>
+    <dimen name="padding_button_20dp">20dp</dimen>
+    <dimen name="padding_button_adjustment_24dp">24dp</dimen>
+    <dimen name="padding_button_adjustment_22dp">22dp</dimen>
+    <dimen name="padding_button_adjustment_21dp">21dp</dimen>
+    <dimen name="padding_button_adjustment_19dp">19dp</dimen>
+
+    <dimen name="margin_all_8dp">8dp</dimen>
+    <dimen name="margin_all_4dp">4dp</dimen>
+    <dimen name="margin_all_0dp">0dp</dimen>
+    <dimen name="margin_all_lastButtonIndent">80dp</dimen>
+    <dimen name="margin_item_12dp">12dp</dimen>
+    <dimen name="margin_item_content_18dp">18dp</dimen>
+    <dimen name="margin_item_content_12dp">12dp</dimen>
+    <dimen name="margin_item_content_8dp">8dp</dimen>
+
+    <dimen name="radius_all_buttonFrame_32dp">32dp</dimen>
+    <dimen name="radius_item_8dp">8dp</dimen>
+    <dimen name="radius_item_content_4dp">4dp</dimen>
+    <dimen name="radius_sequence_buttonsBar_20dp">20dp</dimen>
+
+    <dimen name="navigationMenuHeaderContent_spacing">8dp</dimen>
+    <dimen name="navigationMenuHeader_paddingHorizontal">16dp</dimen>
+    <dimen name="navigationMenuHeader_paddingTop">16dp</dimen>
+    <dimen name="navigationMenuHeader_paddingBottom">24dp</dimen>
+
+</resources>

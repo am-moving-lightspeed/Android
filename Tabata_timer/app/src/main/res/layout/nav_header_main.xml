@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/navigationMenuHeader">
+
+    <TextView
+        style="@style/navigationMenuHeaderContent"
+        android:text="@string/all_navigationMenuHeaderTitle" />
+
+    <TextView
+        style="@style/navigationMenuHeaderContent.sequenceHeader"
+        android:text="@string/all_navigationMenuHeaderTitle" />
+
+    <TextView
+        android:id="@+id/navigationMenuHeader_stage"
+        style="@style/navigationMenuHeaderContent.sequenceStage"
+        android:text="@string/all_navigationMenuHeaderStage" />
+
+    <TextView
+        style="@style/navigationMenuHeaderContent"
+        android:text="@string/all_navigationMenuHeaderStatus" />
+
+</LinearLayout>
