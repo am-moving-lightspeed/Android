@@ -1,0 +1,41 @@
+def extractVer() {
+
+    def cmdQuery = new ByteArrayOutputStream()
+
+    exec {
+        commandLine    'git', 'describe',
+        standardOutput  = cmdQuery
+    }
+
+    def versionFull   = cmdQuery.toString()
+    def dotIndex      = versionFull.indexOf('.')
+    def hyphenIndex   = versionFull.indexOf('-')
+    List versionApart = new ArrayList()
+
+    versionApart.add(versionFull.substring(1, dotIndex))
+
+    if (hyphenIndex != -1) {
+        versionApart.add(versionFull.substring(dotIndex + 1, hyphenIndex))
+
+        versionFull = versionFull.substring(hyphenIndex + 1, versionFull.length())
+        hyphenIndex = versionFull.indexOf('-')
+
+        versionApart.add(versionFull.substring(0, hyphenIndex))
+    }
+    else {
+        versionApart.add(versionFull.substring(dotIndex + 1, versionFull.length() - 1))
+        versionApart.add(0)
+    }
+
+    return versionApart
+}
+
+static def generateVersionCode(ArrayList array) {
+
+    return array[0].toInteger()*10000 + array[1].toInteger()*100 + array[2].toInteger()
+}
+
+ext {
+    extractVer = this.&extractVer
+    generateVersionCode = this.&generateVersionCode
+}

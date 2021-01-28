@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <!-- Navigation-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navigationFragmentContainer"
+            android:name="fragments.NavigationFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Category units-->
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/categoryPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include layout="@layout/app_hint" />
+
+        <!-- Delimiter -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorBlackAlternativeSpecific" />
+
+        <!-- Keyboard -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/keyboardFragmentContainer"
+            android:name="fragments.KeyboardFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

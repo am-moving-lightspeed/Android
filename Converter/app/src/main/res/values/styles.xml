@@ -1,0 +1,77 @@
+<resources>
+
+    <style name="navigationButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="navigationButtonActive" parent="navigationButton">
+        <item name="android:textColor">@color/colorOrangeSpecific</item>
+    </style>
+
+    <style name="unitRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="unitFrame">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginRight">25dp</item>
+    </style>
+
+    <style name="unitFrameTextBlock">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="editTextCustom">
+        <item name="android:background">@color/colorBlackAlternativeSpecific</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:inputType">none</item>
+        <item name="android:focusable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/colorLightGreySpecific</item>
+        <item name="android:hint">0</item>
+        <item name="android:textColorHint">@color/colorDarkGreySpecific</item>
+    </style>
+
+    <style name="keyboardRow">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="keyboardButton">
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="keyboardButtonExtended" parent="keyboardButton">
+        <item name="android:textColor">@color/colorOrangeSpecific</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="appHintText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorDarkGreySpecific</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:orientation="horizontal">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/nav0"
+        style="@style/navigationButtonActive"
+        android:tag="0"
+        android:text="@string/categoryWeight" />
+
+    <Button
+        android:id="@+id/nav1"
+        style="@style/navigationButton"
+        android:layout_marginHorizontal="10dp"
+        android:tag="1"
+        android:text="@string/categoryDistance" />
+
+    <Button
+        android:id="@+id/nav2"
+        style="@style/navigationButton"
+        android:tag="2"
+        android:text="@string/categoryCurrency" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+</LinearLayout>
