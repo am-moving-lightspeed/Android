@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips" />
+
+    <style name="BattleShips.Default" />
+
+    <style name="BattleShips.Default.Background">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/padding_activity_12dp</item>
+        <item name="android:paddingEnd">@dimen/padding_activity_12dp</item>
+        <item name="android:paddingTop">@dimen/padding_activity_8dp</item>
+        <item name="android:paddingBottom">@dimen/padding_activity_16dp</item>
+    </style>
+
+</resources>

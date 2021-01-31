@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/constraintLayout_main_container"
+                                                   style="@style/BattleShips.Main.Background"
+                                                   tools:context="com.oaoaoa.battleships.activities.MainActivity">
+
+    <!-- TODO: add animation-->
+    <!-- Header -->
+    <TextView
+        android:id="@+id/textView_main_header"
+        style="@style/BattleShips.Main.Header"
+        android:fontFamily="@font/backto1982"
+        android:text="@string/main_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <!-- Menu -->
+    <LinearLayout
+        android:id="@+id/tempid"
+        style="@style/BattleShips.Main.Menu.Container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8">
+
+        <!-- TODO: replace buttons -->
+        <Button
+            android:id="@+id/qwe1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_menu_startGame"
+            android:textSize="28sp" />
+
+        <Button
+            android:id="@+id/qwe2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_menu_customizeMap"
+            android:textSize="28sp" />
+
+        <Button
+            android:id="@+id/qwe3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_menu_profile"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/qwe4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_menu_statistics"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/qwe5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/main_menu_quitGame"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

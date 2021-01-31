@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text -->
+    <dimen name="textSize_all">28sp</dimen>
+    <dimen name="textSize_all_large">32sp</dimen>
+    <dimen name="textSize_all_medium">20sp</dimen>
+    <dimen name="textSize_all_small">12sp</dimen>
+    <dimen name="textSize_all_52sp">52sp</dimen>
+
+    <dimen name="height_all_52dp">52dp</dimen>
+    <dimen name="padding_activity_16dp">16dp</dimen>
+    <dimen name="padding_activity_12dp">12dp</dimen>
+    <dimen name="padding_activity_8dp">8dp</dimen>
+    <dimen name="padding_main_44dp">44dp</dimen>
+
+</resources>

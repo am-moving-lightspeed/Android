@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips.Main" />
+
+    <style name="BattleShips.Main.Background" parent="BattleShips.Default.Background">
+        <item name="android:background">@drawable/main_bg_animation</item>
+    </style>
+
+    <style name="BattleShips.Main.Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textSize_all_52sp</item>
+        <item name="android:fontFamily">@font/backto1982</item>
+    </style>
+
+    <style name="BattleShips.Main.Menu" />
+
+    <style name="BattleShips.Main.Menu.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">@dimen/padding_main_44dp</item>
+        <item name="android:paddingEnd">@dimen/padding_main_44dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+</resources>
