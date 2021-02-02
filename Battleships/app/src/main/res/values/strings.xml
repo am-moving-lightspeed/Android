@@ -4,9 +4,12 @@
 
     <string name="main_header">Battle ships</string>
     <string name="main_menu_startGame">Start game</string>
-    <string name="main_menu_customizeMap">Customize map</string>
     <string name="main_menu_profile">Profile</string>
     <string name="main_menu_statistics">Statistics</string>
     <string name="main_menu_quitGame">Quit game</string>
+
+    <string name="main_startGameMenu_singleplayer">Singleplayer</string>
+    <string name="main_startGameMenu_multiplayer">Multiplayer</string>
+    <string name="main_startGameMenu_customizeMap">Customize map</string>
 
 </resources>

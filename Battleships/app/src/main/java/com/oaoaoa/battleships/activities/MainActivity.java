@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.oaoaoa.battleships.R;
+import com.oaoaoa.battleships.fragments.MainMenuFragment;
 
 
 
@@ -19,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction()
+                                   .setReorderingAllowed(true)
+                                   .add(R.id.fragmentContainerView_main, MainMenuFragment.class, null)
+                                   .commit();
 
         startBackgroundAnimation(findViewById(R.id.constraintLayout_main_container));
     }

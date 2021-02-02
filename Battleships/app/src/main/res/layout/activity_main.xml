@@ -20,55 +20,12 @@
         app:layout_constraintVertical_bias="0.1" />
 
     <!-- Menu -->
-    <LinearLayout
-        android:id="@+id/tempid"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView_main"
         style="@style/BattleShips.Main.Menu.Container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8">
-
-        <!-- TODO: replace buttons -->
-        <Button
-            android:id="@+id/qwe1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_menu_startGame"
-            android:textSize="28sp" />
-
-        <Button
-            android:id="@+id/qwe2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_menu_customizeMap"
-            android:textSize="28sp" />
-
-        <Button
-            android:id="@+id/qwe3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_menu_profile"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/qwe4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_menu_statistics"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/qwe5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_menu_quitGame"
-            android:textSize="24sp" />
-
-    </LinearLayout>
+        app:layout_constraintVertical_bias="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
