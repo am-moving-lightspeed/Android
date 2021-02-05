@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_menu_startGame"
+        android:text="@string/main_mainMenu_startGame"
         android:textSize="28sp" />
 
     <Button
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_menu_profile"
+        android:text="@string/main_mainMenu_profile"
         android:textSize="28sp" />
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_menu_statistics"
+        android:text="@string/main_mainMenu_statistics"
         android:textSize="28sp" />
 
     <Button
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_menu_quitGame"
+        android:text="@string/main_mainMenu_quitGame"
         android:textSize="28sp" />
 
 </LinearLayout>

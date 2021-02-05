@@ -28,6 +28,7 @@
     <color name="colour_eucalyptus">#2EA043</color>
     <color name="colour_eucalyptusDim">#1A2EA043</color>
     <color name="colour_cornflowerBlue">#55A2F2</color>
+    <color name="colour_cornflowerBlueDim">#B355A2F2</color>
     <color name="colour_salmon">#F9826C</color>
 
 </resources>

@@ -11,23 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_startGameMenu_singleplayer"
-        android:textSize="28sp" />
+        android:text="@string/main_startGameMenu_singleplayer" />
 
     <Button
         android:id="@+id/qwe2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_startGameMenu_multiplayer"
-        android:textSize="28sp" />
+        android:text="@string/main_startGameMenu_multiplayer" />
 
     <Button
-        android:id="@+id/qwe3"
+        android:id="@+id/button_main_customizeMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/main_startGameMenu_customizeMap"
-        android:textSize="28sp" />
+        android:text="@string/main_startGameMenu_customizeMap" />
 
 </LinearLayout>

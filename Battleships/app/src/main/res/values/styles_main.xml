@@ -3,9 +3,7 @@
 
     <style name="BattleShips.Main" />
 
-    <style name="BattleShips.Main.Background" parent="BattleShips.Default.Background">
-        <item name="android:background">@drawable/main_bg_animation</item>
-    </style>
+    <style name="BattleShips.Main.Background" parent="BattleShips.Default.Background" />
 
     <style name="BattleShips.Main.Header">
         <item name="android:layout_width">wrap_content</item>
