@@ -2,7 +2,6 @@ package com.oaoaoa.battleships.activities;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -38,8 +37,9 @@ public class MapEditorActivity extends AppCompatActivity {
             findViewById(R.id.constraintLayout_mapEditor_container)
         );
 
-        final SharedPreferences preferences   = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        String                  serializedMap = preferences.getString("map", null);
+        final SharedPreferences preferences =
+            getSharedPreferences("settings", Context.MODE_PRIVATE);
+        String serializedMap = preferences.getString("map", null);
 
         if (serializedMap != null) {
             mMap = new Gson().fromJson(serializedMap, new TypeToken<Map>() {}.getType());
@@ -48,24 +48,11 @@ public class MapEditorActivity extends AppCompatActivity {
             mMap = new Map();
         }
 
-        GridLayout grid = findViewById(R.id.gridLayout_mapEditor);
-        MapManager.initMapView(getApplicationContext(), grid, mMap);
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-
-                View cell = grid.findViewWithTag("imageButton_mapEditor_cell" + i + j);
-
-                cell.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View view) {
-
-                        MapManager.setShip(getApplicationContext(), view, mMap);
-                    }
-                });
-            }
-        }
+        MapManager.initMapView(
+            getApplicationContext(),
+            (GridLayout) findViewById(R.id.gridLayout_mapEditor),
+            mMap
+        );
 
 
         Button bSaveMap = findViewById(R.id.button_mapEditor_saveMap);
@@ -80,9 +67,7 @@ public class MapEditorActivity extends AppCompatActivity {
                     editor.putString("map", new Gson().toJson(mMap));
                     editor.apply();
 
-                    Intent intent = new Intent(MapEditorActivity.this, MainActivity.class);
-                    intent.putExtra("fragment", "menu_startgame");
-                    startActivity(intent);
+                    MapEditorActivity.this.finish();
                 }
                 else {
                     Toasty.custom(MapEditorActivity.this,
@@ -97,13 +82,5 @@ public class MapEditorActivity extends AppCompatActivity {
             }
         });
     }
-
-
-//    @Override
-//    protected void onDestroy() {
-//
-//        super.onDestroy();
-//        System.exit(0);
-//    }
 
 }

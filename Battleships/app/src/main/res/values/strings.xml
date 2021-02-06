@@ -15,4 +15,13 @@
     <string name="mapEditor_button">Save map</string>
     <string name="mapEditor_toasty">Invalid map</string>
 
+    <string name="gameStarted_header">Arrange your ships</string>
+    <string name="gameStarted_loadMap">Load map</string>
+    <string name="gameStarted_generateRandom">Generate</string>
+    <string name="gameStarted_copy">Copy</string>
+    <string name="gameStarted_share">Share</string>
+    <string name="gameStarted_start">Start</string>
+    <string name="gameStarted_toasty">No saved map</string>
+    <string name="gameStarted_sessionId">aB2cD3eF4gH5iJ6kL7</string>
+
 </resources>

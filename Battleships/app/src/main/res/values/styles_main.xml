@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="BattleShips.Main" />
+    <style name="BattleShips.Main" parent="BattleShips.Default" />
 
     <style name="BattleShips.Main.Background" parent="BattleShips.Default.Background" />
 

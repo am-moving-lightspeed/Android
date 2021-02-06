@@ -26,8 +26,7 @@
 
     <Button
         android:id="@+id/button_mapEditor_saveMap"
-        android:layout_width="@dimen/width_all_256dp"
-        android:layout_height="wrap_content"
+        style="@style/BattleShips.MapEditor.Button.SaveMap"
         android:text="@string/mapEditor_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

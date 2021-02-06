@@ -1,7 +1,6 @@
 package com.oaoaoa.battleships.misc;
 
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
@@ -16,19 +15,24 @@ import com.oaoaoa.battleships.models.Cell;
 import com.oaoaoa.battleships.models.Map;
 import com.oaoaoa.battleships.models.ShipOrientation;
 
+import java.util.Random;
+
 
 
 public class MapManager {
 
-    public static void initMapView(Context context, GridLayout mapView, Map map) {
+    public static void initMapView(final Context context, GridLayout mapView, final Map map) {
 
         Resources       resources = context.getResources();
         Resources.Theme theme     = context.getTheme();
+
+        mapView.removeAllViews();
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
 
                 ImageButton ibButton = new ImageButton(context);
+                // TODO: Remove tag if redundant
                 ibButton.setTag("imageButton_mapEditor_cell" + i + j);
                 ibButton.setMaxWidth(32);
                 ibButton.setMaxHeight(32);
@@ -44,13 +48,65 @@ public class MapManager {
                     );
                 }
 
+                ibButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+
+                        MapManager.setShip(context, view, map);
+                    }
+                });
+
                 mapView.addView(ibButton);
             }
         }
     }
 
 
-    @SuppressLint({"ResourceAsColor", "UseCompatLoadingForDrawables"})
+    @SuppressWarnings("ConditionalBreakInInfiniteLoop")
+    public static Map generateMap() {
+
+        Random random   = new Random();
+        Map    mapDraft = new Map();
+
+        ShipOrientation orientation;
+        int             x, y;
+
+        try {
+            for (int size = 4, shipsAmount = 1; size > 0; size--, shipsAmount++) {
+
+                for (int k = 0; k < shipsAmount; k++) {
+
+                    orientation = randomizeOrientation();
+                    while (true) {
+                        if (orientation == ShipOrientation.HORIZONTAL) {
+                            x = random.nextInt(11 - size);
+                            y = random.nextInt(10);
+                        }
+                        else {
+                            x = random.nextInt(10);
+                            y = random.nextInt(11 - size);
+                        }
+
+                        if (canBeDeployed(mapDraft, orientation, size, x, y)) {
+                            break;
+                        }
+                    }
+
+                    deployShip(mapDraft, orientation, size, x, y);
+                    resolveShipArea(mapDraft, orientation, size, x, y);
+                }
+            }
+        }
+        catch (InvalidMapException exception) {
+            // No exception expected.
+            return null;
+        }
+
+        return draftToMap(mapDraft);
+    }
+
+
     public static void setShip(Context context, View view, Map map) {
 
         Resources       resources = context.getResources();
@@ -62,12 +118,26 @@ public class MapManager {
         int j = tag.charAt(tag.length() - 1) - '0';
 
         if (map.getCell(i, j) == Cell.EMPTY) {
+
             map.setCell(i, j, Cell.FILLED);
-            view.setBackground(resources.getDrawable(R.drawable.cell_filled, theme));
+            view.setBackground(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.cell_filled,
+                    theme
+                )
+            );
         }
         else if (map.getCell(i, j) == Cell.FILLED) {
+
             map.setCell(i, j, Cell.EMPTY);
-            view.setBackground(resources.getDrawable(R.drawable.cell_empty, theme));
+            view.setBackground(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.cell_empty,
+                    theme
+                )
+            );
         }
     }
 
@@ -125,6 +195,86 @@ public class MapManager {
     }
 
 
+    // region Map generation methods
+    private static ShipOrientation randomizeOrientation() {
+
+        return new Random().nextInt(11) >= 5 ?
+               ShipOrientation.HORIZONTAL :
+               ShipOrientation.VERTICAL;
+    }
+
+
+    private static void deployShip(Map map,
+                                   ShipOrientation orientation,
+                                   int size,
+                                   int i,
+                                   int j) {
+
+        int count = 0;
+        while (i < 10 &&
+               j < 10 &&
+               count < size) {
+
+            map.setCell(i, j, Cell.OCCUPIED);
+            count++;
+
+            if (orientation == ShipOrientation.HORIZONTAL) {
+                j++;
+            }
+            else {
+                i++;
+            }
+        }
+    }
+
+
+    private static boolean canBeDeployed(Map map,
+                                         ShipOrientation orientation,
+                                         int size,
+                                         int i,
+                                         int j) {
+
+        int count = 0;
+        while (count < size) {
+            count++;
+
+            if (i >= 10 ||
+                j >= 10 ||
+                map.getCell(i, j) == Cell.LOCKED ||
+                map.getCell(i, j) == Cell.OCCUPIED) {
+
+                return false;
+            }
+
+            if (orientation == ShipOrientation.HORIZONTAL) {
+                j++;
+            }
+            else {
+                i++;
+            }
+        }
+
+        return true;
+    }
+
+
+    private static Map draftToMap(Map draft) {
+
+        Map map = new Map();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (draft.getCell(i, j) == Cell.OCCUPIED) {
+                    map.setCell(i, j, Cell.FILLED);
+                }
+            }
+        }
+
+        return map;
+    }
+    // endregion
+
+
+    // region Map validation methods
     private static ShipOrientation resolveShipOrientation(Map map, int i, int j) {
 
         if (j + 1 < 10 &&
@@ -145,7 +295,7 @@ public class MapManager {
                j < 10 &&
                map.getCell(i, j) == Cell.FILLED) {
 
-            map.setCell(i, j, Cell.LOCKED);
+            map.setCell(i, j, Cell.OCCUPIED);
             count++;
 
             if (orientation == ShipOrientation.HORIZONTAL) {
@@ -203,7 +353,10 @@ public class MapManager {
     private static void lockCell(Map map, int i, int j) throws
                                                         InvalidMapException {
 
-        if (i < 0 || i > 9 || j < 0 || j > 9) {
+        if (i < 0 || i > 9 ||
+            j < 0 || j > 9 ||
+            map.getCell(i, j) == Cell.OCCUPIED) {
+
             return;
         }
         // Means that another ship is too close.
@@ -214,6 +367,7 @@ public class MapManager {
             map.setCell(i, j, Cell.LOCKED);
         }
     }
+    // endregion
 
 
     public void performShot(View view) {

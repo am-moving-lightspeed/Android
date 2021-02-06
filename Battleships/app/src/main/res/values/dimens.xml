@@ -6,10 +6,12 @@
     <dimen name="textSize_all_large">40sp</dimen>
     <dimen name="textSize_all_medium">32sp</dimen>
     <dimen name="textSize_all_small">22sp</dimen>
+    <dimen name="textSize_all_extraSmall">18sp</dimen>
     <dimen name="textSize_all_52sp">52sp</dimen>
 
     <dimen name="width_all_256dp">256dp</dimen>
 
+    <dimen name="height_all_72dp">72dp</dimen>
     <dimen name="height_all_52dp">52dp</dimen>
 
     <dimen name="margin_all_20dp">20dp</dimen>

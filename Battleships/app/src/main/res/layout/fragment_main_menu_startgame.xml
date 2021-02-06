@@ -7,14 +7,14 @@
 
     <!-- TODO: replace buttons -->
     <Button
-        android:id="@+id/qwe1"
+        android:id="@+id/button_main_startSingleplayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/main_startGameMenu_singleplayer" />
 
     <Button
-        android:id="@+id/qwe2"
+        android:id="@+id/button_main_startMultiplayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

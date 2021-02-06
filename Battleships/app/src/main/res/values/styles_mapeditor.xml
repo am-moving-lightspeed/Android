@@ -5,19 +5,15 @@
 
     <style name="BattleShips.MapEditor.Background" parent="BattleShips.Default.Background" />
 
-    <style name="BattleShips.MapEditor.Header">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/margin_all_16dp</item>
-        <item name="android:layout_marginEnd">@dimen/margin_all_16dp</item>
-        <item name="android:gravity">center</item>
-    </style>
+    <style name="BattleShips.MapEditor.Header" parent="BattleShips.Default.Header" />
 
-    <style name="BattleShips.MapEditor.Grid">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="BattleShips.MapEditor.Grid" parent="BattleShips.Default.Grid" />
+
+    <style name="BattleShips.MapEditor.Button" />
+
+    <style name="BattleShips.MapEditor.Button.SaveMap">
+        <item name="android:layout_width">@dimen/width_all_256dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:columnCount">10</item>
-        <item name="android:rowCount">10</item>
     </style>
 
 </resources>
