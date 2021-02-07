@@ -24,4 +24,10 @@
     <string name="gameStarted_toasty">No saved map</string>
     <string name="gameStarted_sessionId">aB2cD3eF4gH5iJ6kL7</string>
 
+    <string name="signIn_login">Login…</string>
+    <string name="signIn_password">Password…</string>
+    <string name="signIn_signIn">Sign in</string>
+    <string name="signIn_toasty_invalid">Invalid email</string>
+    <string name="signIn_toasty_failed">Sign in has failed</string>
+
 </resources>

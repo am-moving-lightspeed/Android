@@ -5,12 +5,9 @@
 
     <style name="BattleShips.Main.Background" parent="BattleShips.Default.Background" />
 
-    <style name="BattleShips.Main.Header">
+    <style name="BattleShips.Main.Header" parent="BattleShips.Default.Header">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/textSize_all_52sp</item>
-        <item name="android:fontFamily">@font/backto1982</item>
     </style>
 
     <style name="BattleShips.Main.Menu" />

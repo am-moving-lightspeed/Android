@@ -29,9 +29,8 @@
         <item name="android:visibility">gone</item>
     </style>
 
-    <style name="BattleShips.GameStarted.EditText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/height_all_72dp</item>
+    <style name="BattleShips.GameStarted.EditText" parent="BattleShips.Default.EditText">
+        <item name="android:gravity">center</item>
         <item name="android:focusable">false</item>
         <item name="android:longClickable">false</item>
         <item name="android:cursorVisible">false</item>

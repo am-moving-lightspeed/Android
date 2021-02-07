@@ -15,7 +15,6 @@
         <item name="android:background">@drawable/main_bg_animation</item>
     </style>
 
-
     <style name="BattleShips.Default.Header">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -29,6 +28,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:columnCount">10</item>
         <item name="android:rowCount">10</item>
+    </style>
+
+    <style name="BattleShips.Default.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_all_72dp</item>
+        <item name="android:textSize">@dimen/textSize_all_small</item>
+        <item name="android:textColor">?android:textColor</item>
+    </style>
+
+    <style name="BattleShips.Default.Button">
+        <item name="android:layout_width">@dimen/width_all_256dp</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 </resources>

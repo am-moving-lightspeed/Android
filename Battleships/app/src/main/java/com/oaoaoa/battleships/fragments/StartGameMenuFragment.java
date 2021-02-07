@@ -49,7 +49,7 @@ public class StartGameMenuFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(requireActivity(), GameStartedActivity.class);
-                intent.putExtra("isAIEnemy", "true");
+                intent.putExtra("isAIEnemy", true);
                 startActivity(intent);
             }
         });

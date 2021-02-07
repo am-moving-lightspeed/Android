@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/button_mapEditor_saveMap"
-        style="@style/BattleShips.MapEditor.Button.SaveMap"
+        style="@style/BattleShips.MapEditor.Button"
         android:text="@string/mapEditor_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
