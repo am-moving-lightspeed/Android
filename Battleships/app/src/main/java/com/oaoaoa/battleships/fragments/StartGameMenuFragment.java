@@ -54,15 +54,20 @@ public class StartGameMenuFragment extends Fragment {
             }
         });
 
-//        bStartMultiplayer.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(requireActivity(), GameStartedActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        bStartMultiplayer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                requireActivity().getSupportFragmentManager()
+                                 .beginTransaction()
+                                 .setReorderingAllowed(true)
+                                 .replace(R.id.fragmentContainerView_main,
+                                          StartMultiplayerMenuFragment.class,
+                                          null)
+                                 .commit();
+            }
+        });
         // endregion
     }
 

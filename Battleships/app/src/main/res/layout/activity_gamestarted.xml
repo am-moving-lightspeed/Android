@@ -58,7 +58,7 @@
         android:id="@+id/editText_gameStarted_sessionId"
         style="@style/BattleShips.GameStarted.EditText"
         android:autofillHints=""
-        android:text="@string/gameStarted_sessionId"
+        android:hint="@string/gameStarted_sessionIdHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"

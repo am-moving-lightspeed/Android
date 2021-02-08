@@ -11,9 +11,10 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.oaoaoa.battleships.R;
 import com.oaoaoa.battleships.misc.exceptions.InvalidMapException;
-import com.oaoaoa.battleships.models.Cell;
+import com.oaoaoa.battleships.models.states.Cell;
 import com.oaoaoa.battleships.models.Map;
-import com.oaoaoa.battleships.models.ShipOrientation;
+import com.oaoaoa.battleships.models.states.MapMode;
+import com.oaoaoa.battleships.models.states.ShipOrientation;
 
 import java.util.Random;
 
@@ -21,7 +22,21 @@ import java.util.Random;
 
 public class MapManager {
 
-    public static void initMapView(final Context context, GridLayout mapView, final Map map) {
+    public interface OnShotPerformedListener {
+
+        void onShotPerformed(int x, int y);
+
+    }
+
+
+
+    private static OnShotPerformedListener mOnShotPerformed;
+
+
+    public static void initMapView(final Context context,
+                                   GridLayout mapView,
+                                   final Map map,
+                                   MapMode mapMode) {
 
         Resources       resources = context.getResources();
         Resources.Theme theme     = context.getTheme();
@@ -32,14 +47,21 @@ public class MapManager {
             for (int j = 0; j < 10; j++) {
 
                 ImageButton ibButton = new ImageButton(context);
-                // TODO: Remove tag if redundant
                 ibButton.setTag("imageButton_mapEditor_cell" + i + j);
-                ibButton.setMaxWidth(32);
-                ibButton.setMaxHeight(32);
 
                 if (map.getCell(i, j) == Cell.FILLED) {
                     ibButton.setBackground(
                         ResourcesCompat.getDrawable(resources, R.drawable.cell_filled, theme)
+                    );
+                }
+                else if (map.getCell(i, j) == Cell.HIT) {
+                    ibButton.setBackground(
+                        ResourcesCompat.getDrawable(resources, R.drawable.cell_hit, theme)
+                    );
+                }
+                else if (map.getCell(i, j) == Cell.MISS) {
+                    ibButton.setBackground(
+                        ResourcesCompat.getDrawable(resources, R.drawable.cell_miss, theme)
                     );
                 }
                 else {
@@ -48,14 +70,26 @@ public class MapManager {
                     );
                 }
 
-                ibButton.setOnClickListener(new View.OnClickListener() {
+                if (mapMode == MapMode.CREATURE) {
+                    ibButton.setOnClickListener(new View.OnClickListener() {
 
-                    @Override
-                    public void onClick(View view) {
+                        @Override
+                        public void onClick(View view) {
 
-                        MapManager.setShip(context, view, map);
-                    }
-                });
+                            MapManager.setShip(context, view, map);
+                        }
+                    });
+                }
+                else if (mapMode == MapMode.BATTLE) {
+                    ibButton.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View view) {
+
+                            MapManager.performShot(view);
+                        }
+                    });
+                }
 
                 mapView.addView(ibButton);
             }
@@ -192,6 +226,45 @@ public class MapManager {
         catch (InvalidMapException exception) {
             return false;
         }
+    }
+
+
+    public static void performShot(View view) {
+
+        String tag = view.getTag()
+                         .toString();
+        int x = tag.charAt(tag.length() - 2) - '0';
+        int y = tag.charAt(tag.length() - 1) - '0';
+
+        if (mOnShotPerformed != null) {
+            mOnShotPerformed.onShotPerformed(x, y);
+        }
+    }
+
+
+    public static Cell resolveShot(Map map, int x, int y) {
+
+        if (map.getCell(x, y) == Cell.FILLED) {
+            map.setCell(x, y, Cell.HIT);
+            map.decreaseShips();
+            return Cell.HIT;
+        }
+        else {
+            map.setCell(x, y, Cell.MISS);
+            return Cell.MISS;
+        }
+    }
+
+
+    public static void setOnShotPerformedListener(OnShotPerformedListener listener) {
+
+        mOnShotPerformed = listener;
+    }
+
+
+    public static void removeOnShotPerformedListener() {
+
+        mOnShotPerformed = null;
     }
 
 
@@ -368,12 +441,5 @@ public class MapManager {
         }
     }
     // endregion
-
-
-    public void performShot(View view) {
-
-        // TODO: implement
-    }
-
 
 }

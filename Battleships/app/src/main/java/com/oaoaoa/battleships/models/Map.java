@@ -1,9 +1,16 @@
 package com.oaoaoa.battleships.models;
 
 
-public class Map {
+import com.oaoaoa.battleships.models.states.Cell;
 
-    private Cell[][] mMap;
+import java.io.Serializable;
+
+
+
+public class Map implements Serializable {
+
+    private final Cell[][] mMap;
+    private       int      mShipsLeft = 20;
 
 
     public Map() {
@@ -27,6 +34,8 @@ public class Map {
                 mMap[i][j] = map.getCell(i, j);
             }
         }
+
+        mShipsLeft = map.getShipsLeft();
     }
 
 
@@ -39,6 +48,20 @@ public class Map {
     public void setCell(int i, int j, Cell type) {
 
         this.mMap[i][j] = type;
+    }
+
+
+    public int getShipsLeft() {
+
+        return mShipsLeft;
+    }
+
+
+    public void decreaseShips() {
+
+        if (mShipsLeft > 0) {
+            mShipsLeft--;
+        }
     }
 
 }

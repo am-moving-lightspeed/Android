@@ -17,6 +17,7 @@ import com.oaoaoa.battleships.R;
 import com.oaoaoa.battleships.misc.AnimationsProvider;
 import com.oaoaoa.battleships.misc.MapManager;
 import com.oaoaoa.battleships.models.Map;
+import com.oaoaoa.battleships.models.states.MapMode;
 
 import es.dmoral.toasty.Toasty;
 
@@ -51,7 +52,8 @@ public class MapEditorActivity extends AppCompatActivity {
         MapManager.initMapView(
             getApplicationContext(),
             (GridLayout) findViewById(R.id.gridLayout_mapEditor),
-            mMap
+            mMap,
+            MapMode.CREATURE
         );
 
 
@@ -71,7 +73,7 @@ public class MapEditorActivity extends AppCompatActivity {
                 }
                 else {
                     Toasty.custom(MapEditorActivity.this,
-                                  R.string.mapEditor_toasty,
+                                  R.string.all_toasty_invalidMap,
                                   null,
                                   R.color.colour_maroon,
                                   Toast.LENGTH_SHORT,

@@ -26,7 +26,7 @@ import es.dmoral.toasty.Toasty;
 
 
 
-public class LoginActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     private       ProgressBar                   mPbLoading;
     private final OnSuccessListener<AuthResult> mListener = new OnSuccessListener<AuthResult>() {
@@ -35,11 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         public void onSuccess(AuthResult authResult) {
 
             Intent intent =
-                new Intent(LoginActivity.this, MainActivity.class);
+                new Intent(SignInActivity.this, MainActivity.class);
             startActivity(intent);
 
             mPbLoading.setVisibility(View.GONE);
-            LoginActivity.this.finish();
+            SignInActivity.this.finish();
         }
     };
 
@@ -72,7 +72,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 mPbLoading.setVisibility(View.VISIBLE);
 
-                if (isValidEmail(email)) {
+                if (isValidEmail(email) &&
+                    !password.isEmpty()) {
+
                     final FirebaseAuth auth = FirebaseAuth.getInstance();
 
                     auth.signInWithEmailAndPassword(email, password)
@@ -114,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showToast(int text) {
 
-        Toasty.custom(LoginActivity.this,
+        Toasty.custom(SignInActivity.this,
                       text,
                       null,
                       R.color.colour_maroon,

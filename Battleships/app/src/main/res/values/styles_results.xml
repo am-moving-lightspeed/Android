@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips.Results" parent="BattleShips.Default" />
+
+    <style name="BattleShips.Results.Header" parent="BattleShips.Default.Header">
+        <item name="android:textSize">@dimen/textSize_all_52sp</item>
+    </style>
+
+    <style name="BattleShips.Results.Score">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_all_24dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="BattleShips.Results.Button">
+        <item name="android:layout_width">@dimen/width_all_256dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_all_128dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips.Battle" parent="BattleShips.Default" />
+
+    <style name="BattleShips.Battle.Background" parent="BattleShips.Default.Background" />
+
+    <style name="BattleShips.Battle.Grid" parent="BattleShips.Default.Grid" />
+
+    <style name="BattleShips.Battle.Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_all_16dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

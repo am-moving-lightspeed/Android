@@ -1,6 +1,8 @@
 <resources>
 
     <string name="all_appName">Battle ships</string>
+    <string name="all_colon">:</string>
+    <string name="all_toasty_invalidMap">Invalid map</string>
 
     <string name="main_header">Battle ships</string>
     <string name="main_mainMenu_startGame">Start game</string>
@@ -10,10 +12,11 @@
     <string name="main_startGameMenu_singleplayer">Singleplayer</string>
     <string name="main_startGameMenu_multiplayer">Multiplayer</string>
     <string name="main_startGameMenu_customizeMap">Customize map</string>
+    <string name="main_startMultiplayer_create">Create session</string>
+    <string name="main_startMultiplayer_connect">Connect by ID</string>
 
     <string name="mapEditor_header">Create/customize your map</string>
     <string name="mapEditor_button">Save map</string>
-    <string name="mapEditor_toasty">Invalid map</string>
 
     <string name="gameStarted_header">Arrange your ships</string>
     <string name="gameStarted_loadMap">Load map</string>
@@ -21,13 +24,24 @@
     <string name="gameStarted_copy">Copy</string>
     <string name="gameStarted_share">Share</string>
     <string name="gameStarted_start">Start</string>
-    <string name="gameStarted_toasty">No saved map</string>
-    <string name="gameStarted_sessionId">aB2cD3eF4gH5iJ6kL7</string>
+    <string name="gameStarted_toasty_noSavedMap">No saved map</string>
+    <string name="gameStarted_toasty_signInRequired">You must sign in first</string>
+    <string name="gameStarted_sessionIdHint">Enter session ID…</string>
 
     <string name="signIn_login">Login…</string>
     <string name="signIn_password">Password…</string>
     <string name="signIn_signIn">Sign in</string>
     <string name="signIn_toasty_invalid">Invalid email</string>
     <string name="signIn_toasty_failed">Sign in has failed</string>
+
+    <string name="battle_header_enemy">Gregory</string>
+    <string name="battle_header_you">Your map</string>
+    <string name="battle_toasty_started">Battle started!</string>
+    <string name="battle_toasty_yourTurn">Your turn</string>
+    <string name="battle_toasty_enemyTurn">Enemy turn</string>
+
+    <string name="results_header_win">You win!</string>
+    <string name="results_header_lose">You lose…</string>
+    <string name="results_header_toMenu">To menu</string>
 
 </resources>

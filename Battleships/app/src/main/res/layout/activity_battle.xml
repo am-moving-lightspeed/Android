@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_battle_container"
+    style="@style/BattleShips.Battle.Background">
+
+    <TextView
+        android:id="@+id/textView_battle_headerPlayer"
+        style="@style/BattleShips.Battle.Header"
+        android:text="@string/battle_header_you"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        tools:ignore="MissingConstraints" />
+
+    <!-- TODO: resolve sizing -->
+    <GridLayout
+        android:id="@+id/gridLayout_battle_player"
+        style="@style/BattleShips.MapEditor.Grid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_battle_headerPlayer" />
+
+    <TextView
+        android:id="@+id/textView_battle_headerEnemy"
+        style="@style/BattleShips.Battle.Header"
+        android:layout_marginTop="@dimen/margin_all_80dp"
+        android:text="@string/battle_header_enemy"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout_battle_player"
+        tools:ignore="MissingConstraints" />
+
+    <!-- TODO: resolve sizing -->
+    <GridLayout
+        android:id="@+id/gridLayout_battle_enemy"
+        style="@style/BattleShips.MapEditor.Grid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_battle_headerEnemy" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

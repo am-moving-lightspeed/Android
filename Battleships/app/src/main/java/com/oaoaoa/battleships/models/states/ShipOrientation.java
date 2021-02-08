@@ -1,4 +1,4 @@
-package com.oaoaoa.battleships.models;
+package com.oaoaoa.battleships.models.states;
 
 
 public enum ShipOrientation {
