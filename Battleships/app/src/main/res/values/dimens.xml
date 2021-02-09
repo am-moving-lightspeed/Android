@@ -23,7 +23,9 @@
     <dimen name="margin_all_24dp">24dp</dimen>
     <dimen name="margin_all_20dp">20dp</dimen>
     <dimen name="margin_all_16dp">16dp</dimen>
+    <dimen name="margin_all_12dp">12dp</dimen>
 
+    <dimen name="padding_all_12dp">12dp</dimen>
     <dimen name="padding_activity_16dp">16dp</dimen>
     <dimen name="padding_activity_12dp">12dp</dimen>
     <dimen name="padding_activity_8dp">8dp</dimen>

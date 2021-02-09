@@ -50,4 +50,13 @@
     <string name="profile_header_username">Username:</string>
     <string name="profile_header_usernameHint">Enter new name…</string>
 
+    <string name="statistics_header">Stats</string>
+    <string name="statistics_vh_statusVictory">You won!</string>
+    <string name="statistics_vh_statusDefeat">You lost…</string>
+    <string name="statistics_vh_dateTime">Mon Jan 01 00:00:00 GMT+00:00 1970</string>
+    <string name="statistics_vh_nameLong">SomeLongNickname</string>
+    <string name="statistics_vh_nameShort">Nick</string>
+    <string name="statistics_vh_scoreHost">6</string>
+    <string name="statistics_vh_scoreNonHost">0</string>
+
 </resources>

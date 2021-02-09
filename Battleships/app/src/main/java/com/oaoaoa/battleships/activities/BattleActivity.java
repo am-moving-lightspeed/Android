@@ -180,7 +180,7 @@ public class BattleActivity extends AppCompatActivity {
 
     private void setEnemyJoinedEvents() {
 
-        mEnemyName.addListenerForSingleValueEvent(new ValueEventListener() {
+        mEnemyName.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -191,6 +191,8 @@ public class BattleActivity extends AppCompatActivity {
 
                 TextView header = findViewById(R.id.textView_battle_headerEnemy);
                 header.setText(snapshot.getValue(String.class));
+
+                mEnemyName.removeEventListener(this);
             }
 
 
