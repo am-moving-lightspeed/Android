@@ -3,6 +3,7 @@
     <string name="all_appName">Battle ships</string>
     <string name="all_colon">:</string>
     <string name="all_toasty_invalidMap">Invalid map</string>
+    <string name="all_toasty_signInRequired">You must sign in first</string>
 
     <string name="main_header">Battle ships</string>
     <string name="main_mainMenu_startGame">Start game</string>
@@ -25,7 +26,6 @@
     <string name="gameStarted_share">Share</string>
     <string name="gameStarted_start">Start</string>
     <string name="gameStarted_toasty_noSavedMap">No saved map</string>
-    <string name="gameStarted_toasty_signInRequired">You must sign in first</string>
     <string name="gameStarted_sessionIdHint">Enter session ID…</string>
 
     <string name="signIn_login">Login…</string>
@@ -43,5 +43,11 @@
     <string name="results_header_win">You win!</string>
     <string name="results_header_lose">You lose…</string>
     <string name="results_header_toMenu">To menu</string>
+
+    <string name="profile_toasty_invalidName">Invalid name</string>
+    <string name="profile_toasty_saved">Saved</string>
+    <string name="profile_button_save">Save</string>
+    <string name="profile_header_username">Username:</string>
+    <string name="profile_header_usernameHint">Enter new name…</string>
 
 </resources>

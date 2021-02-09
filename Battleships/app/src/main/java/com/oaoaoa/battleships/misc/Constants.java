@@ -7,6 +7,8 @@ public final class Constants {
 
         public static final String SESSION    = "sessions";
         public static final String STATISTICS = "statistics";
+        public static final String PROFILE    = "profiles";
+        public static final String IMAGE      = "images";
 
         public static final String SESSION_HOST    = "sessionHost";
         public static final String SESSION_NONHOST = "sessionNonHost";
@@ -24,6 +26,10 @@ public final class Constants {
         public static final String STATISTICS_NONHOST_SCORE = "statisticsNonHostScore";
 
         public static final String STATISTICS_DATETIME = "statisticsDateTime";
+
+        public static final String PROFILE_NAME = "profileName";
+
+        public static final String IMAGE_PATH = "imagePath";
 
     }
 

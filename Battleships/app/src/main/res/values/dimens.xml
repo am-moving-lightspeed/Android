@@ -10,7 +10,11 @@
     <dimen name="textSize_all_52sp">52sp</dimen>
 
     <dimen name="width_all_256dp">256dp</dimen>
+    <dimen name="width_all_240dp">240dp</dimen>
+    <dimen name="width_all_128dp">128dp</dimen>
 
+    <dimen name="height_all_240dp">240dp</dimen>
+    <dimen name="height_all_128dp">128dp</dimen>
     <dimen name="height_all_72dp">72dp</dimen>
     <dimen name="height_all_52dp">52dp</dimen>
 

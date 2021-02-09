@@ -15,7 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.oaoaoa.battleships.R;
 import com.oaoaoa.battleships.misc.AnimationsProvider;
 import com.oaoaoa.battleships.misc.MapManager;
@@ -30,17 +29,12 @@ import com.oaoaoa.battleships.models.states.Turn;
 
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 import es.dmoral.toasty.Toasty;
 
 
 
 public class BattleActivity extends AppCompatActivity {
-
-    private static Logger mLogger = Logger.getLogger(BattleActivity.class.getName());
 
     private FirebaseDatabase mDatabase;
 
@@ -197,8 +191,6 @@ public class BattleActivity extends AppCompatActivity {
 
                 TextView header = findViewById(R.id.textView_battle_headerEnemy);
                 header.setText(snapshot.getValue(String.class));
-
-                mLogger.log(Level.INFO, "setEnemyJoinedEvents");
             }
 
 

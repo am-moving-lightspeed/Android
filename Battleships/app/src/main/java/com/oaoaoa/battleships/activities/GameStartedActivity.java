@@ -13,27 +13,18 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.oaoaoa.battleships.R;
 import com.oaoaoa.battleships.misc.AnimationsProvider;
 import com.oaoaoa.battleships.misc.IdentifierGenerator;
 import com.oaoaoa.battleships.misc.MapManager;
-import com.oaoaoa.battleships.misc.Constants.FirebaseConstants;
 import com.oaoaoa.battleships.models.Map;
 import com.oaoaoa.battleships.models.states.MapMode;
-import com.oaoaoa.battleships.models.states.SessionState;
 
 import es.dmoral.toasty.Toasty;
 
@@ -91,6 +82,7 @@ public class GameStartedActivity extends AppCompatActivity {
             mSessionId.setFocusable(true);
             mSessionId.setCursorVisible(true);
             mSessionId.setLongClickable(true);
+            // TODO: resolve problem w/ typing
 
             bStartBattle = findViewById(R.id.button_gameStarted_startBattleAlt);
         }
@@ -202,7 +194,7 @@ public class GameStartedActivity extends AppCompatActivity {
                     }
                     else {
                         // Not expected to get here.
-                        showToast(R.string.gameStarted_toasty_signInRequired);
+                        showToast(R.string.all_toasty_signInRequired);
                     }
                 }
                 else {
