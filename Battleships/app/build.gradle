@@ -7,6 +7,20 @@ apply from: "../ver.gradle"
 def version = extractVer()
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\Android_projects\\Battleships\\keystore.jks')
+            storePassword 'keystore'
+            keyAlias 'kstore'
+            keyPassword 'keystore'
+        }
+        debug {
+            storeFile file('D:\\Android_projects\\Battleships\\keystore.jks')
+            storePassword 'keystore'
+            keyPassword 'keystore'
+            keyAlias 'kstore'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -24,6 +38,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
