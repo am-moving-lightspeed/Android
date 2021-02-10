@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_mapEditor_container"
+    style="@style/BattleShips.MapEditor.Background"
+    tools:context=".activities.MapEditorActivity">
+
+    <TextView
+        style="@style/BattleShips.MapEditor.Header"
+        android:text="@string/mapEditor_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        tools:ignore="MissingConstraints" />
+
+    <!-- TODO: resolve sizing -->
+    <GridLayout
+        android:id="@+id/gridLayout_mapEditor"
+        style="@style/BattleShips.MapEditor.Grid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_mapEditor_saveMap"
+        style="@style/BattleShips.MapEditor.Button"
+        android:text="@string/mapEditor_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

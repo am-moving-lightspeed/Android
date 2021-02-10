@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_battle_container"
+    style="@style/BattleShips.Battle.Background">
+
+    <TextView
+        android:id="@+id/textView_results_header"
+        style="@style/BattleShips.Results.Header"
+        android:text="@string/results_header_win"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_results_score"
+        style="@style/BattleShips.Results.Score"
+        app:layout_constraintTop_toBottomOf="@id/textView_results_header"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView_results_playerScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_colon" />
+
+        <TextView
+            android:id="@+id/textView_results_enemyScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_results"
+        style="@style/BattleShips.Results.Button"
+        android:text="@string/results_header_toMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_results_score" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

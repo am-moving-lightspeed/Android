@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips.SignIn" parent="BattleShips.Default" />
+
+    <style name="BattleShips.SignIn.Background" parent="BattleShips.Default.Background" />
+
+    <style name="BattleShips.SignIn.Header" parent="BattleShips.Main.Header" />
+
+    <style name="BattleShips.SignIn.Button" parent="BattleShips.Default.Button" />
+
+    <style name="BattleShips.SignIn.EditText" parent="BattleShips.Default.EditText">
+        <item name="android:layout_marginStart">@dimen/margin_all_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_all_16dp</item>
+    </style>
+
+    <style name="BattleShips.SignIn.EditText.Email">
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="BattleShips.SignIn.EditText.Password">
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="BattleShips.SignIn.ProgressBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_all_16dp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+</resources>

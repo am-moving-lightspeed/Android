@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BattleShips.Statistics.ViewHolder.Background">
+
+    <TextView
+        android:id="@+id/textView_statistics_status"
+        style="@style/BattleShips.Statistics.ViewHolder.Text.Header"
+        android:text="@string/statistics_vh_statusVictory" />
+
+    <TextView
+        android:id="@+id/textView_statistics_dateTime"
+        style="@style/BattleShips.Statistics.ViewHolder.Text.DateTime"
+        android:text="@string/statistics_vh_dateTime" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_statistics_hostName"
+            style="@style/BattleShips.Statistics.ViewHolder.Text.Names"
+            android:text="@string/statistics_vh_nameLong" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:id="@+id/textView_statistics_nonHostName"
+            style="@style/BattleShips.Statistics.ViewHolder.Text.Names"
+            android:text="@string/statistics_vh_nameShort" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView_statistics_hostScore"
+            style="@style/BattleShips.Statistics.ViewHolder.Text.Names"
+            android:text="@string/statistics_vh_scoreHost" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:id="@+id/textView_statistics_nonHostScore"
+            style="@style/BattleShips.Statistics.ViewHolder.Text.Names"
+            android:text="@string/statistics_vh_scoreNonHost" />
+
+    </LinearLayout>
+
+</LinearLayout>

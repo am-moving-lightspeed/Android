@@ -1,0 +1,27 @@
+<resources>
+
+    <style name="MainTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/colour_blackPearl</item>
+        <item name="colorPrimaryDark">@color/colour_blackPearlDarker</item>
+        <item name="colorAccent">@color/colour_salmon</item>
+
+        <item name="android:windowBackground">@color/colour_blackPearlDarker</item>
+
+        <item name="android:textColor">@color/colour_heather</item>
+        <item name="android:textSize">@dimen/textSize_all</item>
+        <item name="android:fontFamily">@font/retrocomputer</item>
+
+    </style>
+
+    <!-- Var -->
+    <color name="colour_strokeDefault">@color/colour_gunmetal</color>
+
+    <color name="colour_itemBackgroundDefault">@color/colour_blackPearl</color>
+
+    <color name="colour_buttonBackground">@color/colour_midnightExpress</color>
+    <color name="colour_buttonBackgroundBlueHue">@color/colour_midnightExpress</color>
+    <color name="colour_buttonBackgroundRedHue">@color/colour_salmonDim</color>
+    <color name="colour_buttonBarBackground">@color/colour_midnightExpress</color>
+
+</resources>

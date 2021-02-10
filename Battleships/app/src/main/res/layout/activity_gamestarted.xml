@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_gameStarted_container"
+    style="@style/BattleShips.GameStarted.Background"
+    tools:context=".activities.GameStartedActivity">
+
+    <!-- Header -->
+    <TextView
+        style="@style/BattleShips.GameStarted.Header"
+        android:text="@string/gameStarted_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        tools:ignore="MissingConstraints" />
+
+    <!-- Manage map -->
+    <LinearLayout
+        style="@style/BattleShips.GameStarted.ButtonsBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/button_gameStarted_loadMap"
+            style="@style/BattleShips.GameStarted.Button"
+            android:layout_gravity="start"
+            android:text="@string/gameStarted_loadMap" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+
+        <Button
+            android:id="@+id/button_gameStarted_generateMap"
+            style="@style/BattleShips.GameStarted.Button"
+            android:layout_gravity="end"
+            android:text="@string/gameStarted_generateRandom" />
+
+    </LinearLayout>
+
+    <!-- TODO: resolve sizing -->
+    <!-- Map itself -->
+    <GridLayout
+        android:id="@+id/gridLayout_gameStarted"
+        style="@style/BattleShips.MapEditor.Grid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Session ID -->
+    <EditText
+        android:id="@+id/editText_gameStarted_sessionId"
+        style="@style/BattleShips.GameStarted.EditText"
+        android:autofillHints=""
+        android:hint="@string/gameStarted_sessionIdHint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75"
+        tools:ignore="LabelFor,MissingConstraints" />
+
+    <!-- Control buttons -->
+    <LinearLayout
+        android:id="@+id/linearLayout_gameStarted_buttonsBar"
+        style="@style/BattleShips.GameStarted.ButtonsBar"
+        app:layout_constraintTop_toBottomOf="@id/editText_gameStarted_sessionId"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/button_gameStarted_copySessionId"
+            style="@style/BattleShips.GameStarted.Button"
+            android:text="@string/gameStarted_copy" />
+
+        <Button
+            android:id="@+id/button_gameStarted_shareSessionId"
+            style="@style/BattleShips.GameStarted.Button"
+            android:text="@string/gameStarted_share" />
+
+        <Button
+            android:id="@+id/button_gameStarted_startBattle"
+            style="@style/BattleShips.GameStarted.Button"
+            android:text="@string/gameStarted_start" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_gameStarted_startBattleAlt"
+        style="@style/BattleShips.GameStarted.Button.AlternativeStart"
+        android:text="@string/gameStarted_start"
+        app:layout_constraintTop_toBottomOf="@id/editText_gameStarted_sessionId"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

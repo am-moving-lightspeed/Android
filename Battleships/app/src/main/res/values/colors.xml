@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dark -->
+    <color name="colour_blackPearl">#161B21</color>
+    <color name="colour_blackPearlDarker">#0D1117</color>
+    <color name="colour_gunmetal">#30363D</color>
+    <color name="colour_heather">#A5B0C0</color>
+    <color name="colour_midnightExpress">#1F1D2F</color>
+    <color name="colour_cinder">#21262D</color>
+    <color name="colour_salmonDim">#1AF9826C</color>
+
+
+    <color name="colour_shockingPink">#F20BB9</color>
+    <color name="colour_mediumVioletRed">#BD1189</color>
+    <color name="colour_darkPurple">#6C196A</color>
+    <color name="colour_honeyFlower">#644173</color>
+    <color name="colour_tyrianPurple">#1C0314</color>
+    <color name="colour_lightSeaGreen">#19C7BD</color>
+    <color name="colour_deepSea">#0B7260</color>
+    <color name="colour_darkGreen">#010F0E</color>
+    <color name="colour_darkSalmon">#EB987F</color>
+    <color name="colour_maroon">#6C0706</color>
+    <color name="colour_sealBrown">#170409</color>
+
+    <!-- Shared -->
+    <color name="colour_lightSlateBlue">#A371F7</color>
+    <color name="colour_eucalyptus">#2EA043</color>
+    <color name="colour_eucalyptusDim">#1A2EA043</color>
+    <color name="colour_cornflowerBlue">#55A2F2</color>
+    <color name="colour_cornflowerBlueDim">#B355A2F2</color>
+    <color name="colour_salmon">#F9826C</color>
+
+</resources>

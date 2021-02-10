@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text -->
+    <dimen name="textSize_all">28sp</dimen>
+    <dimen name="textSize_all_large">40sp</dimen>
+    <dimen name="textSize_all_medium">32sp</dimen>
+    <dimen name="textSize_all_small">22sp</dimen>
+    <dimen name="textSize_all_extraSmall">18sp</dimen>
+    <dimen name="textSize_all_52sp">52sp</dimen>
+
+    <dimen name="width_all_256dp">256dp</dimen>
+    <dimen name="width_all_240dp">240dp</dimen>
+    <dimen name="width_all_128dp">128dp</dimen>
+
+    <dimen name="height_all_240dp">240dp</dimen>
+    <dimen name="height_all_128dp">128dp</dimen>
+    <dimen name="height_all_72dp">72dp</dimen>
+    <dimen name="height_all_52dp">52dp</dimen>
+
+    <dimen name="margin_all_128dp">128dp</dimen>
+    <dimen name="margin_all_80dp">80dp</dimen>
+    <dimen name="margin_all_24dp">24dp</dimen>
+    <dimen name="margin_all_20dp">20dp</dimen>
+    <dimen name="margin_all_16dp">16dp</dimen>
+    <dimen name="margin_all_12dp">12dp</dimen>
+
+    <dimen name="padding_all_12dp">12dp</dimen>
+    <dimen name="padding_activity_16dp">16dp</dimen>
+    <dimen name="padding_activity_12dp">12dp</dimen>
+    <dimen name="padding_activity_8dp">8dp</dimen>
+    <dimen name="padding_main_32dp">32dp</dimen>
+
+</resources>

@@ -1,0 +1,62 @@
+<resources>
+
+    <string name="all_appName">Battle ships</string>
+    <string name="all_colon">:</string>
+    <string name="all_toasty_invalidMap">Invalid map</string>
+    <string name="all_toasty_signInRequired">You must sign in first</string>
+
+    <string name="main_header">Battle ships</string>
+    <string name="main_mainMenu_startGame">Start game</string>
+    <string name="main_mainMenu_profile">Profile</string>
+    <string name="main_mainMenu_statistics">Statistics</string>
+    <string name="main_mainMenu_quitGame">Quit game</string>
+    <string name="main_startGameMenu_singleplayer">Singleplayer</string>
+    <string name="main_startGameMenu_multiplayer">Multiplayer</string>
+    <string name="main_startGameMenu_customizeMap">Customize map</string>
+    <string name="main_startMultiplayer_create">Create session</string>
+    <string name="main_startMultiplayer_connect">Connect by ID</string>
+
+    <string name="mapEditor_header">Create/customize your map</string>
+    <string name="mapEditor_button">Save map</string>
+
+    <string name="gameStarted_header">Arrange your ships</string>
+    <string name="gameStarted_loadMap">Load map</string>
+    <string name="gameStarted_generateRandom">Generate</string>
+    <string name="gameStarted_copy">Copy</string>
+    <string name="gameStarted_share">Share</string>
+    <string name="gameStarted_start">Start</string>
+    <string name="gameStarted_toasty_noSavedMap">No saved map</string>
+    <string name="gameStarted_sessionIdHint">Enter session ID…</string>
+
+    <string name="signIn_login">Login…</string>
+    <string name="signIn_password">Password…</string>
+    <string name="signIn_signIn">Sign in</string>
+    <string name="signIn_toasty_invalid">Invalid email</string>
+    <string name="signIn_toasty_failed">Sign in has failed</string>
+
+    <string name="battle_header_enemy">Gregory</string>
+    <string name="battle_header_you">Your map</string>
+    <string name="battle_toasty_started">Battle started!</string>
+    <string name="battle_toasty_yourTurn">Your turn</string>
+    <string name="battle_toasty_enemyTurn">Enemy turn</string>
+
+    <string name="results_header_win">You win!</string>
+    <string name="results_header_lose">You lose…</string>
+    <string name="results_header_toMenu">To menu</string>
+
+    <string name="profile_toasty_invalidName">Invalid name</string>
+    <string name="profile_toasty_saved">Saved</string>
+    <string name="profile_button_save">Save</string>
+    <string name="profile_header_username">Username:</string>
+    <string name="profile_header_usernameHint">Enter new name…</string>
+
+    <string name="statistics_header">Stats</string>
+    <string name="statistics_vh_statusVictory">You won!</string>
+    <string name="statistics_vh_statusDefeat">You lost…</string>
+    <string name="statistics_vh_dateTime">Mon Jan 01 00:00:00 GMT+00:00 1970</string>
+    <string name="statistics_vh_nameLong">SomeLongNickname</string>
+    <string name="statistics_vh_nameShort">Nick</string>
+    <string name="statistics_vh_scoreHost">6</string>
+    <string name="statistics_vh_scoreNonHost">0</string>
+
+</resources>

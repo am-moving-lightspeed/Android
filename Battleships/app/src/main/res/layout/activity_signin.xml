@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout_signIn_container"
+    style="@style/BattleShips.SignIn.Background">
+
+    <!-- TODO: add animation-->
+    <!-- Header -->
+    <TextView
+        style="@style/BattleShips.SignIn.Header"
+        android:fontFamily="@font/backto1982"
+        android:text="@string/main_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <EditText
+        android:id="@+id/editText_signIn_email"
+        style="@style/BattleShips.SignIn.EditText.Email"
+        android:autofillHints=""
+        android:hint="@string/signIn_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <EditText
+        android:id="@+id/editText_signIn_password"
+        style="@style/BattleShips.SignIn.EditText.Password"
+        android:autofillHints=""
+        android:hint="@string/signIn_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_signIn_email" />
+
+    <Button
+        android:id="@+id/button_signIn"
+        style="@style/BattleShips.SignIn.Button"
+        android:text="@string/signIn_signIn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_signIn"
+        style="@style/BattleShips.SignIn.ProgressBar"
+        app:layout_constraintBottom_toTopOf="@id/editText_signIn_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

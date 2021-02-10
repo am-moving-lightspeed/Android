@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/colour_honeyFlower" />
+    <item
+        android:width="@dimen/width_all_128dp"
+        android:height="@dimen/height_all_128dp"
+        android:drawable="@drawable/ic_profile"
+        android:gravity="center" />
+
+</layer-list>

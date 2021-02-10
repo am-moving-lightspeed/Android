@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BattleShips" />
+
+    <style name="BattleShips.Default" />
+
+    <style name="BattleShips.Default.Background">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingStart">@dimen/padding_activity_12dp</item>
+        <item name="android:paddingEnd">@dimen/padding_activity_12dp</item>
+        <item name="android:paddingTop">@dimen/padding_activity_8dp</item>
+        <item name="android:paddingBottom">@dimen/padding_activity_16dp</item>
+        <item name="android:background">@drawable/main_bg_animation</item>
+    </style>
+
+    <style name="BattleShips.Default.Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/margin_all_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_all_16dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BattleShips.Default.Grid">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:columnCount">10</item>
+        <item name="android:rowCount">10</item>
+    </style>
+
+    <style name="BattleShips.Default.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_all_72dp</item>
+        <item name="android:textSize">@dimen/textSize_all_small</item>
+        <item name="android:textColor">?android:textColor</item>
+    </style>
+
+    <style name="BattleShips.Default.Button">
+        <item name="android:layout_width">@dimen/width_all_256dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>
